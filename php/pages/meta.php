@@ -4,7 +4,7 @@
 <meta name="keywords" content="online education, e-learning, coaching, education, teaching, learning">
 <meta name="description" content="Zoomy is a e-learnibg HTML template for all kinds of education, coaching, online education website">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Zoomy - E-learning HTML5 Template</title>
+<title>Collegenew.com - E-learning HTML5 Template</title>
 
 <link rel="manifest" href="site.webmanifest">
 <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
