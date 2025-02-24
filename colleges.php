@@ -3,6 +3,8 @@
 
 <head>
     <?php include 'php/pages/meta.php' ?>
+    <link rel="stylesheet" href="assets\css\college.css">
+
 </head>
 
 <body>
@@ -83,11 +85,104 @@
     </aside>
     <div class="body-overlay"></div>
     <!-- slide-bar end -->
-    <main>
+
+    <main class="card-container d-sm-auto container-fluid">
+
+
+        <div class="search-flex">
+            <div class="search-container1">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" class="search-box" placeholder="Search colleges...">
+            </div>
+        </div>
+
+        <div class="container mt-4">
+            <div class="row">
+                <div class="col-md-4 ">
+                    <div class="card">
+                        <img src="assets\img\college\indus.jpg" class="card-img-top p-0 m-0" alt="College Image">
+                        <div class="card-body">
+                            <h5 class="card-title">Indus Institute of Technology and Engineering (IITE), Ahmedabad</h5>
+                            <!-- <p class="card-text text-danger fw-bold">&#8377; 100,800</p> -->
+                            <ul class="icon-list">
+                                <li><i class="fas fa-university"></i> ACPC</li>
+                                <li><i class="fas fa-user-check"></i> Direct Admission</li>
+                                <li><i class="fas fa-graduation-cap"></i> BE / B.Tech - Bachelor of Engineering / Technology</li>
+                                <li><i class="fas fa-building"></i> Private (Self Finance) Institute</li>
+                                <li><i class="fas fa-school"></i> Indus University</li>
+                                <li><i class="fas fa-briefcase"></i> 15 LPA</li>
+                            </ul>
+                            <div class="explore-btn">
+                                <button>Explore More</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="assets\img\college\ganpat.png" class="card-img-top" alt="College Image">
+                        <div class="card-body">
+                            <h5 class="card-title">Ganpat University, Institute of Computer Tech., Kherva, Mehsana</h5>
+                            <!-- <p class="card-text text-danger fw-bold">&#8377; 116,000</p> -->
+                            <ul class="icon-list">
+                                <li><i class="fas fa-university"></i> ACPC</li>
+                                <li><i class="fas fa-user-check"></i> Direct Admission</li>
+                                <li><i class="fas fa-graduation-cap"></i> BE / B.Tech - Bachelor of Engineering / Technology</li>
+                                <li><i class="fas fa-building"></i> Private (Self Finance) Institute</li>
+                                <li><i class="fas fa-school"></i> Ganpat University</li>
+                                <li><i class="fas fa-briefcase"></i> 12 LPA</li>
+                            </ul>
+                            <div class="explore-btn">
+                                <button>Explore More</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card ">
+                        <img src="assets\img\college\kirc.png" class="card-img-top" alt="College Image">
+                        <div class="card-body">
+                            <h5 class="card-title">Amity University (Gwalior)</h5>
+                            <p class="card-text text-danger fw-bold">Details Not Available</p>
+                            <ul class="icon-list">
+                                <li><i class="fas fa-user-check"></i> Direct Admission</li>
+                                <li><i class="fas fa-building"></i> Private (Self Finance) Institute</li>
+                                <li><i class="fas fa-school"></i> Amity University</li>
+                            </ul>
+                            <div class="explore-btn">
+                                <button>Explore More</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
     </main>
-    
+
     <?php include 'php/pages/footer.php' ?>
+    <script>
+        $(document).ready(function() {
+            $(".search-icon").click(function() {
+                $(".search-container1").toggleClass("expanded");
+                $(".search-box").focus();
+            });
+
+            $(".search-box").focus(function() {
+                $(".search-container1").addClass("expanded");
+            });
+
+
+
+            $(document).click(function(e) {
+                if (!$(e.target).closest(".search-container1").length) {
+                    $(".search-container1").removeClass("expanded");
+
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
