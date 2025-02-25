@@ -123,12 +123,12 @@
         <!-- second end section -->
 
         <!-- banner-download-part  -->
-        <div class="banner-part container-fluid">
+
+        </div>
+        <!-- banner-do  <div class="banner-part container-fluid">
             <h3>Want To Know About IIT Madras</h3>
             <button class="b-b">Download Brochure</button>
-        </div>
-        </div>
-        <!-- banner-download-part End -->
+        </div>wnload-part End -->
 
         <!-- Course And addmision 2025  -->
         <div class="container-fluid mt-5">
@@ -158,8 +158,8 @@
                         <h3>MSc</h3>
                     </div>
                     <div class="body-card">
-                    <p class="d-flex justify-content-around"><strong>₹6,000</strong> <span>2 - 5 Years</span> <span>Regular</span></p>
-                        <p >Exams Accepted: IIT JAM</p>
+                        <p class="d-flex justify-content-around"><strong>₹6,000</strong> <span>2 - 5 Years</span> <span>Regular</span></p>
+                        <p>Exams Accepted: IIT JAM</p>
                         <p>Courses Offered: M.Sc in Chemistry, Physics</p>
                         <p><strong>Eligibility:</strong> Bachelor's degree in Science with minimum 55% marks.</p>
                         <div class="button-card align-items-center justify-content-center d-flex gap-3">
@@ -173,7 +173,7 @@
                         <h3>MSc</h3>
                     </div>
                     <div class="body-card">
-                    <p class="d-flex justify-content-around"><strong>₹6,000</strong> <span>2 - 5 Years</span> <span>Regular</span></p>
+                        <p class="d-flex justify-content-around"><strong>₹6,000</strong> <span>2 - 5 Years</span> <span>Regular</span></p>
                         <p>Exams Accepted: IIT JAM</p>
                         <p>Courses Offered: M.Sc in Chemistry, Physics</p>
                         <p><strong>Eligibility:</strong> Bachelor's degree in Science with minimum 55% marks.</p>
@@ -186,6 +186,136 @@
             </div>
 
         </div>
+        <!-- Course And addmision End -->
+        <div class="container-fluid p-5">
+            <h4 class="mt-3">IIT Madras Placements</h4>
+            <p class="mt-3">Indian Institute of Technology Madras placement report 2022 is out. The institute has also released the IITM Summer Internship Placement Report 2023 for management courses. IIT Chennai placement cell looks after the overall functioning from inviting recruiters, conducting pre-placement talks to organising the placement drive. The placement cell at Indian Institute of Technology Madras also conducts necessary training and workshops to make the students interview ready. In the IIT Chennai placement drive 2022, 26 companies visited and 61 students registered for placement. The average salary package recorded was Rs 16.66 LPA. In the internship report 2023, the highest stipend recorded was Rs 2,50,000 and the average stipend was Rs 1,12,000. Tabulate below are the IIT Madras placement related highlights for 2022:</p>
+
+
+        </div>
+        <div class="banner-part1" style="align-items: start; justify-content: start;">
+            <h4 class="text-start mt-2">IIT Madras Placements</h4>
+
+            <div class="banner-part2 mb-2">
+                <span class="box">
+                    <p>Meadian salary</p>
+                    <h5 style="color:#EB571C"><strong>60 Lacs</strong></h5>
+                </span>
+                <span class="box">
+                    <p>Average package</p>
+                    <h5 style="color:#EB571C"><strong>17 Lacs</strong></h5>
+                </span>
+                <span class="box">
+                    <p>Highest package</p>
+                    <h5 style="color:#EB571C"><strong>1.30 crore</strong></h5>
+                </span>
+            </div>
+
+
+        </div>
+
+        <!-- connet-sec  -->
+
+        <div class="container-fluid connet-secd">
+            <div class="banner">
+                <div class="banner-content p-2">
+                    <h5>Are you Confused? Talk to an IIT Madras Expert</h5>
+                    <p>Who offers personalized guidance, mentorship, and invaluable insights tailored to your academic and career aspirations.</p>
+                    <button class="banner-button1">Connect Now</button>
+                </div>
+                <div class="banner-image">
+                    <img src="https://nj1-static.collegedekho.com/_next/static/media/askQueCtaIcon.8c3ad181.svg?width=256&q=80" alt="Confusion Illustration">
+                </div>
+            </div>
+        </div>
+
+        <!-- connet-sec End  -->
+
+        <!-- star ratting start  -->
+        <div class="container star-sec mt-5">
+            <div class="review-header">IIT Madras Reviews</div>
+            <div class="review-content-container">
+                <div class="rating-box">
+                    <div class="score">4.8</div>
+                    <div>
+                        <div class="stars">★★★★★</div>
+                        <a href="#">(8 Reviews)</a>
+                    </div>
+                </div>
+                <div>
+                    <div class="progress-container">
+                        <span>★★★★★</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 88%;"></div>
+                        </div>
+                        <span>88%</span>
+                    </div>
+                    <div class="progress-container">
+                        <span>★★★★☆</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 0%;"></div>
+                        </div>
+                        <span>0%</span>
+                    </div>
+                    <div class="progress-container">
+                        <span>★★★☆☆</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 13%;"></div>
+                        </div>
+                        <span>13%</span>
+                    </div>
+                    <div class="progress-container">
+                        <span>★★☆☆☆</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 0%;"></div>
+                        </div>
+                        <span>0%</span>
+                    </div>
+                    <div class="progress-container">
+                        <span>★☆☆☆☆</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 0%;"></div>
+                        </div>
+                        <span>0%</span>
+                    </div>
+                </div>
+            </div>
+            <div class="review-categories">
+                <div class="category-card">
+                    <div>Overall</div>
+                    <div class="score">4.8 ★</div>
+                    <a href="#">(8 Reviews)</a>
+                </div>
+                <div class="category-card">
+                    <div>Infrastructure</div>
+                    <div class="score">4.6 ★</div>
+                    <a href="#">(7 Reviews)</a>
+                </div>
+                <div class="category-card">
+                    <div>Faculty</div>
+                    <div class="score">4.7 ★</div>
+                    <a href="#">(6 Reviews)</a>
+                </div>
+                <div class="category-card">
+                    <div>Placement</div>
+                    <div class="score">4.6 ★</div>
+                    <a href="#">(7 Reviews)</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- star-sec end  -->
+
+        <div class="banner-part container-fluid p-5">
+            <h3>Want To Know About IIT Madras</h3>
+            <button class="b-b">Download Brochure</button>
+        </div>
+
+
+
+
+
+
     </main>
     <?php include 'php/pages/footer.php' ?>
 
