@@ -410,120 +410,11 @@
                 </div>
             </div>
         </div> -->
-        <div class="container">
-            <!-- Academic Zone -->
-            <div class="facility-card">
-                <i class="fas fa-university facility-icon"></i>
-                <div class="facility-title">Academic Zone</div>
-            </div>
-            <!-- Auditorium -->
-            <div class="facility-card">
-                <i class="fas fa-theater-masks facility-icon"></i>
-                <div class="facility-title">Auditorium</div>
-            </div>
-            <!-- Boys Hostel -->
-            <div class="facility-card">
-                <i class="fas fa-male facility-icon"></i>
-                <div class="facility-title">Boys Hostel</div>
-            </div>
-            <!-- Canteen -->
-            <div class="facility-card">
-                <i class="fas fa-utensils facility-icon"></i>
-                <div class="facility-title">Canteen</div>
-            </div>
-            <!-- Computer Lab -->
-            <div class="facility-card">
-                <i class="fas fa-desktop facility-icon"></i>
-                <div class="facility-title">Computer Lab</div>
-            </div>
-            <!-- Girls Hostel -->
-            <div class="facility-card">
-                <i class="fas fa-female facility-icon"></i>
-                <div class="facility-title">Girls Hostel</div>
-            </div>
-            <!-- Library -->
-            <div class="facility-card">
-                <i class="fas fa-book facility-icon"></i>
-                <div class="facility-title">Library</div>
-            </div>
-            <!-- Medical Facilities -->
-            <div class="facility-card">
-                <i class="fas fa-medkit facility-icon"></i>
-                <div class="facility-title">Medical Facilities</div>
-            </div>
-            <!-- Class Room -->
-            <div class="facility-card">
-                <i class="fas fa-chalkboard-teacher facility-icon"></i>
-                <div class="facility-title">Cls. Room</div>
-            </div>
-            <!-- Placement -->
-            <div class="facility-card">
-                <i class="fas fa-briefcase facility-icon"></i>
-                <div class="facility-title">Placement</div>
-            </div>
-            <!-- Grounds -->
-            <div class="facility-card">
-                <i class="fas fa-futbol facility-icon"></i>
-                <div class="facility-title">Grounds</div>
-            </div>
-            <!-- Transport -->
-            <div class="facility-card">
-                <i class="fas fa-bus facility-icon"></i>
-                <div class="facility-title">Trans.</div>
-            </div>
-            <!-- WiFi -->
-            <div class="facility-card">
-                <i class="fas fa-wifi facility-icon"></i>
-                <div class="facility-title">WiFi</div>
-            </div>
-            <!-- Seminar Hall -->
-            <div class="facility-card">
-                <i class="fas fa-microphone facility-icon"></i>
-                <div class="facility-title">Seminar Hall</div>
-            </div>
-            <!-- Conference Room -->
-            <div class="facility-card">
-                <i class="fas fa-comments facility-icon"></i>
-                <div class="facility-title">Conference Room</div>
-            </div>
-            <!-- Cafeteria -->
-            <div class="facility-card">
-                <i class="fas fa-coffee facility-icon"></i>
-                <div class="facility-title">Cafeteria</div>
-            </div>
-            <!-- Laboratories -->
-            <div class="facility-card">
-                <i class="fas fa-flask facility-icon"></i>
-                <div class="facility-title">Laboratories</div>
-            </div>
-            <!-- Hostel -->
-            <div class="facility-card">
-                <i class="fas fa-hotel facility-icon"></i>
-                <div class="facility-title">Hostel</div>
-            </div>
-            <!-- Common Room -->
-            <div class="facility-card">
-                <i class="fas fa-users facility-icon"></i>
-                <div class="facility-title">Common Room</div>
-            </div>
             <!-- star-sec end  -->
 
-        <!-- facilities section start  -->
-        <div class="fac-text mt-5">
-            <h4 class="text-center">IIT Madras Campus Facilities and Infrastructure</h4>
-            <p class="mt-3 text-center" style="font-size: 17px; font-weight: 500;">IIT Madras Provides Infrastructure Facilities To Its Students To Enchance The Quality Of Eduction. Listed Below Are The Campus Facilities Of IIT Madras</p>
-            <ul class="p-4 text-center">
-                <li style="font-weight: 600; color: black; font-size: 17px;">- Central Electronics Centre</li>
-                <li style="font-weight: 600; color: black; font-size: 17px;">- Central Skill Training and Fabrication Facility</li>
-                <li style="font-weight: 600; color: black; font-size: 17px;">- High Performance Computing Environment</li>
-                <li style="font-weight: 600; color: black; font-size: 17px;">- P G Senapathy Computer Centre</li>
-                <li style="font-weight: 600; color: black; font-size: 17px;">- Central Library</li>
-            </ul>
-        </div>
-        <!-- facilities section end  -->
+      
 
-
-        <div class="container-fluid d-flex justify-content-center align-items-center ">
+        <div class="container-fluid d-flex justify-content-center align-items-center mt-3 ">
             <!-- <h1>adan</h1> -->
             <div class="container container-custom shadow-lg">
                 <h2 class="text-start fw-bold mb-4  ">Campus Facilities</h2>
@@ -597,7 +488,7 @@
 
 
         <!-- want sec  -->
-        <div class="banner-part container-fluid p-5 mt-4">
+        <div class="banner-part container-fluid p-5 mt-5">
             <h3>Want To Know About IIT Madras</h3>
             <button class="b-b">Download Brochure</button>
         </div>
