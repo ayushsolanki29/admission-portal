@@ -86,7 +86,7 @@
     <div class="body-overlay"></div>
     <!-- slide-bar end -->
 
-    <main class="card-container d-sm-auto container-fluid">
+    <main class="card-container gradient-bg  d-sm-auto container-fluid">
 
 
         <div class="search-flex">
@@ -112,7 +112,7 @@
                                 <li><i class="fas fa-school"></i> Indus University</li>
                                 <li><i class="fas fa-briefcase"></i> 15 LPA</li>
                             </ul>
-                            <div class="explore-btn">
+                            <div class="explore-btn" onclick="window.location.href='college-details.php'">
                                 <button>Explore More</button>
                             </div>
                         </div>

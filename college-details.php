@@ -91,6 +91,11 @@
         <!-- Fisrt-section  -->
         <div class="coantiner-fluids d-flex">
             <div class="left-section col-md-6 p-5">
+                <!-- College Logo -->
+                <div class="p-2">
+                    <img src="https://placehold.co/150" alt="College Logo" class="img-fluid" style="max-width: 120px;">
+                </div>
+
                 <h3 class="p-2">IIT Madras - Admission 2025, Fees,<br> Courses, Placement, Ranking</h3>
 
                 <p class="p-2" style="color: black; font-weight: 500;">
@@ -102,10 +107,11 @@
                     </i>
                 </div>
                 <div class="p-2 mt-5 gap-5 d-flex">
-                    <button class="btn p-2" style="border:2px solid #EB571C; color:#EB571C; border-radius:40px;">Download Bronchure</button>
-                    <button class="btn p-2 px-5" style="border:2px solid #EB571C; background-color: #EB571C; color: white; border-radius:40px;">Shorlist</button>
+                    <button class="btn p-2" style="border:2px solid #EB571C; color:#EB571C; border-radius:40px;">Download Brochure</button>
+                    <button class="btn p-2 px-5" style="border:2px solid #EB571C; background-color: #EB571C; color: white; border-radius:40px;">Apply Now</button>
                 </div>
             </div>
+
             <div class="right-section ban col-md-6 d-flex align-items-center">
                 <div class="ban-back">
                     <img src="assets\img\college\banner1.avif" alt="" srcset="">
@@ -124,11 +130,12 @@
 
         <!-- banner-download-part  -->
 
-        </div>
-        <!-- banner-do  <div class="banner-part container-fluid">
+
+        <!-- banner-do -->
+        <div class="banner-part container-fluid mr-5">
             <h3>Want To Know About IIT Madras</h3>
             <button class="b-b">Download Brochure</button>
-        </div>wnload-part End -->
+        </div>
 
         <!-- Course And addmision 2025  -->
         <div class="container-fluid mt-5">
@@ -139,47 +146,146 @@
             </div>
             <div class="container-fluid card-sec">
                 <div class="card-cour">
-                    <div class="head ">
-                        <h3>MSc</h3>
+                    <div class="head">
+                        <h3 class="m-0">MSc</h3>
                     </div>
                     <div class="body-card">
-                        <p class="d-flex justify-content-around"><strong>₹6,000</strong> <span>2 - 5 Years</span> <span>Regular</span></p>
-                        <p>Exams Accepted: IIT JAM</p>
-                        <p>Courses Offered: M.Sc in Chemistry, Physics</p>
+                        <div class="info-section">
+                            <strong class="fees">₹6,000</strong>
+                            <span class="duration">2 - 5 Years</span>
+                            <span class="study-mode">Regular</span>
+                        </div>
+                        <div class="info-labels">
+                            <strong>Fees</strong>
+                            <span>Duration</span>
+                            <span>Study Mode</span>
+                        </div>
+                        <p><strong>Exams Accepted:</strong> IIT JAM</p>
+                        <p><strong>Courses Offered:</strong> M.Sc in Chemistry, Physics</p>
                         <p><strong>Eligibility:</strong> Bachelor's degree in Science with minimum 55% marks.</p>
-                        <div class="button-card d-flex align-items-center justify-content-center gap-3">
-                            <button class="btn one-b p-2">Talk to Experts</button>
-                            <button class="btn  p-2">Download Brochure</button>
+                        <div class="button-card">
+                            <button class="btn outline">Talk to Experts</button>
+                            <button class="btn filled">Download Brochure</button>
                         </div>
                     </div>
                 </div>
                 <div class="card-cour">
-                    <div class="head ">
-                        <h3>MSc</h3>
+                    <div class="head">
+                        <h3 class="m-0">MCA</h3>
                     </div>
                     <div class="body-card">
-                        <p class="d-flex justify-content-around"><strong>₹6,000</strong> <span>2 - 5 Years</span> <span>Regular</span></p>
-                        <p>Exams Accepted: IIT JAM</p>
-                        <p>Courses Offered: M.Sc in Chemistry, Physics</p>
+                        <div class="info-section">
+                            <strong class="fees">₹6,000</strong>
+                            <span class="duration">2 - 5 Years</span>
+                            <span class="study-mode">Regular</span>
+                        </div>
+                        <div class="info-labels">
+                            <strong>Fees</strong>
+                            <span>Duration</span>
+                            <span>Study Mode</span>
+                        </div>
+                        <p><strong>Exams Accepted:</strong> IIT JAM</p>
+                        <p><strong>Courses Offered:</strong> M.Sc in Chemistry, Physics</p>
                         <p><strong>Eligibility:</strong> Bachelor's degree in Science with minimum 55% marks.</p>
-                        <div class="button-card align-items-center justify-content-center d-flex gap-3">
-                            <button class="btn one-b p-2">Talk to Experts</button>
-                            <button class="btn  p-2">Download Brochure</button>
+                        <div class="button-card">
+                            <button class="btn outline">Talk to Experts</button>
+                            <button class="btn filled">Download Brochure</button>
                         </div>
                     </div>
                 </div>
                 <div class="card-cour">
-                    <div class="head ">
-                        <h3>MSc</h3>
+                    <div class="head">
+                        <h3 class="m-0">MBA</h3>
                     </div>
                     <div class="body-card">
-                        <p class="d-flex justify-content-around"><strong>₹6,000</strong> <span>2 - 5 Years</span> <span>Regular</span></p>
-                        <p>Exams Accepted: IIT JAM</p>
-                        <p>Courses Offered: M.Sc in Chemistry, Physics</p>
+                        <div class="info-section">
+                            <strong class="fees">₹6,000</strong>
+                            <span class="duration">2 - 5 Years</span>
+                            <span class="study-mode">Regular</span>
+                        </div>
+                        <div class="info-labels">
+                            <strong>Fees</strong>
+                            <span>Duration</span>
+                            <span>Study Mode</span>
+                        </div>
+                        <p><strong>Exams Accepted:</strong> IIT JAM</p>
+                        <p><strong>Courses Offered:</strong> M.Sc in Chemistry, Physics</p>
                         <p><strong>Eligibility:</strong> Bachelor's degree in Science with minimum 55% marks.</p>
-                        <div class="button-card align-items-center justify-content-center d-flex gap-3">
-                            <button class="btn one-b p-2">Talk to Experts</button>
-                            <button class="btn p-2">Download Brochure</button>
+                        <div class="button-card">
+                            <button class="btn outline">Talk to Experts</button>
+                            <button class="btn filled">Download Brochure</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-cour">
+                    <div class="head">
+                        <h3 class="m-0">MBA</h3>
+                    </div>
+                    <div class="body-card">
+                        <div class="info-section">
+                            <strong class="fees">₹6,000</strong>
+                            <span class="duration">2 - 5 Years</span>
+                            <span class="study-mode">Regular</span>
+                        </div>
+                        <div class="info-labels">
+                            <strong>Fees</strong>
+                            <span>Duration</span>
+                            <span>Study Mode</span>
+                        </div>
+                        <p><strong>Exams Accepted:</strong> IIT JAM</p>
+                        <p><strong>Courses Offered:</strong> M.Sc in Chemistry, Physics</p>
+                        <p><strong>Eligibility:</strong> Bachelor's degree in Science with minimum 55% marks.</p>
+                        <div class="button-card">
+                            <button class="btn outline">Talk to Experts</button>
+                            <button class="btn filled">Download Brochure</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-cour">
+                    <div class="head">
+                        <h3 class="m-0">MBA</h3>
+                    </div>
+                    <div class="body-card">
+                        <div class="info-section">
+                            <strong class="fees">₹6,000</strong>
+                            <span class="duration">2 - 5 Years</span>
+                            <span class="study-mode">Regular</span>
+                        </div>
+                        <div class="info-labels">
+                            <strong>Fees</strong>
+                            <span>Duration</span>
+                            <span>Study Mode</span>
+                        </div>
+                        <p><strong>Exams Accepted:</strong> IIT JAM</p>
+                        <p><strong>Courses Offered:</strong> M.Sc in Chemistry, Physics</p>
+                        <p><strong>Eligibility:</strong> Bachelor's degree in Science with minimum 55% marks.</p>
+                        <div class="button-card">
+                            <button class="btn outline">Talk to Experts</button>
+                            <button class="btn filled">Download Brochure</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-cour">
+                    <div class="head">
+                        <h3 class="m-0">MBA</h3>
+                    </div>
+                    <div class="body-card">
+                        <div class="info-section">
+                            <strong class="fees">₹6,000</strong>
+                            <span class="duration">2 - 5 Years</span>
+                            <span class="study-mode">Regular</span>
+                        </div>
+                        <div class="info-labels">
+                            <strong>Fees</strong>
+                            <span>Duration</span>
+                            <span>Study Mode</span>
+                        </div>
+                        <p><strong>Exams Accepted:</strong> IIT JAM</p>
+                        <p><strong>Courses Offered:</strong> M.Sc in Chemistry, Physics</p>
+                        <p><strong>Eligibility:</strong> Bachelor's degree in Science with minimum 55% marks.</p>
+                        <div class="button-card">
+                            <button class="btn outline">Talk to Experts</button>
+                            <button class="btn filled">Download Brochure</button>
                         </div>
                     </div>
                 </div>
@@ -193,23 +299,24 @@
 
 
         </div>
-        <div class="banner-part1" style="align-items: start; justify-content: start;">
+        <div class="banner-part1" style="align-items: start; justify-content: start; height: auto;">
             <h4 class="text-start mt-2">IIT Madras Placements</h4>
 
-            <div class="banner-part2 mb-2">
-                <span class="box">
-                    <p>Meadian salary</p>
-                    <h5 style="color:#EB571C"><strong>60 Lacs</strong></h5>
-                </span>
-                <span class="box">
-                    <p>Average package</p>
-                    <h5 style="color:#EB571C"><strong>17 Lacs</strong></h5>
-                </span>
-                <span class="box">
-                    <p>Highest package</p>
-                    <h5 style="color:#EB571C"><strong>1.30 crore</strong></h5>
-                </span>
+            <div class="banner-part2">
+                <div class="box">
+                    <p>Median Salary</p>
+                    <h5 class="highlight">60 Lacs</h5>
+                </div>
+                <div class="box">
+                    <p>Average Package</p>
+                    <h5 class="highlight">17 Lacs</h5>
+                </div>
+                <div class="box">
+                    <p>Highest Package</p>
+                    <h5 class="highlight">1.30 Crore</h5>
+                </div>
             </div>
+
 
 
         </div>
@@ -232,7 +339,7 @@
         <!-- connet-sec End  -->
 
         <!-- star ratting start  -->
-        <div class="container star-sec mt-5">
+        <!-- <div class="container star-sec mt-5">
             <div class="review-header">IIT Madras Reviews</div>
             <div class="review-content-container">
                 <div class="rating-box">
@@ -302,9 +409,104 @@
                     <a href="#">(7 Reviews)</a>
                 </div>
             </div>
-        </div>
-
-        <!-- star-sec end  -->
+        </div> -->
+        <div class="container">
+            <!-- Academic Zone -->
+            <div class="facility-card">
+                <i class="fas fa-university facility-icon"></i>
+                <div class="facility-title">Academic Zone</div>
+            </div>
+            <!-- Auditorium -->
+            <div class="facility-card">
+                <i class="fas fa-theater-masks facility-icon"></i>
+                <div class="facility-title">Auditorium</div>
+            </div>
+            <!-- Boys Hostel -->
+            <div class="facility-card">
+                <i class="fas fa-male facility-icon"></i>
+                <div class="facility-title">Boys Hostel</div>
+            </div>
+            <!-- Canteen -->
+            <div class="facility-card">
+                <i class="fas fa-utensils facility-icon"></i>
+                <div class="facility-title">Canteen</div>
+            </div>
+            <!-- Computer Lab -->
+            <div class="facility-card">
+                <i class="fas fa-desktop facility-icon"></i>
+                <div class="facility-title">Computer Lab</div>
+            </div>
+            <!-- Girls Hostel -->
+            <div class="facility-card">
+                <i class="fas fa-female facility-icon"></i>
+                <div class="facility-title">Girls Hostel</div>
+            </div>
+            <!-- Library -->
+            <div class="facility-card">
+                <i class="fas fa-book facility-icon"></i>
+                <div class="facility-title">Library</div>
+            </div>
+            <!-- Medical Facilities -->
+            <div class="facility-card">
+                <i class="fas fa-medkit facility-icon"></i>
+                <div class="facility-title">Medical Facilities</div>
+            </div>
+            <!-- Class Room -->
+            <div class="facility-card">
+                <i class="fas fa-chalkboard-teacher facility-icon"></i>
+                <div class="facility-title">Cls. Room</div>
+            </div>
+            <!-- Placement -->
+            <div class="facility-card">
+                <i class="fas fa-briefcase facility-icon"></i>
+                <div class="facility-title">Placement</div>
+            </div>
+            <!-- Grounds -->
+            <div class="facility-card">
+                <i class="fas fa-futbol facility-icon"></i>
+                <div class="facility-title">Grounds</div>
+            </div>
+            <!-- Transport -->
+            <div class="facility-card">
+                <i class="fas fa-bus facility-icon"></i>
+                <div class="facility-title">Trans.</div>
+            </div>
+            <!-- WiFi -->
+            <div class="facility-card">
+                <i class="fas fa-wifi facility-icon"></i>
+                <div class="facility-title">WiFi</div>
+            </div>
+            <!-- Seminar Hall -->
+            <div class="facility-card">
+                <i class="fas fa-microphone facility-icon"></i>
+                <div class="facility-title">Seminar Hall</div>
+            </div>
+            <!-- Conference Room -->
+            <div class="facility-card">
+                <i class="fas fa-comments facility-icon"></i>
+                <div class="facility-title">Conference Room</div>
+            </div>
+            <!-- Cafeteria -->
+            <div class="facility-card">
+                <i class="fas fa-coffee facility-icon"></i>
+                <div class="facility-title">Cafeteria</div>
+            </div>
+            <!-- Laboratories -->
+            <div class="facility-card">
+                <i class="fas fa-flask facility-icon"></i>
+                <div class="facility-title">Laboratories</div>
+            </div>
+            <!-- Hostel -->
+            <div class="facility-card">
+                <i class="fas fa-hotel facility-icon"></i>
+                <div class="facility-title">Hostel</div>
+            </div>
+            <!-- Common Room -->
+            <div class="facility-card">
+                <i class="fas fa-users facility-icon"></i>
+                <div class="facility-title">Common Room</div>
+            </div>
+            <!-- star-sec end  -->
 
         <!-- facilities section start  -->
         <div class="fac-text mt-5">

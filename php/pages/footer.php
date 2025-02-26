@@ -6,7 +6,7 @@
                     <div class="footer__widget mb-30">
                         <div class="footer-log mb-20">
                             <a href="index.html" class="logo">
-                                <img src="assets/img/logo/header_logo_one.svg" alt="">
+                                <img src="assets/img/logo/header_logo_one.png" alt="">
                             </a>
                         </div>
                         <p>Lorem ipsum dolor sit amet, consetetur sadip scing elitr, sed di nonumy eirmod temporinvi dunt ut labore lorem ipsum.</p>

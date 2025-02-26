@@ -10,7 +10,7 @@
         <div class="container-fluid">
             <div class="row align-items-center">
                 <div class="col-xl-2 col-lg-2 col-5">
-                    <div class="logo"><a href="index.html"><img src="assets/img/logo/header_logo_one.svg" alt=""></a></div>
+                    <div class="logo"><a href="index.html"><img src="assets/img/logo/header_logo_one.png" alt=""></a></div>
                 </div>
                 <div class="col-xl-7 col-lg-8 d-none d-lg-block">
                     <nav class="main-menu navbar navbar-expand-lg justify-content-center">
@@ -23,16 +23,11 @@
                                             Home
                                         </a>
                                     </li>
-                                    <li class="nav-item  dropdown mega-menu">
-                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                            Collges
+                      
+                                    <li class="nav-item <?php if (basename($_SERVER['PHP_SELF']) == 'colleges.php' || basename($_SERVER['PHP_SELF']) == 'colleges.php') echo 'active'; ?> ">
+                                        <a class="nav-link" href="colleges.php">
+                                            Colleges
                                         </a>
-                                        <ul class="dropdown-menu submenu mega-menu__sub-menu-box" aria-labelledby="navbarDropdown">
-                                            <li><a href="index.html"><span><img src="assets/img/icon/icon7.svg" alt=""></span> Business</a></li>
-                                            <li><a href="index-2.html"><span><img src="assets/img/icon/icon8.svg" alt=""></span> Technology</a></li>
-                                            <li><a href="index.html"><span><img src="assets/img/icon/icon9.svg" alt=""></span> Development</a></li>
-
-                                        </ul>
                                     </li>
                                     <li class="nav-item <?php if (basename($_SERVER['PHP_SELF']) == 'about.php' || basename($_SERVER['PHP_SELF']) == 'about.php') echo 'active'; ?> ">
                                         <a class="nav-link" href="about.php">
