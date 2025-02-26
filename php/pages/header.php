@@ -10,7 +10,7 @@
         <div class="container-fluid">
             <div class="row align-items-center">
                 <div class="col-xl-2 col-lg-2 col-5">
-                    <div class="logo"><a href="index.html"><img src="assets/img/logo/header_logo_one.svg" alt=""></a></div>
+                    <div class="logo"><a href="index.html"><img src="assets/img/logo/header_logo_one.png" alt=""></a></div>
                 </div>
                 <div class="col-xl-7 col-lg-8 d-none d-lg-block">
                     <nav class="main-menu navbar navbar-expand-lg justify-content-center">

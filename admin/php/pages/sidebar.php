@@ -37,6 +37,7 @@
                 <h6 class="collapse-header">Manage</h6>
                 <a class="collapse-item" href="college_list.php">All Colleges </a>
                 <a class="collapse-item" href="college_add.php">Add Colleges</a>
+                <hr>
                 <a class="collapse-item" href="products_images.php">Upload Images</a>
                 <a class="collapse-item" href="products_image_list.php">Manage Images</a>
             </div>
@@ -53,8 +54,20 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Manage</h6>
                 <a class="collapse-item" href="college_list.php">All Cources </a>
-                <a class="collapse-item" href="college_add.php">Add Cource</a>
-                <a class="collapse-item" href="products_image_list.php">Manage Cources</a>
+                <a class="collapse-item" href="course_add.php">Add Cource</a>
+            </div>
+        </div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse3" aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fab fa-product-hunt"></i>
+            <span>Department</span>
+        </a>
+        <div id="collapse3" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Manage</h6>
+                <a class="collapse-item" href="college_list.php">All Department </a>
+                <a class="collapse-item" href="department_add.php">Add Department</a>
             </div>
         </div>
     </li>
