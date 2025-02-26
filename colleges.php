@@ -86,7 +86,7 @@
     <div class="body-overlay"></div>
     <!-- slide-bar end -->
 
-    <main class="card-container d-sm-auto container-fluid">
+    <main class="card-container gradient-bg  d-sm-auto container-fluid">
 
 
         <div class="search-flex">

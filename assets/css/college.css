@@ -8,9 +8,6 @@
   max-height: auto  ;
 }
 .card-container {
-  background: linear-gradient(to left, #ff6a0080, #fd7d21a1);
-  font-family: "Poppins", sans-serif;
-  color: white;
   max-width: auto;
   /* height: 120vh !important; */
   display: flex;
