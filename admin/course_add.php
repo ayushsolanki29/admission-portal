@@ -1,11 +1,38 @@
 <?php
 
 session_start();
+include '../php/utils/db.php';
 // if (!isset($_SESSION['is_admin']) && $_SESSION['is_admin'] != 'true') {
 //     header("Location:login.php");
 //     exit();
 // }
 
+if (isset($_POST['add_course'])) {
+    $course_name = $_POST['course_name'];
+    $fees = $_POST['fees'];
+    $duration_of_Course = $_POST['duration_of_Course'];
+    $study_mode = $_POST['study_mode'];
+    $enterance_exam = $_POST['enterance_exam'];
+    $eligibility = $_POST['eligibility'];
+    $department = $_POST['department'];
+    $course_thumbnail = $_FILES['course_thumbnail']['name'];
+    $target_dir = "../assets/img/course/";
+    $course_thumbnail = uniqid() . "_" . $course_thumbnail;
+    $target_file = $target_dir . basename($_FILES["course_thumbnail"]["name"]);
+    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+    $extensions_arr = array("jpg", "jpeg", "png", "gif");
+    if (in_array($imageFileType, $extensions_arr)) {
+        $sql = "INSERT INTO `courses`(`course_name`, `fees`, `duration_of_Course`, `study_mode`, `enterance_exam`, `eligibility`, `department`, `course_thumbnail`) VALUES ('$course_name','$fees','$duration_of_Course','$study_mode','$enterance_exam','$eligibility','$department','$course_thumbnail')";
+        if ($con->query($sql) === TRUE) {
+            move_uploaded_file($_FILES['course_thumbnail']['tmp_name'], $target_dir . $course_thumbnail);
+            echo "<script>alert('Course Added Successfully');</script>";
+        } else {
+            echo "<script>alert('Error Adding Course');</script>";
+        }
+    } else {
+        echo "<script>alert('Invalid File Type');</script>";
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -49,15 +76,11 @@ session_start();
 
                                 </div>
 
-
-
-
-
                                 <div class="col">
                                     <label for="exampleFormControlSelect1">Course Logo</label>
                                     <div class="input-group">
                                         <div class="custom-file">
-                                            <input type="file" name="thumbnail" required class="custom-file-input" id="inputGroupFile04">
+                                            <input type="file" name="course_thumbnail" required class="custom-file-input" id="inputGroupFile04">
                                             <label class="custom-file-label" for="inputGroupFile04">Choose Course Logo</label>
                                         </div>
                                     </div>
@@ -93,23 +116,27 @@ session_start();
                                 <div class="row">
                                     <div class="col">
                                         <div class="form-group">
-                                            <label for="finance">Department</label>
-                                            <input type="text" name="finance" required class="form-control" id="finance" placeholder="Enter Finance Type">
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="form-group">
-                                            <label for="university">Eligibility</label>
-                                            <input type="text" name="university" required class="form-control" id="university" placeholder="Enter University Name">
+                                            <label for="eligibility">Eligibility</label>
+                                            <input type="text" name="eligibility" required class="form-control" id="eligibility" placeholder="Enter Eligibility">
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="form-group">
                                             <label for="department">Department</label>
                                             <select class="form-control " name="department" required>
-                                                <option disabled>Select Department</option>
-                                                <option value="Yes" selected>Yes</option>
-                                                <option value="No">No</option>
+                                                <option disabled selected>Select Department</option>
+                                                <?php
+                                                $select_department = "SELECT * FROM `department` ORDER BY `department`.`id` DESC";
+                                                $department_result = $con->query($select_department);
+                                                if ($department_result->num_rows > 0) {
+                                                    while ($row = $department_result->fetch_assoc()) {
+                                                        echo '<option value="' . $row['id'] . '">' . $row['department_name'] . '</option>';
+                                                    }
+                                                } else {
+                                                    echo '<option value="0">No Department Found</option>';
+                                                }
+
+                                                ?>
 
                                             </select>
                                         </div>
@@ -120,31 +147,9 @@ session_start();
                                 </small> -->
                             </div>
 
-                            <button type="submit" name="addcollege" class="btn btn-primary">Add college</button>
+                            <button type="submit" name="add_course" class="btn btn-primary">Add Course</button>
                     </form>
                 </div>
             </div>
 
             <?php include 'php/pages/footer.php' ?>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js" integrity="sha512-rMGGF4wg1R73ehtnxXBt5mbUfN9JUJwbk21KMlnLZDJh7BkPmeovBuddZCENJddHYYMkCh9hPFnPmS9sspki8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-            <script>
-                $(document).ready(function() {
-                    // $(".categorySelect").chosen();
-
-
-                    function countStudents() {
-                        let total_Students = parseInt($('#total_Students').val());
-                        let online_Students = parseInt($('#online_Students').val());
-
-                        if (!isNaN(total_Students) && !isNaN(online_Students)) {
-                            let ofline_Students = total_Students - online_Students;
-                            $('#ofline_Students').val(parseInt(ofline_Students));
-                        } else {
-                            $('#ofline_Students').val('');
-                        }
-                    }
-
-
-                    $('#total_Students, #online_Students').on('input', countStudents);
-                });
-            </script>

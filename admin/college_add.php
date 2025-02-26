@@ -1,11 +1,53 @@
 <?php
-
+include '../php/utils/db.php';
 session_start();
 // if (!isset($_SESSION['is_admin']) && $_SESSION['is_admin'] != 'true') {
 //     header("Location:login.php");
 //     exit();
 // }
+if (isset($_POST['add_college'])) {
+    $college_name = $_POST['college_name'];
+    $city_name = $_POST['city_name'];
+    $district_name = $_POST['district_name'];
+    $admission_type = implode(',', $_POST['admission_type']);
+    $courseId = implode(',', $_POST['courseId']);
+    $desciption_of_college = $_POST['desciption_of_college'];
+    $university_details = $_POST['university_details'];
+    $admission_process = $_POST['admission_process'];
+    $placement_details = $_POST['placement_details'];
+    $college_logo = $_FILES['college_logo']['name'];
+    $college_brochure = $_FILES['college_brochure']['name'];
+    $median_salary = $_POST['median_salary'];
+    $avarage_package = $_POST['avarage_package'];
+    $highest_package = $_POST['highest_package'];
+    $finance_type = $_POST['finance_type'];
+    $university_name = $_POST['university_name'];
+    $total_Students = $_POST['total_Students'];
+    $online_Students = $_POST['online_Students'];
+    $ofline_Students = $_POST['ofline_Students'];
+    $tag_id =  uniqid();
+    $target_dir = "../assets/img/college/";
+    $college_brochure_dir = "../assets/brochure/";
 
+    $college_logo = uniqid() . "_" . $college_logo;
+    $college_brochure = uniqid() . "_" . $college_brochure;
+    $target_file = $target_dir . basename($_FILES["college_logo"]["name"]);
+    $target_file = $target_dir . basename($_FILES["college_brochure"]["name"]);
+    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+    $extensions_arr = array("jpg", "jpeg", "png", "gif","pdf");
+    if (in_array($imageFileType, $extensions_arr)) {
+        $sql = "INSERT INTO `colleges`(`college_name`, `city_name`, `district_name`, `admission_type`, `courseId`, `desciption_of_college`, `university_details`, `admission_process`, `placement_details`, `college_logo`, `college_brochure`, `median_salary`, `avarage_package`, `highest_package`, `finance_type`, `university_name`, `total_Students`, `online_Students`, `ofline_Students`,`tag_id`) VALUES ('$college_name','$city_name','$district_name','$admission_type','$courseId','$desciption_of_college','$university_details','$admission_process','$placement_details','$college_logo','$college_brochure','$median_salary','$avarage_package','$highest_package','$finance_type','$university_name','$total_Students','$online_Students','$ofline_Students','$tag_id')";
+        if ($con->query($sql) === TRUE) {
+            move_uploaded_file($_FILES['college_logo']['tmp_name'], $target_dir . $college_logo);
+            move_uploaded_file($_FILES['college_brochure']['tmp_name'], $college_brochure_dir . $college_brochure);
+            echo "<script>alert('College Added Successfully');</script>";
+        } else {
+            echo "<script>alert('Error Adding College');</script>";
+        }
+    } else {
+        echo "<script>alert('Invalid File Type');</script>";
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -44,13 +86,13 @@ session_start();
                                 <div class="row">
 
                                     <div class="col">
-                                        <label for="city">City Name</label>
-                                        <input type="text" name="city" required class="form-control" id="city" placeholder="Enter city Name">
+                                        <label for="city_name">City Name</label>
+                                        <input type="text" name="city_name" required class="form-control" id="city_name" placeholder="Enter city Name">
 
                                     </div>
                                     <div class="col">
-                                        <label for="district">District Name</label>
-                                        <input type="text" name="district" required class="form-control" id="district" placeholder="Enter District Name">
+                                        <label for="district_name">District Name</label>
+                                        <input type="text" name="district_name" required class="form-control" id="district_name" placeholder="Enter District Name">
 
                                     </div>
                                 </div>
@@ -84,11 +126,17 @@ session_start();
 
                                 <div class="col">
                                     <div class="form-group">
-                                        <label for="exampleFormControlSelect1">Choose Cources</label>
-                                        <select class="form-control " name="courcesId[]" required>
-                                            <option>Select Cources</option>
-                                            <option value="2">NO Cource Availble</option>
-
+                                        <label for="exampleFormControlSelect1">choose Courses</label>
+                                        <select class="form-control courses_select" name="courseId[]" required multiple>
+                                            <option disabled>select Courses</option>
+                                            <?php
+                                            $select_courses = mysqli_query($con, "SELECT `id`, `course_name` FROM `courses` ORDER BY `id` DESC ");
+                                            if ($select_courses) {
+                                                while ($courses = mysqli_fetch_array($select_courses)) { ?>
+                                                    <option value="<?= $courses['id'] ?>"><?= $courses['course_name'] ?></option>
+                                            <?php }
+                                            }
+                                            ?>
                                         </select>
                                     </div>
                                 </div>
@@ -98,13 +146,13 @@ session_start();
                             <div class="form-group">
                                 <div class="col">
                                     <label for="textarea">Description of College</label>
-                                    <textarea class="form-control" name="desciption" required id="textarea" rows="5" placeholder="e.g., Like IIT Madras B.Tech, BS + MS and B.Tech+M.Tech admission is based on JEE Advanced and JEE Main. The college offers 92 courses at the PG and UG levels. For admission to the MBA registration is open, furthermore, CAT 2025 will be held on November 30, 2025. IIT Madras fees range from Rs 5,000 to Rs 3,00,000 annually"></textarea>
+                                    <textarea class="form-control" name="desciption_of_college" required id="textarea" rows="5" placeholder="e.g., Like IIT Madras B.Tech, BS + MS and B.Tech+M.Tech admission is based on JEE Advanced and JEE Main. The college offers 92 courses at the PG and UG levels. For admission to the MBA registration is open, furthermore, CAT 2025 will be held on November 30, 2025. IIT Madras fees range from Rs 5,000 to Rs 3,00,000 annually"></textarea>
                                 </div>
                             </div>
                             <div class="form-group ">
                                 <div class="col">
-                                    <label for="textarea">About University Details</label>
-                                    <textarea class="form-control" name="desciption" required id="textarea" rows="5" placeholder="e.g., Institute of Technology Madras was established in 1959. As per the QS World University Ranking, IIT Madras bagged the 526th. IIT Madras campus is spread across 630 acres of land and has over 550 faculty, 9700 students and 1250 administrative & supporting staff. IITM courses are spread across 16 academic departments. It offers multiple courses at the undergraduate, postgraduate and doctoral levels. Apart from the regular courses, it also offers an online B.Sc programme. IIT Chennai admissions in all these programmes are done based on entrance exams. UG admissions are done through JEE Advanced, and admission to the MA and M.Tech programmes are done through GATE. Candidates willing to take admission in the MBA and M.Sc programme need to appear for CAT and JAM respectively."></textarea>
+                                    <label for="textarea">University Details</label>
+                                    <textarea class="form-control" name="university_details" required id="textarea" rows="5" placeholder="e.g., Institute of Technology Madras was established in 1959. As per the QS World University Ranking, IIT Madras bagged the 526th. IIT Madras campus is spread across 630 acres of land and has over 550 faculty, 9700 students and 1250 administrative & supporting staff. IITM courses are spread across 16 academic departments. It offers multiple courses at the undergraduate, postgraduate and doctoral levels. Apart from the regular courses, it also offers an online B.Sc programme. IIT Chennai admissions in all these programmes are done based on entrance exams. UG admissions are done through JEE Advanced, and admission to the MA and M.Tech programmes are done through GATE. Candidates willing to take admission in the MBA and M.Sc programme need to appear for CAT and JAM respectively."></textarea>
                                 </div>
                             </div>
                             <div class="form-group ">
@@ -132,12 +180,7 @@ For certain courses at AUP students have to appear for state level and national 
 The candidate must pass specified English skills tests, entrance examination cut-offs, and other requirements for specific courses. They will also have to upload their videos through the PI and GD rounds scheduled in an online form on Skype."></textarea>
                                 </div>
                             </div>
-                            <div class="form-group ">
-                                <div class="col">
-                                    <label for="textarea">About University Details</label>
-                                    <textarea class="form-control" name="about_university_details" required id="textarea" rows="5" placeholder="e.g., Institute of Technology Madras was established in 1959. As per the QS World University Ranking, IIT Madras bagged the 526th. IIT Madras campus is spread across 630 acres of land and has over 550 faculty, 9700 students and 1250 administrative & supporting staff. IITM courses are spread across 16 academic departments. It offers multiple courses at the undergraduate, postgraduate and doctoral levels. Apart from the regular courses, it also offers an online B.Sc programme. IIT Chennai admissions in all these programmes are done based on entrance exams. UG admissions are done through JEE Advanced, and admission to the MA and M.Tech programmes are done through GATE. Candidates willing to take admission in the MBA and M.Sc programme need to appear for CAT and JAM respectively."></textarea>
-                                </div>
-                            </div>
+
                             <div class="form-group row">
                                 <div class="col">
                                     <label for="textarea">Placement Details</label>
@@ -150,7 +193,7 @@ The candidate must pass specified English skills tests, entrance examination cut
 
                                     <div class="input-group">
                                         <div class="custom-file">
-                                            <input type="file" name="thumbnail" required class="custom-file-input" id="inputGroupFile04">
+                                            <input type="file" name="college_logo" required class="custom-file-input" id="inputGroupFile04">
                                             <label class="custom-file-label" for="inputGroupFile04">Choose Logo</label>
                                         </div>
                                     </div>
@@ -160,8 +203,8 @@ The candidate must pass specified English skills tests, entrance examination cut
 
                                     <div class="input-group">
                                         <div class="custom-file">
-                                            <input type="file" name="thumbnail" required class="custom-file-input" id="inputGroupFile04">
-                                            <label class="custom-file-label" for="inputGroupFile04">Choose Brochure</label>
+                                            <input type="file" name="college_brochure" required class="custom-file-input" id="inputGroupFile05">
+                                            <label class="custom-file-label" for="inputGroupFile05">Choose Brochure</label>
                                         </div>
                                     </div>
                                 </div>
@@ -195,27 +238,17 @@ The candidate must pass specified English skills tests, entrance examination cut
                                 <div class="row">
                                     <div class="col">
                                         <div class="form-group">
-                                            <label for="finance">Finance Type</label>
-                                            <input type="text" name="finance" required class="form-control" id="finance" placeholder="Enter Finance Type">
+                                            <label for="finance_type">Finance Type</label>
+                                            <input type="text" name="finance_type" required class="form-control" id="finance_type" placeholder="Enter Finance Type">
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="form-group">
-                                            <label for="university">University</label>
-                                            <input type="text" name="university" required class="form-control" id="university" placeholder="Enter University Name">
+                                            <label for="university_name">University Name</label>
+                                            <input type="text" name="university_name" required class="form-control" id="university_name" placeholder="Enter University Name">
                                         </div>
                                     </div>
-                                    <div class="col">
-                                        <div class="form-group">
-                                            <label for="Final">Transportation</label>
-                                            <select class="form-control " name="transportation" required>
-                                                <option disabled>Select Transportation</option>
-                                                <option value="Yes" selected>Yes</option>
-                                                <option value="No">No</option>
 
-                                            </select>
-                                        </div>
-                                    </div>
                                 </div>
                                 <!-- <small id="discountHelpBlock" class="form-text text-muted info-text">
                                     For example, if the original price is ₹100 and you want to sell it for ₹80, enter 20 as the discount (20% off).
@@ -246,7 +279,7 @@ The candidate must pass specified English skills tests, entrance examination cut
     For example, if the original price is ₹100 and you want to sell it for ₹80, enter 20 as the discount (20% off).
 </small> -->
                             </div>
-                            <button type="submit" name="addcollege" class="btn btn-primary">Add college</button>
+                            <button type="submit" name="add_college" class="btn btn-primary">Add college</button>
                     </form>
                 </div>
             </div>
@@ -255,7 +288,8 @@ The candidate must pass specified English skills tests, entrance examination cut
             <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js" integrity="sha512-rMGGF4wg1R73ehtnxXBt5mbUfN9JUJwbk21KMlnLZDJh7BkPmeovBuddZCENJddHYYMkCh9hPFnPmS9sspki8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
             <script>
                 $(document).ready(function() {
-                    // $(".categorySelect").chosen();
+                    $(".courses_select").chosen();
+
 
 
                     function countStudents() {

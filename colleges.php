@@ -1,3 +1,4 @@
+<?php include 'php/utils/db.php'; ?>
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 
@@ -98,63 +99,32 @@
 
         <div class="container mt-4">
             <div class="row">
-                <div class="col-md-4 ">
-                    <div class="card">
-                        <img src="assets\img\college\indus.jpg" class="card-img-top p-0 m-0" alt="College Image">
-                        <div class="card-body">
-                            <h5 class="card-title">Indus Institute of Technology and Engineering (IITE), Ahmedabad</h5>
-                            <!-- <p class="card-text text-danger fw-bold">&#8377; 100,800</p> -->
-                            <ul class="icon-list">
-                                <li><i class="fas fa-university"></i> ACPC</li>
-                                <li><i class="fas fa-user-check"></i> Direct Admission</li>
-                                <li><i class="fas fa-graduation-cap"></i> BE / B.Tech - Bachelor of Engineering / Technology</li>
-                                <li><i class="fas fa-building"></i> Private (Self Finance) Institute</li>
-                                <li><i class="fas fa-school"></i> Indus University</li>
-                                <li><i class="fas fa-briefcase"></i> 15 LPA</li>
-                            </ul>
-                            <div class="explore-btn" onclick="window.location.href='college-details.php'">
-                                <button>Explore More</button>
+                <?php $select_colleges =  mysqli_query($con, "SELECT * FROM `colleges`");
+                while ($row = mysqli_fetch_array($select_colleges)) {
+                ?>
+                    <div class="col-md-4 ">
+                        <div class="card">
+                            <img src="assets\img\college\<?= $row['college_logo']?>" class="card-img-top p-0 m-0" alt="College Image">
+                            <div class="card-body">
+                                <h5 class="card-title"><?= $row['college_name']?></h5>
+                                <!-- <p class="card-text text-danger fw-bold">&#8377; 100,800</p> -->
+                                <ul class="icon-list">
+                                    <li><i class="fas fa-university"></i> ACPC</li>
+                                    <li><i class="fas fa-user-check"></i> Direct Admission</li>
+                                    <li><i class="fas fa-graduation-cap"></i> BE / B.Tech - Bachelor of Engineering / Technology</li>
+                                    <li><i class="fas fa-building"></i> Private (Self Finance) Institute</li>
+                                    <li><i class="fas fa-school"></i> Indus University</li>
+                                    <li><i class="fas fa-briefcase"></i> 15 LPA</li>
+                                </ul>
+                                <div class="explore-btn" onclick="window.location.href='college-details.php?u=<?=$row['tag_id']?>'">
+                                    <button>Explore More</button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <img src="assets\img\college\ganpat.png" class="card-img-top" alt="College Image">
-                        <div class="card-body">
-                            <h5 class="card-title">Ganpat University, Institute of Computer Tech., Kherva, Mehsana</h5>
-                            <!-- <p class="card-text text-danger fw-bold">&#8377; 116,000</p> -->
-                            <ul class="icon-list">
-                                <li><i class="fas fa-university"></i> ACPC</li>
-                                <li><i class="fas fa-user-check"></i> Direct Admission</li>
-                                <li><i class="fas fa-graduation-cap"></i> BE / B.Tech - Bachelor of Engineering / Technology</li>
-                                <li><i class="fas fa-building"></i> Private (Self Finance) Institute</li>
-                                <li><i class="fas fa-school"></i> Ganpat University</li>
-                                <li><i class="fas fa-briefcase"></i> 12 LPA</li>
-                            </ul>
-                            <div class="explore-btn">
-                                <button>Explore More</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card ">
-                        <img src="assets\img\college\kirc.png" class="card-img-top" alt="College Image">
-                        <div class="card-body">
-                            <h5 class="card-title">Amity University (Gwalior)</h5>
-                            <p class="card-text text-danger fw-bold">Details Not Available</p>
-                            <ul class="icon-list">
-                                <li><i class="fas fa-user-check"></i> Direct Admission</li>
-                                <li><i class="fas fa-building"></i> Private (Self Finance) Institute</li>
-                                <li><i class="fas fa-school"></i> Amity University</li>
-                            </ul>
-                            <div class="explore-btn">
-                                <button>Explore More</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
+                <?php     }
+                ?>
             </div>
         </div>
 

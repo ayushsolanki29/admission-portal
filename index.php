@@ -123,7 +123,7 @@
                                             <button class="search-icon"><i class="far fa-search"></i></button>
                                         </div>
                                     </li>
-                                    <li>
+                                    <!-- <li>
                                         <div class="widget__select">
                                             <select name="select-cat" id="select">
                                                 <option value="">Categories</option>
@@ -134,7 +134,7 @@
                                                 <option value="">Class Five</option>
                                             </select>
                                         </div>
-                                    </li>
+                                    </li> -->
                                     <li>
                                         <button class="theme_btn search_btn ml-35">Search Now</button>
                                     </li>

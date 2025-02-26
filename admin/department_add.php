@@ -1,11 +1,20 @@
 <?php
-
 session_start();
+include '../php/utils/db.php';
 // if (!isset($_SESSION['is_admin']) && $_SESSION['is_admin'] != 'true') {
 //     header("Location:login.php");
 //     exit();
 // }
 
+if (isset($_POST['add_department'])) {
+    $department_name = $_POST['department_name'];
+    $sql = "INSERT INTO `department`(`department_name`) VALUES ('$department_name')";
+    if ($con->query($sql) === TRUE) {
+        echo "<script>alert('Department Added Successfully');</script>";
+    } else {
+        echo "<script>alert('Error Adding Department');</script>";
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -31,18 +40,13 @@ session_start();
                 <div class="container-fluid">
 
                     <h1 class="h3 mb-4 text-gray-800">Add New Department</h1>
-
-
-
-                    <form method="post" enctype="multipart/form-data">
+                    <form method="post">
                         <div class="form-group">
-
-
                             <label>Department Name</label>
                             <input type="text" name="department_name" required class="form-control" placeholder="Enter Department Name Here ...">
                         </div>
 
-                        <button type="submit" name="addcollege" class="btn btn-primary">Add Department</button>
+                        <button type="submit" name="add_department" class="btn btn-primary">Add Department</button>
                     </form>
                 </div>
             </div>
