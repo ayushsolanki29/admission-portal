@@ -410,9 +410,9 @@
                 </div>
             </div>
         </div> -->
-            <!-- star-sec end  -->
+        <!-- star-sec end  -->
 
-      
+
 
         <div class="container-fluid d-flex justify-content-center align-items-center mt-3 ">
             <!-- <h1>adan</h1> -->
@@ -485,8 +485,36 @@
         </div>
 
 
-
-
+        <div class="container-fluid w-50 mt-3">
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="https://placehold.co/600x400?text=Hello+Addu+bhai" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://placehold.co/600x402" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://placehold.co/600x403" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://placehold.co/600x404" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://placehold.co/600x405" class="d-block w-100" alt="...">
+                    </div>
+                    
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
         <!-- want sec  -->
         <div class="banner-part container-fluid p-5 mt-5">
             <h3>Want To Know About IIT Madras</h3>
