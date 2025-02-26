@@ -306,7 +306,96 @@
 
         <!-- star-sec end  -->
 
-        <div class="banner-part container-fluid p-5">
+        <!-- facilities section start  -->
+        <div class="fac-text mt-5">
+            <h4 class="text-center">IIT Madras Campus Facilities and Infrastructure</h4>
+            <p class="mt-3 text-center" style="font-size: 17px; font-weight: 500;">IIT Madras Provides Infrastructure Facilities To Its Students To Enchance The Quality Of Eduction. Listed Below Are The Campus Facilities Of IIT Madras</p>
+            <ul class="p-4 text-center">
+                <li style="font-weight: 600; color: black; font-size: 17px;">- Central Electronics Centre</li>
+                <li style="font-weight: 600; color: black; font-size: 17px;">- Central Skill Training and Fabrication Facility</li>
+                <li style="font-weight: 600; color: black; font-size: 17px;">- High Performance Computing Environment</li>
+                <li style="font-weight: 600; color: black; font-size: 17px;">- P G Senapathy Computer Centre</li>
+                <li style="font-weight: 600; color: black; font-size: 17px;">- Central Library</li>
+            </ul>
+        </div>
+        <!-- facilities section end  -->
+
+
+        <div class="container-fluid d-flex justify-content-center align-items-center ">
+            <!-- <h1>adan</h1> -->
+            <div class="container container-custom shadow-lg">
+                <h2 class="text-start fw-bold mb-4  ">Campus Facilities</h2>
+                <div class="row g-2">
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="facility"><i class="fa-solid fa-book-open"></i> Academic Zone</div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="facility"><i class="fa-solid fa-money-check-alt"></i> ATM</div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="facility"><i class="fa-solid fa-bed"></i> Boys Hostel</div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="facility"><i class="fa-solid fa-utensils"></i> Canteen</div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="facility"><i class="fa-solid fa-desktop"></i> Computer Lab</div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="facility"><i class="fa-solid fa-bed"></i> Girls Hostel</div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="facility"><i class="fa-solid fa-burger"></i> Mess</div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="facility"><i class="fa-solid fa-book"></i> Library</div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="facility"><i class="fa-solid fa-hospital"></i> Medical Facilities</div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="facility"><i class="fa-solid fa-chalkboard-teacher"></i> Classroom</div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="facility"><i class="fa-solid fa-briefcase"></i> Placement</div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="facility"><i class="fa-solid fa-futbol"></i> Sports</div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="facility"><i class="fa-solid fa-envelope"></i> Post Office</div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="facility"><i class="fa-solid fa-flask"></i> R&D</div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="facility"><i class="fa-solid fa-university"></i> Residential Institute</div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="facility"><i class="fa-solid fa-home"></i> Residential Zone</div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="facility"><i class="fa-solid fa-building"></i> Residential Zone</div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="facility"><i class="fa-solid fa-shopping-cart"></i> Shopping</div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="facility"><i class="fa-solid fa-bus"></i> Transport</div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="facility"><i class="fa-solid fa-wifi"></i> WiFi</div>
+                    </div>
+                    <!-- <div class="col-6 col-md-4 col-lg-3"><div class="facility"><i class="fa-solid fa-shirt"></i> Laundry</div></div> -->
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <!-- want sec  -->
+        <div class="banner-part container-fluid p-5 mt-4">
             <h3>Want To Know About IIT Madras</h3>
             <button class="b-b">Download Brochure</button>
         </div>
