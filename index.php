@@ -1,3 +1,5 @@
+<?php include 'php/utils/db.php'; ?>
+
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 
@@ -9,81 +11,6 @@
 
 
     <?php include 'php/pages/header.php' ?>
-
-    <!-- slide-bar start -->
-    <aside class="slide-bar">
-        <div class="close-mobile-menu">
-            <a href="javascript:void(0);"><i class="fas fa-times"></i></a>
-        </div>
-
-        <!-- offset-sidebar start -->
-        <div class="offset-sidebar">
-            <div class="offset-widget offset-logo mb-30">
-                <a href="index.html">
-                    <img src="assets/img/logo/header_logo_one.svg" alt="logo">
-                </a>
-            </div>
-            <div class="offset-widget mb-40">
-                <div class="info-widget">
-                    <h4 class="offset-title mb-20">About Us</h4>
-                    <p class="mb-30">
-                        But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain
-                        was born and will give you a complete account of the system and expound the actual teachings of
-                        the great explore
-                    </p>
-                    <a class="theme_btn theme_btn_bg" href="contact.html">Contact Us</a>
-                </div>
-            </div>
-            <div class="offset-widget mb-30 pr-10">
-                <div class="info-widget info-widget2">
-                    <h4 class="offset-title mb-20">Contact Info</h4>
-                    <p> <i class="fal fa-address-book"></i> 23/A, Miranda City Likaoli Prikano, Dope</p>
-                    <p> <i class="fal fa-phone"></i> +0989 7876 9865 9 </p>
-                    <p> <i class="fal fa-envelope-open"></i> info@example.com </p>
-                </div>
-            </div>
-        </div>
-        <!-- offset-sidebar end -->
-
-        <!-- side-mobile-menu start -->
-        <nav class="side-mobile-menu">
-            <ul id="mobile-menu-active">
-                <li class="has-dropdown">
-                    <a href="index.html">Home</a>
-                    <ul class="sub-menu">
-                        <li><a href="index.html">Home Style 1</a></li>
-                        <li><a href="index-2.html">Home Style 2</a></li>
-                        <li><a href="index-3.html">Home Style 3</a></li>
-                    </ul>
-                </li>
-                <li><a href="about.html">About</a></li>
-                <li class="has-dropdown">
-                    <a href="#">Pages</a>
-                    <ul class="sub-menu">
-                        <li><a href="courses.html">Course One</a></li>
-                        <li><a href="courses-2.html">Course Two</a></li>
-                        <li><a href="course-details.html">Courses Details</a></li>
-                        <li><a href="price.html">Price</a></li>
-                        <li><a href="instructor.html">Instructor</a></li>
-                        <li><a href="instructor-profile.html">Instructor Profile</a></li>
-                        <li><a href="faq.html">FAQ</a></li>
-                        <li><a href="login.html">login</a></li>
-                    </ul>
-                </li>
-                <li class="has-dropdown"><a href="#">Blogs</a>
-                    <ul class="sub-menu">
-                        <li><a href="blog.html">Blog Grid</a></li>
-                        <li><a href="blog-details.html">Blog Details</a></li>
-                    </ul>
-                </li>
-                <li><a href="contact.html">Contacts Us</a></li>
-            </ul>
-        </nav>
-        <!-- side-mobile-menu end -->
-    </aside>
-    <div class="body-overlay"></div>
-    <!-- slide-bar end -->
-
 
     <main>
         <!--slider-area start-->
@@ -100,9 +27,9 @@
                     <div class="row align-items-center">
                         <div class="col-xl-6 col-lg-6 order-last order-lg-first">
                             <div class="slider__img__box mb-50 pr-30">
-                                <img class="img-one mt-55 pr-70" src="https://html.creativegigstf.com/zoomy/assets/img/slider/01.png" alt="">
-                                <img class="slide-shape img-two" src="https://html.creativegigstf.com/zoomy/assets/img/slider/03.png" alt="">
-                                <img class="slide-shape img-three" src="https://html.creativegigstf.com/zoomy/assets/img/slider/03.png" alt="">
+                                <img class="img-one mt-55 pr-70" src="assets/img/slider/01.png" alt="">
+                                <img class="slide-shape img-two" src="assets/img/slider/02.png" alt="">
+                                <img class="slide-shape img-three" src="assets/img/slider/03.png" alt="">
                                 <img class="slide-shape img-four" src="assets/img/shape/dot-box-1.svg" alt="">
                                 <img class="slide-shape img-five" src="assets/img/shape/dot-box-2.svg" alt="">
                                 <img class="slide-shape img-six" src="assets/img/shape/zigzg-1.svg" alt="">
@@ -148,391 +75,140 @@
         </section>
         <!--slider-area end-->
         <!--great-deal-area start-->
-        <section class="great-deal-area pt-150 pb-90 pt-md-100 pb-md-40 pt-xs-100 pb-xs-40">
-            <div class="container">
-                <div class="row justify-content-lg-center justify-content-start">
-                    <div class="col-xl-3 col-lg-8">
-                        <div class="deal-box mb-30 text-center text-xl-start">
-                            <h2 class="mb-20"><b>Great</b> Deals For You</h2>
-                            <p>There are many variations of passa of Lorem Ipsum available, but the majority have suffered.</p>
-                        </div>
-                    </div>
-                    <div class="col-xl-8">
-                        <div class="deal-active owl-carousel mb-30">
-                            <div class="single-item">
-                                <div class="single-box mb-30">
-                                    <div class="single-box__icon mb-25">
-                                        <img src="assets/img/icon/puzzle.svg" alt="">
-                                    </div>
-                                    <h4 class="sub-title mb-20">Learn New Skills</h4>
-                                    <p>There are many variations of pas of Lorm Ipsum available.</p>
-                                </div>
-                            </div>
-                            <div class="single-item">
-                                <div class="single-box s-box2 mb-30">
-                                    <div class="single-box__icon mb-25">
-                                        <img src="assets/img/icon/manager.svg" alt="">
-                                    </div>
-                                    <h4 class="sub-title mb-20">Expert Trainers</h4>
-                                    <p>There are many variations of pas of Lorm Ipsum available.</p>
-                                </div>
-                            </div>
-                            <div class="single-item">
-                                <div class="single-box s-box3 mb-30">
-                                    <div class="single-box__icon mb-25">
-                                        <img src="assets/img/icon/notepad.svg" alt="">
-                                    </div>
-                                    <h4 class="sub-title mb-20">Free Trial Lesson</h4>
-                                    <p>There are many variations of pas of Lorm Ipsum available.</p>
-                                </div>
-                            </div>
-                            <div class="single-item">
-                                <div class="single-box mb-30">
-                                    <div class="single-box__icon mb-25">
-                                        <img src="assets/img/icon/puzzle.svg" alt="">
-                                    </div>
-                                    <h4 class="sub-title mb-20">Learn New Skills</h4>
-                                    <p>There are many variations of pas of Lorm Ipsum available.</p>
-                                </div>
-                            </div>
-                            <div class="single-item">
-                                <div class="single-box s-box2 mb-30">
-                                    <div class="single-box__icon mb-25">
-                                        <img src="assets/img/icon/manager.svg" alt="">
-                                    </div>
-                                    <h4 class="sub-title mb-20">Expert Trainers</h4>
-                                    <p>There are many variations of pas of Lorm Ipsum available.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <section class="great-deal-area pt-150 pb-0 pt-md-100 pb-md-40 pt-xs-100 pb-xs-40">
+        <?php include 'php/pages/choose-your-department.php'; ?>
         </section>
         <!--great-deal-area end-->
-        <!--what-loking-for start-->
-        <section class="what-looking-for pos-rel">
-            <div class="what-blur-shape-one"></div>
-            <div class="what-blur-shape-two"></div>
-            <div class="what-look-bg gradient-bg pt-145 pb-130 pt-md-95 pb-md-80 pt-xs-95 pb-xs-80">
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-8">
-                            <div class="section-title text-center mb-55">
-                                <h5 class="bottom-line mb-25">Teachers & Students</h5>
-                                <h2>What you Looking For?</h2>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row mb-85">
-                        <div class="col-xl-6 col-lg-6 col-md-6">
-                            <div class="what-box text-center mb-35 wow fadeInUp2 animated" data-wow-delay='.3s'>
-                                <div class="what-box__icon mb-30">
-                                    <img src="assets/img/icon/phone-operator.svg" alt="">
-                                </div>
-                                <h3>Do you want to teach here?</h3>
-                                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed di nonumy eirmod tempor invidunt ut labore et dolore magn aliq erat.</p>
-                                <a href="contact.html" class="theme_btn border_btn">Register Now</a>
-                            </div>
-                        </div>
-                        <div class="col-xl-6 col-lg-6 col-md-6">
-                            <div class="what-box text-center mb-35 wow fadeInUp2 animated" data-wow-delay='.3s'>
-                                <div class="what-box__icon mb-30">
-                                    <img src="assets/img/icon/graduate.svg" alt="">
-                                </div>
-                                <h3>Do you want to learn here?</h3>
-                                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed di nonumy eirmod tempor invidunt ut labore et dolore magn aliq erat.</p>
-                                <a href="contact.html" class="theme_btn border_btn active">Register Now</a>
-                            </div>
-                        </div>
-                    </div>
+        <?php include 'php/pages/what-are-you-looking-for.php'; ?>
 
-
-                </div>
-            </div>
-        </section>
-        <!--what-loking-for end-->
-        <section class="course-categories pt-150 pb-115 pt-md-95 pb-md-65 pt-xs-95 pb-xs-65">
+        <section class="course-categories pb-115 pt-md-95 pb-md-65 pt-xs-95 pb-xs-65">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-xl-6 col-lg-8">
                         <div class="section-title section-title-3 text-center mb-60">
-                            <h5 class="mb-25">Browse Categories</h5>
-                            <h2 class="mb-20">Explore our <span class="bottom-line">Online Subjects</span></h2>
-                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour.</p>
+                            <h5 class="mb-25">Discover Top Colleges</h5>
+                            <h2 class="mb-20">Explore <span class="bottom-line">Leading Institutions</span></h2>
+                            <p>Find the best colleges offering a variety of courses to kickstart your academic journey. Choose from accredited institutions and get started today!</p>
                         </div>
                     </div>
                 </div>
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 row-cols-xl-5 gx-4 online__course__cat">
-                    <div class="col">
-                        <div class="courses_link mb-30 wow fadeInUp2 animated" data-wow-delay='.1s'>
-                            <img class="icon-01 mb-35" src="assets/img/icon/dna-color.svg" alt="">
-                            <h4 class="sub-title mb-25">Science </h4>
-                            <a href="courses.html"><img class='arrows-icon' src="assets/img/icon/arrow-right.svg" alt="arrow-right"></a>
+
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 gx-4 online__course__cat">
+                    <?php
+                    // Securely fetch all colleges using prepared statements
+                    $stmt = $con->prepare("SELECT `college_name`, `college_logo`, `tag_id` FROM colleges ORDER BY `college_name` ASC");
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+
+                    if ($result->num_rows > 0) {
+                        while ($college = $result->fetch_assoc()) {
+                            $college_name = htmlspecialchars($college['college_name'], ENT_QUOTES, 'UTF-8');
+                            $college_logo = htmlspecialchars($college['college_logo'], ENT_QUOTES, 'UTF-8');
+                            $tag_id = urlencode($college['tag_id']); // Ensures URL safety
+                    ?>
+                            <div class="col">
+                                <div class="courses_link mb-30 wow fadeInUp2 animated" data-wow-delay=".1s">
+                                    <img class="icon-01 mb-35" src="assets/img/college/<?= $college_logo ?>" alt="<?= $college_name ?>">
+                                    <h5 class="sub-title mb-25"><?= $college_name ?></h5>
+                                    <a href="college-details.php?u=<?= $tag_id ?>" class="explore-btn">
+                                        <img class="arrows-icon" src="assets/img/icon/arrow-right.svg" alt="Explore">
+                                    </a>
+                                </div>
+                            </div>
+                        <?php
+                        }
+                    } else {
+                        ?>
+                        <div class="text-center">
+                            <p class="text-danger">No colleges found. Please check back later.</p>
                         </div>
-                    </div>
-                    <div class="col">
-                        <div class="courses_link mb-30 wow fadeInUp2 animated" data-wow-delay='.2s'>
-                            <img class="icon-01 mb-35" src="assets/img/icon/chart-a.svg" alt="">
-                            <h4 class="sub-title mb-25">Business</h4>
-                            <a href="courses.html"><img class='arrows-icon' src="assets/img/icon/arrow-right.svg" alt="arrow-right"></a>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="courses_link mb-30 wow fadeInUp2 animated" data-wow-delay='.3s'>
-                            <img class="icon-01 mb-35" src="assets/img/icon/code-a.svg" alt="">
-                            <h4 class="sub-title mb-25">Development</h4>
-                            <a href="courses.html"><img class='arrows-icon' src="assets/img/icon/arrow-right.svg" alt="arrow-right"></a>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="courses_link mb-30 wow fadeInUp2 animated" data-wow-delay='.4s'>
-                            <img class="icon-01 mb-35" src="assets/img/icon/cube-a.svg" alt="">
-                            <h4 class="sub-title mb-25">Career</h4>
-                            <a href="courses.html"><img class='arrows-icon' src="assets/img/icon/arrow-right.svg" alt="arrow-right"></a>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="courses_link mb-30 wow fadeInUp2 animated" data-wow-delay='.5s'>
-                            <img class="icon-01 mb-35" src="assets/img/icon/design-a.svg" alt="">
-                            <h4 class="sub-title mb-25">Arts & Design</h4>
-                            <a href="courses.html"><img class='arrows-icon' src="assets/img/icon/arrow-right.svg" alt="arrow-right"></a>
-                        </div>
-                    </div>
+                    <?php
+                    }
+                    $stmt->close();
+                    ?>
                 </div>
-                <div class="col-xxl-12 text-center mt-20 mb-30 wow fadeInUp2 animated" data-wow-delay='.3s'>
-                    <a href="courses.html" class="theme_btn">All Categories</a>
+
+                <div class="col-xxl-12 text-center mt-20 mb-30 wow fadeInUp2 animated" data-wow-delay=".3s">
+                    <a href="colleges.php" class="theme_btn">Explore All Colleges</a>
                 </div>
             </div>
+
         </section>
         <!-- feature-course start -->
-        <section class="feature-course pos-rel overflow-hidden pt-150 pb-120 pt-md-95 pb-md-75 pt-xs-95 pb-xs-70">
+        <section class="feature-course pos-rel overflow-hidden pt-md-95 pb-md-75 pt-xs-95 pb-xs-70">
             <div class="feature-blur-one"></div>
             <div class="feature-blur-two"></div>
             <div class="container">
-                <div class="row align-items-center mb-35">
-                    <div class="col-xl-6 col-lg-12">
-                        <div class="section-title section-title-3 text-center text-xl-start mb-30">
-                            <h5 class="mb-25">Featured Courses</h5>
-                            <h2 class="mb-20">Explore our <span class="bottom-line">Popular Courses</span></h2>
-                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour.</p>
-                        </div>
+                <div class="align-items-center mb-35">
+
+                    <div class="section-title section-title-3 text-center text-xl-start mb-30">
+                        <h5 class="mb-25">Featured Courses</h5>
+                        <h2 class="mb-20">Explore our <span class="bottom-line">Popular Courses</span></h2>
+                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour.</p>
                     </div>
-                    <div class="col-xl-6 col-lg-12 text-center text-xl-end">
-                        <div class="portfolio-menu portfolio-menu-two mb-30">
-                            <button class="gf_btn active" data-filter='*'>All</button>
-                            <button class="gf_btn" data-filter='.cat1'>Career</button>
-                            <button class="gf_btn" data-filter='.cat2'>Development</button>
-                            <button class="gf_btn" data-filter='.cat3'>Business</button>
-                        </div>
-                    </div>
+
+
                 </div>
                 <div class="grid row">
-                    <div class="col-lg-4 col-md-6 grid-item cat2 cat3">
-                        <div class="z-gallery z-gallery-two gallery-03 mb-30">
-                            <div class="z-gallery__thumb mb-20">
-                                <a href="course-details.html"><img class="img-fluid" src="assets/img/course/13.jpg" alt=""></a>
-                                <div class="heart-icon"><i class="fas fa-heart"></i></div>
-                                <div class="research-tag">
-                                    <span>Research</span>
-                                    <span>Tag</span>
-                                </div>
-                            </div>
-                            <div class="z-gallery__content pos-rel">
-                                <div class="course__meta d-flex align-items-center justify-content-between mb-15">
-                                    <span><img class="icon" src="assets/img/icon/time.svg" alt="course-meta"> 12 Periods</span>
-                                    <span><img class="icon" src="assets/img/icon/bar-chart.svg" alt="course-meta"> Intermediate</span>
-                                </div>
-                                <h4 class="sub-title mb-15"><a href="course-details.html">Take Your Career to the Next Level Future</a></h4>
-                                <p class="mb-20">There are many variations of passages of with Lorem Ipsum available.</p>
-                                <div class="course__authors  d-xl-flex align-items-center justify-content-between mb-20">
-                                    <div class="course__authors-box d-flex align-items-center">
-                                        <img src="assets/img/course/in7.png" alt="">
-                                        <div class="course__authors-box-text ml-10">
-                                            <h5>Mark Herry</h5>
-                                            <span>Career Developer</span>
-                                        </div>
+                    <?php
+                    // Secure SQL query to fetch courses sorted alphabetically
+                    $sql = "SELECT id, course_name, short_form, fees, duration_of_Course, study_mode, enterance_exam, eligibility, department, course_thumbnail FROM courses ORDER BY course_name ASC";
+                    $result = $con->query($sql);
+
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            // Escaping output for security
+                            $course_id = (int) $row['id'];
+                            $course_name = htmlspecialchars($row['course_name'], ENT_QUOTES, 'UTF-8');
+                            $short_form = htmlspecialchars($row['short_form'], ENT_QUOTES, 'UTF-8');
+                            $fees = htmlspecialchars($row['fees'], ENT_QUOTES, 'UTF-8');
+                            $duration = htmlspecialchars($row['duration_of_Course'], ENT_QUOTES, 'UTF-8');
+                            $study_mode = htmlspecialchars($row['study_mode'], ENT_QUOTES, 'UTF-8');
+                            $entrance_exam = htmlspecialchars($row['enterance_exam'], ENT_QUOTES, 'UTF-8');
+                            $eligibility = htmlspecialchars($row['eligibility'], ENT_QUOTES, 'UTF-8');
+                            $department = htmlspecialchars($row['department'], ENT_QUOTES, 'UTF-8');
+                            $course_thumbnail = htmlspecialchars($row['course_thumbnail'], ENT_QUOTES, 'UTF-8');
+
+                            // Course Details URL with ID
+                            $course_url = "course-details.php?id=$course_id";
+                    ?>
+                            <div class="col-lg-4 col-md-6 grid-item">
+                                <div class="z-gallery z-gallery-two gallery-03 mb-30">
+                                    <div class="z-gallery__thumb mb-20">
+                                        <a href="<?= $course_url ?>">
+                                            <img class="img-fluid" src="assets/img/course/<?= $course_thumbnail ?>" alt="<?= $course_name ?>">
+                                        </a>
                                     </div>
-                                    <p><span>6593+</span> Students</p>
-                                </div>
-                                <div class="feedback-tag pt-20">
-                                    <span>4.8 <i class="fas fa-star"></i> <b>(256)</b></span>
-                                    <a href="course-details.html" class="read_more float-end">Learn More+</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 grid-item cat1 cat2">
-                        <div class="z-gallery z-gallery-two gallery-03 mb-30">
-                            <div class="z-gallery__thumb mb-20">
-                                <a href="course-details.html"><img class="img-fluid" src="assets/img/course/14.jpg" alt=""></a>
-                                <div class="heart-icon"><i class="fas fa-heart"></i></div>
-                                <div class="research-tag">
-                                    <span>Research</span>
-                                    <span>Tag</span>
-                                </div>
-                            </div>
-                            <div class="z-gallery__content pos-rel">
-                                <div class="course__meta d-flex align-items-center justify-content-between mb-15">
-                                    <span><img class="icon" src="assets/img/icon/time.svg" alt="course-meta"> 12 Periods</span>
-                                    <span><img class="icon" src="assets/img/icon/bar-chart.svg" alt="course-meta"> Intermediate</span>
-                                </div>
-                                <h4 class="sub-title mb-15"><a href="course-details.html">Take Your Career to the Next Level Future</a></h4>
-                                <p class="mb-20">There are many variations of passages of with Lorem Ipsum available.</p>
-                                <div class="course__authors  d-xl-flex align-items-center justify-content-between mb-20">
-                                    <div class="course__authors-box d-flex align-items-center">
-                                        <img src="assets/img/course/in7.png" alt="">
-                                        <div class="course__authors-box-text ml-10">
-                                            <h5>Mark Herry</h5>
-                                            <span>Career Developer</span>
+                                    <div class="z-gallery__content pos-rel">
+                                        <div class="course__meta d-flex align-items-center justify-content-between mb-15">
+                                            <span><img class="icon" src="assets/img/icon/time.svg" alt="course-meta"> <?= $duration ?></span>
+                                            <span><img class="icon" src="assets/img/icon/bar-chart.svg" alt="course-meta"> <?= $study_mode ?></span>
                                         </div>
-                                    </div>
-                                    <p><span>6593+</span> Students</p>
-                                </div>
-                                <div class="feedback-tag pt-20">
-                                    <span>4.8 <i class="fas fa-star"></i> <b>(256)</b></span>
-                                    <a href="course-details.html" class="read_more float-end">Learn More+</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 grid-item cat2">
-                        <div class="z-gallery z-gallery-two gallery-03 mb-30">
-                            <div class="z-gallery__thumb mb-20">
-                                <a href="course-details.html"><img class="img-fluid" src="assets/img/course/15.jpg" alt=""></a>
-                                <div class="heart-icon"><i class="fas fa-heart"></i></div>
-                                <div class="research-tag">
-                                    <span>Research</span>
-                                    <span>Tag</span>
-                                </div>
-                            </div>
-                            <div class="z-gallery__content pos-rel">
-                                <div class="course__meta d-flex align-items-center justify-content-between mb-15">
-                                    <span><img class="icon" src="assets/img/icon/time.svg" alt="course-meta"> 12 Periods</span>
-                                    <span><img class="icon" src="assets/img/icon/bar-chart.svg" alt="course-meta"> Intermediate</span>
-                                </div>
-                                <h4 class="sub-title mb-15"><a href="course-details.html">Take Your Career to the Next Level Future</a></h4>
-                                <p class="mb-20">There are many variations of passages of with Lorem Ipsum available.</p>
-                                <div class="course__authors  d-xl-flex align-items-center justify-content-between mb-20">
-                                    <div class="course__authors-box d-flex align-items-center">
-                                        <img src="assets/img/course/in7.png" alt="">
-                                        <div class="course__authors-box-text ml-10">
-                                            <h5>Mark Herry</h5>
-                                            <span>Career Developer</span>
+                                        <h4 class="sub-title mb-15">
+                                            <a href="<?= $course_url ?>"><?= $course_name ?> (<?= $short_form ?>)</a>
+                                        </h4>
+                                        <p class="mb-20">Eligibility: <?= $eligibility ?></p>
+                                        <div class="course__authors d-xl-flex align-items-center justify-content-between mb-20">
+                                            <div class="course__authors-box d-flex align-items-center">
+                                                <div class="course__authors-box-text ml-10">
+                                                    <h5><?= $department ?></h5>
+                                                    <span>Entrance Exam: <?= $entrance_exam ?></span>
+                                                </div>
+                                            </div>
+                                            <p>Fees: <span>₹<?= $fees ?></span></p>
                                         </div>
+
                                     </div>
-                                    <p><span>6593+</span> Students</p>
-                                </div>
-                                <div class="feedback-tag pt-20">
-                                    <span>4.8 <i class="fas fa-star"></i> <b>(256)</b></span>
-                                    <a href="course-details.html" class="read_more float-end">Learn More+</a>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 grid-item cat1">
-                        <div class="z-gallery z-gallery-two gallery-03 mb-30">
-                            <div class="z-gallery__thumb mb-20">
-                                <a href="course-details.html"><img class="img-fluid" src="assets/img/course/16.jpg" alt=""></a>
-                                <div class="heart-icon"><i class="fas fa-heart"></i></div>
-                                <div class="research-tag">
-                                    <span>Research</span>
-                                    <span>Tag</span>
-                                </div>
-                            </div>
-                            <div class="z-gallery__content pos-rel">
-                                <div class="course__meta d-flex align-items-center justify-content-between mb-15">
-                                    <span><img class="icon" src="assets/img/icon/time.svg" alt="course-meta"> 12 Periods</span>
-                                    <span><img class="icon" src="assets/img/icon/bar-chart.svg" alt="course-meta"> Intermediate</span>
-                                </div>
-                                <h4 class="sub-title mb-15"><a href="course-details.html">Take Your Career to the Next Level Future</a></h4>
-                                <p class="mb-20">There are many variations of passages of with Lorem Ipsum available.</p>
-                                <div class="course__authors  d-xl-flex align-items-center justify-content-between mb-20">
-                                    <div class="course__authors-box d-flex align-items-center">
-                                        <img src="assets/img/course/in7.png" alt="">
-                                        <div class="course__authors-box-text ml-10">
-                                            <h5>Mark Herry</h5>
-                                            <span>Career Developer</span>
-                                        </div>
-                                    </div>
-                                    <p><span>6593+</span> Students</p>
-                                </div>
-                                <div class="feedback-tag pt-20">
-                                    <span>4.8 <i class="fas fa-star"></i> <b>(256)</b></span>
-                                    <a href="course-details.html" class="read_more float-end">Learn More+</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 grid-item cat3">
-                        <div class="z-gallery z-gallery-two gallery-03 mb-30">
-                            <div class="z-gallery__thumb mb-20">
-                                <a href="course-details.html"><img class="img-fluid" src="assets/img/course/17.jpg" alt=""></a>
-                                <div class="heart-icon"><i class="fas fa-heart"></i></div>
-                                <div class="research-tag">
-                                    <span>Research</span>
-                                    <span>Tag</span>
-                                </div>
-                            </div>
-                            <div class="z-gallery__content pos-rel">
-                                <div class="course__meta d-flex align-items-center justify-content-between mb-15">
-                                    <span><img class="icon" src="assets/img/icon/time.svg" alt="course-meta"> 12 Periods</span>
-                                    <span><img class="icon" src="assets/img/icon/bar-chart.svg" alt="course-meta"> Intermediate</span>
-                                </div>
-                                <h4 class="sub-title mb-15"><a href="course-details.html">Take Your Career to the Next Level Future</a></h4>
-                                <p class="mb-20">There are many variations of passages of with Lorem Ipsum available.</p>
-                                <div class="course__authors  d-xl-flex align-items-center justify-content-between mb-20">
-                                    <div class="course__authors-box d-flex align-items-center">
-                                        <img src="assets/img/course/in7.png" alt="">
-                                        <div class="course__authors-box-text ml-10">
-                                            <h5>Mark Herry</h5>
-                                            <span>Career Developer</span>
-                                        </div>
-                                    </div>
-                                    <p><span>6593+</span> Students</p>
-                                </div>
-                                <div class="feedback-tag pt-20">
-                                    <span>4.8 <i class="fas fa-star"></i> <b>(256)</b></span>
-                                    <a href="course-details.html" class="read_more float-end">Learn More+</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 grid-item cat2 cat1">
-                        <div class="z-gallery z-gallery-two gallery-03 mb-30">
-                            <div class="z-gallery__thumb mb-20">
-                                <a href="course-details.html"><img class="img-fluid" src="assets/img/course/18.jpg" alt=""></a>
-                                <div class="heart-icon"><i class="fas fa-heart"></i></div>
-                                <div class="research-tag">
-                                    <span>Research</span>
-                                    <span>Tag</span>
-                                </div>
-                            </div>
-                            <div class="z-gallery__content pos-rel">
-                                <div class="course__meta d-flex align-items-center justify-content-between mb-15">
-                                    <span><img class="icon" src="assets/img/icon/time.svg" alt="course-meta"> 12 Periods</span>
-                                    <span><img class="icon" src="assets/img/icon/bar-chart.svg" alt="course-meta"> Intermediate</span>
-                                </div>
-                                <h4 class="sub-title mb-15"><a href="course-details.html">Take Your Career to the Next Level Future</a></h4>
-                                <p class="mb-20">There are many variations of passages of with Lorem Ipsum available.</p>
-                                <div class="course__authors  d-xl-flex align-items-center justify-content-between mb-20">
-                                    <div class="course__authors-box d-flex align-items-center">
-                                        <img src="assets/img/course/in7.png" alt="">
-                                        <div class="course__authors-box-text ml-10">
-                                            <h5>Mark Herry</h5>
-                                            <span>Career Developer</span>
-                                        </div>
-                                    </div>
-                                    <p><span>6593+</span> Students</p>
-                                </div>
-                                <div class="feedback-tag pt-20">
-                                    <span>4.8 <i class="fas fa-star"></i> <b>(256)</b></span>
-                                    <a href="course-details.html" class="read_more float-end">Learn More+</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <?php
+                        }
+                    } else {
+                        echo '<div class="col-12 text-center"><p class="text-danger">No courses found.</p></div>';
+                    }
+                    ?>
                 </div>
+                >
                 <div class="row">
                     <div class="col-xxl-12 mt-20 text-center mb-20 wow fadeInUp2 animated" data-wow-delay='.3s'>
                         <a href="courses.html" class="theme_btn">Explore More</a>
@@ -546,7 +222,7 @@
         <div class="why-chose-section-wrapper gradient-bg mr-100 ml-100">
             <!-- why-chose-us start -->
             <section class="why-chose-us">
-                <div class="why-chose-us-bg pt-150 pb-175 pt-md-95 pb-md-90 pt-xs-95 pb-xs-90">
+                <div class="why-chose-us-bg pt-md-95 pb-md-90 pt-xs-95 pb-xs-90">
                     <div class="container">
                         <div class="row align-items-center">
                             <div class="col-xl-7 col-lg-7">
@@ -610,93 +286,8 @@
                                     <img src="assets/img/instructor/05.jpg" alt="">
                                 </div>
                                 <div class="z-instructors__content">
-                                    <h3 class="semi-title mb-20"><a href="instructor-profile.html">Kevin Petersen</a></h3>
-                                    <p>15+ Courses <span>15+ Courses</span></p>
-                                    <div class="social-media">
-                                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                        <a href="#"><i class="fab fa-twitter"></i></a>
-                                        <a href="#"><i class="fab fa-instagram"></i></a>
-                                        <a href="#"><i class="fab fa-youtube"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="z-instructors z-instructors-02 text-center mb-30">
-                                <div class="z-instructors__thumb mb-15">
-                                    <img src="assets/img/instructor/06.jpg" alt="">
-                                </div>
-                                <div class="z-instructors__content">
-                                    <h3 class="semi-title mb-20"><a href="instructor-profile.html">Mally Yan</a></h3>
-                                    <p>15+ Courses <span>15+ Courses</span></p>
-                                    <div class="social-media">
-                                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                        <a href="#"><i class="fab fa-twitter"></i></a>
-                                        <a href="#"><i class="fab fa-instagram"></i></a>
-                                        <a href="#"><i class="fab fa-youtube"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="z-instructors z-instructors-02 text-center mb-30">
-                                <div class="z-instructors__thumb mb-15">
-                                    <img src="assets/img/instructor/07.jpg" alt="">
-                                </div>
-                                <div class="z-instructors__content">
-                                    <h3 class="semi-title mb-20"><a href="instructor-profile.html">Mesud Lamb</a></h3>
-                                    <p>15+ Courses <span>15+ Courses</span></p>
-                                    <div class="social-media">
-                                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                        <a href="#"><i class="fab fa-twitter"></i></a>
-                                        <a href="#"><i class="fab fa-instagram"></i></a>
-                                        <a href="#"><i class="fab fa-youtube"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="z-instructors z-instructors-02 text-center mb-30">
-                                <div class="z-instructors__thumb mb-15">
-                                    <img src="assets/img/instructor/08.jpg" alt="">
-                                </div>
-                                <div class="z-instructors__content">
-                                    <h3 class="semi-title mb-20"><a href="instructor-profile.html">Havana Lyon</a></h3>
-                                    <p>15+ Courses <span>15+ Courses</span></p>
-                                    <div class="social-media">
-                                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                        <a href="#"><i class="fab fa-twitter"></i></a>
-                                        <a href="#"><i class="fab fa-instagram"></i></a>
-                                        <a href="#"><i class="fab fa-youtube"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="z-instructors z-instructors-02 text-center mb-30">
-                                <div class="z-instructors__thumb mb-15">
-                                    <img src="assets/img/instructor/05.jpg" alt="">
-                                </div>
-                                <div class="z-instructors__content">
-                                    <h3 class="semi-title mb-20"><a href="instructor-profile.html">John Zlathan</a></h3>
-                                    <p>15+ Courses <span>15+ Courses</span></p>
-                                    <div class="social-media">
-                                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                        <a href="#"><i class="fab fa-twitter"></i></a>
-                                        <a href="#"><i class="fab fa-instagram"></i></a>
-                                        <a href="#"><i class="fab fa-youtube"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="z-instructors z-instructors-02 text-center mb-30">
-                                <div class="z-instructors__thumb mb-15">
-                                    <img src="assets/img/instructor/06.jpg" alt="">
-                                </div>
-                                <div class="z-instructors__content">
-                                    <h3 class="semi-title mb-20"><a href="instructor-profile.html">Mally Yan</a></h3>
-                                    <p>15+ Courses <span>15+ Courses</span></p>
+                                    <h3 class="semi-title mb-20"><a href="instructor-profile.html">Ayush Solanki</a></h3>
+                                    <p>Role <strong>15+ Courses</strong></p>
                                     <div class="social-media">
                                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                                         <a href="#"><i class="fab fa-twitter"></i></a>

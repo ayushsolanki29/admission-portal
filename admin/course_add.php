@@ -9,6 +9,7 @@ include '../php/utils/db.php';
 
 if (isset($_POST['add_course'])) {
     $course_name = $_POST['course_name'];
+    $course_shortName = $_POST['course_shortName'];
     $fees = $_POST['fees'];
     $duration_of_Course = $_POST['duration_of_Course'];
     $study_mode = $_POST['study_mode'];
@@ -22,7 +23,7 @@ if (isset($_POST['add_course'])) {
     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
     $extensions_arr = array("jpg", "jpeg", "png", "gif");
     if (in_array($imageFileType, $extensions_arr)) {
-        $sql = "INSERT INTO `courses`(`course_name`, `fees`, `duration_of_Course`, `study_mode`, `enterance_exam`, `eligibility`, `department`, `course_thumbnail`) VALUES ('$course_name','$fees','$duration_of_Course','$study_mode','$enterance_exam','$eligibility','$department','$course_thumbnail')";
+        $sql = "INSERT INTO `courses`(`course_name`,`short_form` ,`fees`, `duration_of_Course`, `study_mode`, `enterance_exam`, `eligibility`, `department`, `course_thumbnail`) VALUES ('$course_name','$course_shortName','$fees','$duration_of_Course','$study_mode','$enterance_exam','$eligibility','$department','$course_thumbnail')";
         if ($con->query($sql) === TRUE) {
             move_uploaded_file($_FILES['course_thumbnail']['tmp_name'], $target_dir . $course_thumbnail);
             echo "<script>alert('Course Added Successfully');</script>";
@@ -65,10 +66,13 @@ if (isset($_POST['add_course'])) {
                         <div class="form-group">
                             <div class="row">
                                 <div class="col">
-                                    <label>Course Name</label>
-                                    <input type="text" name="course_name" required class="form-control" placeholder="Enter Course Name Here ...">
+                                    <label>Course Full Name</label>
+                                    <input type="text" name="course_name" required class="form-control" placeholder="Enter Course Full Name Here ...">
                                 </div>
-
+                                <div class="col">
+                                    <label>Course Short Name</label>
+                                    <input type="text" name="course_shortName" required class="form-control" placeholder="Enter Course short Name Here ...">
+                                </div>
 
                                 <div class="col">
                                     <label for="fees">Fees</label>
@@ -126,11 +130,11 @@ if (isset($_POST['add_course'])) {
                                             <select class="form-control " name="department" required>
                                                 <option disabled selected>Select Department</option>
                                                 <?php
-                                                $select_department = "SELECT * FROM `department` ORDER BY `department`.`id` DESC";
+                                                $select_department = "SELECT `department_name` FROM `department` ORDER BY `department`.`id` DESC";
                                                 $department_result = $con->query($select_department);
                                                 if ($department_result->num_rows > 0) {
                                                     while ($row = $department_result->fetch_assoc()) {
-                                                        echo '<option value="' . $row['id'] . '">' . $row['department_name'] . '</option>';
+                                                        echo '<option value="' . $row['department_name'] . '">' . $row['department_name'] . '</option>';
                                                     }
                                                 } else {
                                                     echo '<option value="0">No Department Found</option>';

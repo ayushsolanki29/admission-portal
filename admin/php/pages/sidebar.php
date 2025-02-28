@@ -38,7 +38,7 @@
                 <a class="collapse-item" href="college_list.php">All Colleges </a>
                 <a class="collapse-item" href="college_add.php">Add Colleges</a>
                 <hr>
-                <a class="collapse-item" href="products_images.php">Upload Images</a>
+                <a class="collapse-item" href="campus_images_add.php">Upload Campus Images</a>
                 <a class="collapse-item" href="products_image_list.php">Manage Images</a>
             </div>
         </div>

@@ -615,7 +615,26 @@ section-title
 #scrollUp i {
   color: #ffffff;
 }
+#contact_btn {
+  background: #FF723A;
+  width: 45px;
+  height: 45px;
+  right: 15px;
+  bottom: 70px;
+  font-size: 15px;
+  border-radius: 50%;
+  line-height: 45px;
+  text-align: center;
+  cursor: pointer;
+  align-items: center;
+  display: grid;
+  border: 0px;
+  outline: 0px;
+}
 
+#contact_btn i {
+  color: #ffffff;
+}
 /*--
     - Overlay
 ------------------------------------------*/

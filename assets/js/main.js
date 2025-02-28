@@ -204,7 +204,7 @@
 				nav: false
 			},
 			1210: {
-				items: 4,
+				items: 3,
 			},
 		}
 	})

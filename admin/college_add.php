@@ -25,21 +25,30 @@ if (isset($_POST['add_college'])) {
     $total_Students = $_POST['total_Students'];
     $online_Students = $_POST['online_Students'];
     $ofline_Students = $_POST['ofline_Students'];
+    $college_campus = $_FILES['college_campus']['name'];
     $tag_id =  uniqid();
+
     $target_dir = "../assets/img/college/";
     $college_brochure_dir = "../assets/brochure/";
+    $college_campus_dir = "../assets/img/campus_images/";
 
     $college_logo = uniqid() . "_" . $college_logo;
     $college_brochure = uniqid() . "_" . $college_brochure;
+    $college_campus = uniqid() . "_" . $college_campus;
+
     $target_file = $target_dir . basename($_FILES["college_logo"]["name"]);
     $target_file = $target_dir . basename($_FILES["college_brochure"]["name"]);
+    $target_file = $college_campus_dir . basename($_FILES["college_campus"]["name"]);
+
     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-    $extensions_arr = array("jpg", "jpeg", "png", "gif","pdf");
+
+    $extensions_arr = array("jpg", "jpeg", "png", "gif", "pdf");
     if (in_array($imageFileType, $extensions_arr)) {
-        $sql = "INSERT INTO `colleges`(`college_name`, `city_name`, `district_name`, `admission_type`, `courseId`, `desciption_of_college`, `university_details`, `admission_process`, `placement_details`, `college_logo`, `college_brochure`, `median_salary`, `avarage_package`, `highest_package`, `finance_type`, `university_name`, `total_Students`, `online_Students`, `ofline_Students`,`tag_id`) VALUES ('$college_name','$city_name','$district_name','$admission_type','$courseId','$desciption_of_college','$university_details','$admission_process','$placement_details','$college_logo','$college_brochure','$median_salary','$avarage_package','$highest_package','$finance_type','$university_name','$total_Students','$online_Students','$ofline_Students','$tag_id')";
+        $sql = "INSERT INTO `colleges`(`college_name`, `city_name`, `district_name`, `admission_type`, `courseId`, `desciption_of_college`, `university_details`, `admission_process`, `placement_details`, `college_logo`, `college_brochure`, `median_salary`, `avarage_package`, `highest_package`, `finance_type`, `university_name`, `total_Students`, `online_Students`, `ofline_Students`,`tag_id`,`college_campus`) VALUES ('$college_name','$city_name','$district_name','$admission_type','$courseId','$desciption_of_college','$university_details','$admission_process','$placement_details','$college_logo','$college_brochure','$median_salary','$avarage_package','$highest_package','$finance_type','$university_name','$total_Students','$online_Students','$ofline_Students','$tag_id','$college_campus')";
         if ($con->query($sql) === TRUE) {
             move_uploaded_file($_FILES['college_logo']['tmp_name'], $target_dir . $college_logo);
             move_uploaded_file($_FILES['college_brochure']['tmp_name'], $college_brochure_dir . $college_brochure);
+            move_uploaded_file($_FILES['college_campus']['tmp_name'], $college_campus_dir . $college_campus);
             echo "<script>alert('College Added Successfully');</script>";
         } else {
             echo "<script>alert('Error Adding College');</script>";
@@ -195,6 +204,16 @@ The candidate must pass specified English skills tests, entrance examination cut
                                         <div class="custom-file">
                                             <input type="file" name="college_logo" required class="custom-file-input" id="inputGroupFile04">
                                             <label class="custom-file-label" for="inputGroupFile04">Choose Logo</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <label for="exampleFormControlSelect1">Campus Image</label>
+
+                                    <div class="input-group">
+                                        <div class="custom-file">
+                                            <input type="file" name="college_campus" required class="custom-file-input" id="inputGroupFile05">
+                                            <label class="custom-file-label" for="inputGroupFile05">Choose Campus Image</label>
                                         </div>
                                     </div>
                                 </div>
