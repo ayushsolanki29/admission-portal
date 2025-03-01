@@ -52,19 +52,6 @@
                                         </div>
                                         <div class="autocomplete-suggestions"></div>
                                     </li>
-
-                                    <!-- <li>
-                                        <div class="widget__select">
-                                            <select name="select-cat" id="select">
-                                                <option value="">Categories</option>
-                                                <option value="">Class One</option>
-                                                <option value="">Class Two</option>
-                                                <option value="">Class Three</option>
-                                                <option value="">Class Four</option>
-                                                <option value="">Class Five</option>
-                                            </select>
-                                        </div>
-                                    </li> -->
                                     <li>
                                         <button id="search_btn" class="theme_btn search_btn ml-35">Search Now</button>
                                     </li>
