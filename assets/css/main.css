@@ -10,7 +10,7 @@
     ===================
 
     01. Theme default CSS
-	02. variables
+	  02. variables
     03. mixins
     04. common
     05. overlay
@@ -7791,6 +7791,7 @@ input.main-search-input:-ms-input-placeholder {
 @media (max-width: 767px) {
   .contact-form-wrapper .message_btn {
     padding: 24px 70px;
+    width: 100%;
   }
 }
 
@@ -8686,3 +8687,51 @@ input.main-search-input:-ms-input-placeholder {
   z-index: -1;
 }
 /*# sourceMappingURL=main.css.map */
+
+.autocomplete-suggestions {
+  position: absolute;
+  width: 100%;
+  max-height: 500px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-top: none;
+  border-radius: 5px 5px 5px 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 11111111111;
+  background-color: #fff;
+  max-width: 500px;
+  margin-top: 10px;
+  display: none;
+}
+.autocomplete-suggestions h4{
+  padding: 10px;
+  background-color: #f14d5d;
+  color: white;
+  margin: 0;
+}
+/* Autocomplete suggestion item styles */
+.suggestion {
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.suggestion a {
+  display: flex;
+  align-items: center;
+  color: black;
+}
+.searchIMG {
+  float: left;
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+  object-fit:scale-down;
+}
+.suggestion:hover {
+  background-color: #ececec;
+}
+/* @media (max-width: 767px) {
+  .autocomplete-suggestions  {
+       margin-top: -9px;
+  }
+} */

@@ -9,7 +9,7 @@
                               <img src="assets/img/logo/header_logo_one.png" alt="">
                           </a>
                       </div>
-                      <p>Lorem ipsum dolor sit amet, consetetur sadip scing elitr, sed di nonumy eirmod temporinvi dunt ut labore lorem ipsum.</p>
+                      <p>Helping students find the best colleges and courses for a brighter future.</p>
                       <div class="social-media footer__social mt-30">
                           <a href="#"><i class="fab fa-facebook-f"></i></a>
                           <a href="#"><i class="fab fa-twitter"></i></a>
@@ -233,6 +233,7 @@
   <script src="assets/js/jquery.easypiechart.js"></script>
   <script src="assets/js/plugins.js"></script>
   <script src="assets/js/main.js"></script>
+ 
 
   <script>
       document.getElementById("contact_btn").addEventListener("click", function() {

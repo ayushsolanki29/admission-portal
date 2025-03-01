@@ -94,7 +94,7 @@ if (isset($_GET['u'])) {
 
     <?php include 'php/pages/header.php' ?>
     <main>
-   
+
         <!-- Fisrt-section  -->
         <div class="coantiner-fluids d-flex">
             <div class="left-section col-md-6 p-5">
@@ -141,10 +141,34 @@ if (isset($_GET['u'])) {
 
 
         <!-- banner-do -->
-        <div class="banner-part container-fluid mr-5">
-            <h3>Want To Know About <?= $college['college_name'] ?></h3>
-            <a href="assets/brochure/<?= $college['college_brochure'] ?>" download="<?php echo $college['college_name'] . ' Brochure' ?> " class="b-b">Download Brochure</a>
+        <div class="container-fluid banner-section bg-light p-4 rounded shadow-lg text-white">
+            <h2 class="fw-bold">Discover Everything About <?= $college['college_name'] ?>!</h2>
+            <p class="mt-2">Get all the details you need about courses, facilities, and more.</p>
+
+            <a href="assets/brochure/<?= $college['college_brochure'] ?>"
+                download="<?= $college['college_name'] ?> Brochure"
+                class="btn btn-lg download-btn mt-3">
+                📄 Download Brochure
+            </a>
         </div>
+        <style>
+            .download-btn {
+                background: #EB571C;
+                color: #fff;
+                font-weight: bold;
+                padding: 12px 20px;
+                border-radius: 30px;
+                transition: all 0.3s ease-in-out;
+                display: inline-block;
+                text-decoration: none;
+            }
+
+            .download-btn:hover {
+                background: rgba(235, 87, 28, 0.82);
+                color: #fff;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            }
+        </style>
 
         <!-- Course And addmision 2025  -->
         <div class="container-fluid mt-5">
@@ -195,8 +219,8 @@ if (isset($_GET['u'])) {
                                 <?= htmlspecialchars($course['department'] ?? 'N/A', ENT_QUOTES, 'UTF-8'); ?>
                             </p>
                             <div class="button-card">
-                                <button class="btn filled">Talk to Experts</button>
-                                <button class="btn  outline">Download Brochure</button>
+                                <button class="btn filled"> Apply Now</button>
+                                <button class="btn outline">View More</button>
                             </div>
                         </div>
                     </div>
@@ -211,27 +235,42 @@ if (isset($_GET['u'])) {
             <p class="mt-3"><?= $college['placement_details'] ?></p>
 
         </div>
-        <div class="banner-part1" style="align-items: start; justify-content: start; height: auto;">
-            <h4 class="text-start mt-2"> <?= $college['college_name'] ?> Packages</h4>
+        <div class="container-fluid mt-4 p-3">
+            <div class="package-section p-4 bg-light rounded ">
+                <h3 class="text-gray fw-bold mb-4"><?= $college['college_name'] ?> Placement Packages</h3>
 
-            <div class="banner-part2">
-                <div class="box">
-                    <p>Median Salary</p>
-                    <h5 class="highlight"><?= $college['median_salary'] ?></h5>
-                </div>
-                <div class="box">
-                    <p>Average Package</p>
-                    <h5 class="highlight"><?= $college['avarage_package'] ?></h5>
-                </div>
-                <div class="box">
-                    <p>Highest Package</p>
-                    <h5 class="highlight"><?= $college['highest_package'] ?></h5>
+                <div class="row g-3">
+                    <div class="col-12 col-md-4">
+                        <div class="package-box bg-white text-center p-4 rounded-pill shadow-sm">
+                            <p class="text-muted mb-2">Median Salary</p>
+                            <h4 class="highlight fw-bold text-dark"><?= $college['median_salary'] ?></h4>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="package-box bg-white text-center p-4 rounded-pill shadow-sm">
+                            <p class="text-muted mb-2">Average Package</p>
+                            <h4 class="highlight fw-bold text-dark"><?= $college['avarage_package'] ?></h4>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="package-box bg-white text-center p-4 rounded-pill shadow-sm">
+                            <p class="text-muted mb-2">Highest Package</p>
+                            <h4 class="highlight fw-bold text-dark"><?= $college['highest_package'] ?></h4>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-
-
         </div>
+        <style>
+            .package-box {
+                transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            }
+
+            .package-box:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            }
+        </style>
 
         <!-- connet-sec  -->
 
@@ -326,105 +365,103 @@ if (isset($_GET['u'])) {
 
 
 
-        <div class="container-fluid d-flex justify-content-center align-items-center mt-3 ">
-            <!-- <h1>adan</h1> -->
-            <div class="container container-custom shadow-lg">
-                <h2 class="text-start fw-bold mb-4  ">Campus Facilities</h2>
-                <div class="row g-2">
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <div class="facility"><i class="fa-solid fa-book-open"></i> Academic Zone</div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <div class="facility"><i class="fa-solid fa-money-check-alt"></i> ATM</div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <div class="facility"><i class="fa-solid fa-bed"></i> Boys Hostel</div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <div class="facility"><i class="fa-solid fa-utensils"></i> Canteen</div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <div class="facility"><i class="fa-solid fa-desktop"></i> Computer Lab</div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <div class="facility"><i class="fa-solid fa-bed"></i> Girls Hostel</div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <div class="facility"><i class="fa-solid fa-burger"></i> Mess</div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <div class="facility"><i class="fa-solid fa-book"></i> Library</div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <div class="facility"><i class="fa-solid fa-hospital"></i> Medical Facilities</div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <div class="facility"><i class="fa-solid fa-chalkboard-teacher"></i> Classroom</div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <div class="facility"><i class="fa-solid fa-briefcase"></i> Placement</div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <div class="facility"><i class="fa-solid fa-futbol"></i> Sports</div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <div class="facility"><i class="fa-solid fa-envelope"></i> Post Office</div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <div class="facility"><i class="fa-solid fa-flask"></i> R&D</div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <div class="facility"><i class="fa-solid fa-university"></i> Residential Institute</div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <div class="facility"><i class="fa-solid fa-home"></i> Residential Zone</div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <div class="facility"><i class="fa-solid fa-building"></i> Residential Zone</div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <div class="facility"><i class="fa-solid fa-shopping-cart"></i> Shopping</div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <div class="facility"><i class="fa-solid fa-bus"></i> Transport</div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <div class="facility"><i class="fa-solid fa-wifi"></i> WiFi</div>
-                    </div>
-                    <!-- <div class="col-6 col-md-4 col-lg-3"><div class="facility"><i class="fa-solid fa-shirt"></i> Laundry</div></div> -->
-                </div>
-            </div>
-        </div>
-
-
-        <div class="container-fluid w-50 mt-3">
-            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                    <?php $index = 1; // Start index from 1 
+        <div class="container-fluid d-flex justify-content-center align-items-center mt-5">
+            <div class="container container-custom shadow-lg p-4 theme-bg rounded">
+                <h2 class="text-center fw-bold mb-4 text-gray">Campus Facilities</h2>
+                <div class="row g-3">
+                    <?php
+                    $facilities = [
+                        ["fa-book-open", "Academic Zone"],
+                        ["fa-money-check-alt", "ATM"],
+                        ["fa-bed", "Boys Hostel"],
+                        ["fa-utensils", "Canteen"],
+                        ["fa-desktop", "Computer Lab"],
+                        ["fa-bed", "Girls Hostel"],
+                        ["fa-burger", "Mess"],
+                        ["fa-book", "Library"],
+                        ["fa-hospital", "Medical Facilities"],
+                        ["fa-chalkboard-teacher", "Classroom"],
+                        ["fa-briefcase", "Placement"],
+                        ["fa-futbol", "Sports"],
+                        ["fa-envelope", "Post Office"],
+                        ["fa-flask", "R&D"],
+                        ["fa-university", "Residential Institute"],
+                        ["fa-home", "Residential Zone"],
+                        ["fa-building", "Residential Zone"],
+                        ["fa-shopping-cart", "Shopping"],
+                        ["fa-bus", "Transport"],
+                        ["fa-wifi", "WiFi"]
+                    ];
                     ?>
-                    <?php foreach ($campusImages as $cmps_img): ?>
-                        <div class="carousel-item <?= $index === 1 ? 'active' : '' ?>">
-                            <img src="<?= getFilePath("img/campus_images/", $cmps_img) ?>" class="d-block w-100" style="max-width: 800px;" alt="">
+                    <?php foreach ($facilities as $facility): ?>
+                        <div class="col-6 col-md-4 col-lg-3">
+                            <div class="facility-pill d-flex align-items-center justify-content-start shadow-sm p-2 px-3 rounded-pill bg-white">
+                                <i class="fa-solid <?= $facility[0] ?> me-2 theme-color"></i>
+                                <span class="fw-semibold text-dark"><?= $facility[1] ?></span>
+                            </div>
                         </div>
-                        <?php $index++; ?>
                     <?php endforeach; ?>
-
-
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
             </div>
         </div>
+
+
+        <section class="bg-light">
+            <hr>
+            <div class="text-center mb-4">
+                <h4 class="fw-bold"><?= $college['college_name'] ?> Campus Images</h4>
+                <p class="text-muted">Explore the beautiful campus of <?= $college['college_name'] ?> through our gallery.</p>
+            </div>
+
+            <div class="text-center row align-items-center container" style="max-width: 100%;">
+                <!-- Carousel Section -->
+                <div class="col-lg-6 mb-4">
+                    <div id="campusCarousel" class="carousel slide shadow rounded" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <?php $index = 0; ?>
+                            <?php foreach ($campusImages as $cmps_img): ?>
+                                <div class="carousel-item <?= $index === 0 ? 'active' : '' ?>">
+                                    <img src="<?= getFilePath("img/campus_images/", $cmps_img) ?>"
+                                        class="d-block w-100 rounded"
+                                        style="max-height: 340px; object-fit: cover;"
+                                        alt="Campus Image">
+                                </div>
+                                <?php $index++; ?>
+                            <?php endforeach; ?>
+                        </div>
+
+                        <!-- Carousel Controls -->
+                        <button class="carousel-control-prev" type="button" data-bs-target="#campusCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon bg-dark rounded-circle p-2" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#campusCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon bg-dark rounded-circle p-2" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Google Map Section -->
+                <div class="col-lg-6">
+                    <div class="ratio ratio-16x9 shadow rounded">
+                        <iframe src="https://www.google.com/maps/embed?pb=!4v1740854267138!6m8!1m7!1s9a8Xn4UdnRreTxwk7dfS7g!2m2!1d23.16660324401472!2d72.51856777971231!3f244.569653282823!4f-1.1715989236337379!5f0.4000000000000002"
+                            style="border:0; max-height: 350px;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+
+
         <!-- want sec  -->
-        <div class="banner-part container-fluid p-5 mt-5">
-            <h3>So Are you Want To Apply in <?= $college['college_name'] ?></h3>
-            <button class="b-b">Apply Now </button>
+        <div class="banner-part container-fluid text-center theme-bg text-white p-5 mt-5 rounded shadow">
+            <h3 class="fw-bold">Ready to Begin Your Journey at <?= $college['college_name'] ?>?</h3>
+            <p class="mt-2">Unlock endless opportunities and shape your future with us. Apply today and take the first step toward success!</p>
+            <button class="btn btn-light theme-color fw-bold px-4 py-2 mt-3 rounded-pill">Apply Now</button>
         </div>
 
 

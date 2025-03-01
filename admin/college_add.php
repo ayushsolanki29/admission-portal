@@ -197,6 +197,7 @@ The candidate must pass specified English skills tests, entrance examination cut
                                 </div>
                             </div>
                             <div class="form-group row">
+
                                 <div class="col">
                                     <label for="exampleFormControlSelect1">College Logo</label>
 
@@ -207,6 +208,7 @@ The candidate must pass specified English skills tests, entrance examination cut
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="col">
                                     <label for="exampleFormControlSelect1">Campus Image</label>
 
@@ -217,6 +219,7 @@ The candidate must pass specified English skills tests, entrance examination cut
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="col">
                                     <label for="exampleFormControlSelect1">College Brochure</label>
 
@@ -228,6 +231,10 @@ The candidate must pass specified English skills tests, entrance examination cut
                                     </div>
                                 </div>
                             </div>
+                            <small id="discountHelpBlock" class="form-text text-muted info-text">
+                                Image should be in jpg, jpeg, png, gif format. <br> Campus Image Format :<strong>700px (width) x 500px (Height)</strong>
+                                <br> College Logo Format :<strong>120px (width) x 120px (Height)</strong>
+                            </small>
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col">

@@ -23,7 +23,7 @@
     <div class="deal-active owl-carousel mb-30">
         <?php
         // Fetch all departments
-        $sql = "SELECT * FROM department";
+        $sql = "SELECT * FROM department ORDER BY department_name ASC";
         $result = $con->query($sql);
 
         if ($result->num_rows > 0) {
@@ -94,7 +94,7 @@
                             $course_thumbnail = htmlspecialchars($row['course_thumbnail'], ENT_QUOTES, 'UTF-8');
 
                             // Course Details URL with ID
-                            $course_url = "course-details.php?id=$course_id";
+                            $course_url = "course-details.php?cid=$course_id";
                     ?>
                             <div class="col-lg-4 col-md-6 grid-item">
                                 <div class="z-gallery z-gallery-two gallery-03 mb-30">

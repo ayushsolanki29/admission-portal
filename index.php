@@ -44,12 +44,15 @@
                                 <ul class="search__area d-md-inline-flex align-items-center justify-content-between mb-30">
                                     <li>
                                         <div class="widget__search">
-                                            <form class="input-form" action="#">
-                                                <input type="text" placeholder="Find Courses">
+                                            <form class="input-form" action="colleges.php?s=true">
+                                                <input type="text" name="search" class="search-input" placeholder="Search..." required autocomplete="off" autofocus>
+                                                <button class="search-icon"><i class="far fa-search"></i></button>
                                             </form>
-                                            <button class="search-icon"><i class="far fa-search"></i></button>
+
                                         </div>
+                                        <div class="autocomplete-suggestions"></div>
                                     </li>
+
                                     <!-- <li>
                                         <div class="widget__select">
                                             <select name="select-cat" id="select">
@@ -63,7 +66,7 @@
                                         </div>
                                     </li> -->
                                     <li>
-                                        <button class="theme_btn search_btn ml-35">Search Now</button>
+                                        <button id="search_btn" class="theme_btn search_btn ml-35">Search Now</button>
                                     </li>
                                 </ul>
                                 <p class="highlight-text"><span>#1</span> Worldwide Online Learning & Skills Development Platform</p>
@@ -76,7 +79,7 @@
         <!--slider-area end-->
         <!--great-deal-area start-->
         <section class="great-deal-area pt-150 pb-0 pt-md-100 pb-md-40 pt-xs-100 pb-xs-40">
-        <?php include 'php/pages/choose-your-department.php'; ?>
+            <?php include 'php/pages/choose-your-department.php'; ?>
         </section>
         <!--great-deal-area end-->
         <?php include 'php/pages/what-are-you-looking-for.php'; ?>
@@ -236,8 +239,8 @@
                                         <span>25k+</span>
                                     </div>
                                     <div class="feature tag_01"><span><img src="assets/img/icon/shield-check.svg" alt=""></span> Safe & Secured</div>
-                                    <div class="feature tag_02"><span><img src="assets/img/icon/catalog.svg" alt=""></span> 120+ Catalog</div>
-                                    <div class="feature tag_03"><span><i class="fal fa-check"></i></span> Quality Education</div>
+                                    <div class="feature tag_02"><span><img src="assets/img/icon/catalog.svg" alt=""></span> 120+ Colleges</div>
+                                    <div class="feature tag_03"><span><i class="fal fa-check"></i></span> Gerruntide Admission</div>
                                     <div class="video-wrapper">
                                         <a href="https://www.youtube.com/watch?v=7omGYwdcS04" class="popup-video"><i class="fas fa-play"></i></a>
                                     </div>
@@ -250,18 +253,19 @@
                             <div class="col-xl-5 col-lg-5">
                                 <div class="chose-wrapper pl-25 pl-lg-0 pl-md-0 pl-xs-0">
                                     <div class="section-title mb-30 wow fadeInUp2 animated" data-wow-delay='.1s'>
-                                        <h5 class="bottom-line mb-25">Explore Zoomy</h5>
-                                        <h2 class="mb-25">Why Choose Zoomy?</h2>
-                                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form. There are many variations of passages of Lorem Ipsum available.</p>
+                                        <h5 class="bottom-line mb-25">Discover collegenew </h5>
+                                        <h2 class="mb-25">Why Choose collegenew.com ?</h2>
+                                        <p>At collegenew.com , we redefine excellence by delivering cutting-edge solutions that inspire, engage, and transform. Whether it's innovation, reliability, or customer satisfaction – we set the benchmark.</p>
                                     </div>
                                     <ul class="text-list mb-40 wow fadeInUp2 animated" data-wow-delay='.2s'>
-                                        <li>There are many variations of passages of Lorem Ipsum.</li>
-                                        <li>The majority have suffered alteration in some form. </li>
-                                        <li>There are many variations of passages of Lorem Ipsum.</li>
+                                        <li> Unmatched expertise & industry-leading innovation</li>
+                                        <li> Tailored solutions designed for your success</li>
+                                        <li> Commitment to quality, trust, and long-term partnerships</li>
                                     </ul>
-                                    <a href="about.html" class="theme_btn wow fadeInUp2 animated" data-wow-delay='.3s'>More Details</a>
+                                    <a href="about.php" class="theme_btn wow fadeInUp2 animated" data-wow-delay='.3s'>Learn More</a>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -273,11 +277,12 @@
                     <div class="row justify-content-center">
                         <div class="col-xl-7 col-lg-8">
                             <div class="section-title section-title-3 text-center mb-60">
-                                <h5 class="mb-25">Our Instructor</h5>
-                                <h2 class="mb-25">Explore Experienced <span class="bottom-line">Instructor</span></h2>
-                                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour.</p>
+                                <h5 class="mb-25">Meet Our Team</h5>
+                                <h2 class="mb-25">Driven by Passion, <span class="bottom-line">Empowered by Expertise</span></h2>
+                                <p>Our team of professionals is dedicated to excellence, bringing innovation, experience, and a commitment to your success. Together, we create impactful solutions and shape the future.</p>
                             </div>
                         </div>
+
                     </div>
                     <div class="instructor-active owl-carousel">
                         <div class="item">
@@ -358,78 +363,12 @@
 
             </div>
         </section>
-        <!-- blog-area start -->
-        <section class="blog-area mr-100 ml-100">
-            <div class="blog-bg gradient-bg pl-100 pr-100 pt-150 pb-120 pt-md-100 pb-md-70 pt-xs-100 pb-xs-70">
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-8">
-                            <div class="section-title text-center mb-60">
-                                <h5 class="bottom-line mb-25">Latest News</h5>
-                                <h2 class="mb-25">Lots of new Blogs & News</h2>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-4 col-md-6">
-                            <div class="z-blogs mb-30 wow fadeInUp2 animated" data-wow-delay='.1s'>
-                                <div class="z-blogs__thumb mb-30">
-                                    <a href="blog-details.html"><img src="assets/img/blog/01.jpg" alt="blog-img"></a>
-                                </div>
-                                <div class="z-blogs__content">
-                                    <h5 class="mb-25">Online . School . Skill</h5>
-                                    <h4 class="sub-title mb-15"><a href="blog-details.html">5 Ways to Use Padlet in Higher -Ed Online Classroom</a></h4>
-                                    <div class="z-blogs__meta d-sm-flex justify-content-between pt-20">
-                                        <span>Date : June 15 , 2021</span>
-                                        <span>By Guest Admin</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6">
-                            <div class="z-blogs mb-30 wow fadeInUp2 animated" data-wow-delay='.2s'>
-                                <div class="z-blogs__thumb mb-30">
-                                    <a href="blog-details.html"><img src="assets/img/blog/02.jpg" alt="blog-img"></a>
-                                </div>
-                                <div class="z-blogs__content">
-                                    <h5 class="mb-25">Education . Expert</h5>
-                                    <h4 class="sub-title mb-15"><a href="blog-details.html">4 New Zoom Features Enhance Virtual Teaching & Learning</a></h4>
-                                    <div class="z-blogs__meta d-sm-flex justify-content-between pt-20">
-                                        <span>Date : June 15 , 2021</span>
-                                        <span>By Guest Admin</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6">
-                            <div class="z-blogs mb-30 wow fadeInUp2 animated" data-wow-delay='.3s'>
-                                <div class="z-blogs__thumb mb-30">
-                                    <a href="blog-details.html"><img src="assets/img/blog/03.jpg" alt="blog-img"></a>
-                                </div>
-                                <div class="z-blogs__content">
-                                    <h5 class="mb-25">Creative . Programmer</h5>
-                                    <h4 class="sub-title mb-15"><a href="blog-details.html">Using Social Media to Support Online Teaching</a></h4>
-                                    <div class="z-blogs__meta d-sm-flex justify-content-between pt-20">
-                                        <span>Date : June 15 , 2021</span>
-                                        <span>By Guest Admin</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12 text-center mt-20 mb-30 wow fadeInUp2 animated" data-wow-delay='.4s'>
-                            <a href="blog-details.html" class="theme_btn">Load More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- blog-area end -->
+
 
     </main>
 
     <?php include 'php/pages/footer.php' ?>
+    <script src="assets/js/search.js"></script>
 </body>
 
 </html>

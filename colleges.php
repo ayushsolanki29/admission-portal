@@ -15,21 +15,13 @@
 
     <main class="card-container gradient-bg  d-sm-auto container-fluid">
 
-
-        <div class="search-flex">
-            <div class="search-container1">
-                <i class="fas fa-search search-icon"></i>
-                <input type="text" class="search-box" placeholder="Search colleges...">
-            </div>
-        </div>
-
-        <div class="container mt-4">
+        <div class="container">
             <div class="row">
                 <?php
                 // Fetch colleges with multiple courses grouped by " | "
                 $stmt = $con->prepare("
         SELECT c.id, c.college_name, c.admission_type, c.college_logo, c.tag_id, 
-               c.university_name, c.finance_type, 
+               c.university_name, c.finance_type,c.highest_package, 
                GROUP_CONCAT(cr.short_form SEPARATOR ' | ') AS courses
         FROM colleges c
         LEFT JOIN courses cr ON FIND_IN_SET(cr.id, c.courseId) > 0
@@ -47,6 +39,7 @@
                     $universityName = htmlspecialchars($row['university_name'] ?? 'Unknown University');
                     $tagId = htmlspecialchars($row['tag_id'] ?? '');
                     $courses = htmlspecialchars($row['courses'] ?? 'No Courses Available');
+                    $package = htmlspecialchars($row['highest_package'] ?? '99999');
                 ?>
                     <div class="col-md-4">
                         <div class="card">
@@ -60,6 +53,8 @@
                                     <li><i class="fas fa-graduation-cap"></i> <?= $courses ?></li>
                                     <li><i class="fas fa-building"></i> <?= $financeType ?> Institute</li>
                                     <li><i class="fas fa-school"></i> <?= $universityName ?></li>
+                                    <li><i class="fas fa-wallet"></i> Heights Package : <?= $package ?></li>
+
                                 </ul>
                                 <div class="explore-btn">
                                     <button onclick="window.location.href='college-details.php?u=<?= urlencode($tagId) ?>'">Explore More</button>

@@ -88,9 +88,13 @@ if (isset($_POST['add_course'])) {
                                             <label class="custom-file-label" for="inputGroupFile04">Choose Course Logo</label>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
 
+                                </div>
+
+                            </div>
+                            <small id="discountHelpBlock" class="form-text text-muted info-text">
+                                Image should be in jpg, jpeg, png, gif format. <br> Image Format :<strong>400px (width) x 244px (Height)</strong>
+                            </small>
                             <div class="form-group mt-4">
                                 <div class="row">
                                     <div class="col">
