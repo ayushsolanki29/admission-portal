@@ -5,16 +5,20 @@ session_start();
 //     header("Location:login.php");
 //     exit();
 // }
-// if (isset($_GET['delete_product'])) {
-//     $pid = $_GET['pid'];
 
-//     $query_d = mysqli_query($con, "DELETE FROM `contact` WHERE `id`='$pid'");
-//     if ($query_d) {
-//         $message = "Message Deleted!";
-//         header("location:contact.php?success=$message");
-//         exit;
-//     }
-// }
+if (isset($_GET['delete_course'], $_GET['id'], $_GET['course_thumbnail'])) {
+    $id = $_GET['id'];
+    $course_thumbnail = $_GET['course_thumbnail'];
+
+    $delete_course = "DELETE FROM `courses` WHERE `id` = '$id'";
+
+    if ($con->query($delete_course) === TRUE) {
+        unlink("../assets/img/course/" . $course_thumbnail);
+        header("Location:course_list.php?success=course Deleted Successfully");
+    } else {
+        echo "<script>alert('Error Deleting course');</script>";
+    }
+}
 
 ?>
 <!DOCTYPE html>
@@ -39,10 +43,8 @@ session_start();
             <div id="content">
                 <?php include 'php/pages/nav.php' ?>
                 <div class="container-fluid">
-
-                    <h1 class="h3 mb-2 text-gray-800">Course List</h1>
-                    
-                    <p class="mb-4">All Course list is here. You want to <a target="_blank" href="course_add.php">add more?</a></p>
+                    <h1 class="h3 mb-2 text-gray-800">Manage Courses</h1>
+                    <p class="mb-4">View and manage all available courses here. Need to add a new course? <a target="_blank" href="course_add.php">Click here.</a></p>
 
                     <br>
                     <?php
@@ -119,7 +121,7 @@ session_start();
                                                         </a>
                                                     </td>
                                                     <td>
-                                                        <a href="#" data-toggle="modal" data-target="#infomesage<?= $id ?>" class="btn btn-primary btn-sm btn-circle">
+                                                        <a href="course_edit.php?edit&id=<?= $id ?>" class="btn btn-primary btn-sm btn-circle">
                                                             <i class="fas fa-pen"></i>
                                                         </a>
                                                     </td>
@@ -137,7 +139,7 @@ session_start();
                                                                 </button>
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <button type="button" onclick="window.location.href = 'contact.php?delete_product=true&pid=<?= $p_id ?>'" class="btn btn-danger">Delete Now</button>
+                                                                <button type="button" onclick="window.location.href = 'course_list.php?delete_course=true&id=<?= $id ?>&course_thumbnail=<?= $course_thumbnail ?>'" class="btn btn-danger">Delete Now</button>
                                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                                                             </div>
                                                         </div>
@@ -146,7 +148,7 @@ session_start();
                                         <?php
                                             }
                                         } else {
-                                            echo "<tr><td colspan='9'>No Messages Available</td></tr>";
+                                            echo "<tr><td colspan='9'>No Courses Available</td></tr>";
                                         }
 
 

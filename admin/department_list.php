@@ -5,16 +5,21 @@ session_start();
 //     header("Location:login.php");
 //     exit();
 // }
-// if (isset($_GET['delete_product'])) {
-//     $pid = $_GET['pid'];
 
-//     $query_d = mysqli_query($con, "DELETE FROM `contact` WHERE `id`='$pid'");
-//     if ($query_d) {
-//         $message = "Message Deleted!";
-//         header("location:contact.php?success=$message");
-//         exit;
-//     }
-// }
+if (isset($_GET['delete_department'])) {
+    $pid = $_GET['id'];
+
+    $query_d = mysqli_query($con, "DELETE FROM `department` WHERE `id`='$pid'");
+    if ($query_d) {
+        $message = "Department Deleted!";
+        header("location:department_list.php?success=$message");
+        exit;
+    } else {
+        $message = "Faild to Delete!";
+        header("location:department_list.php?err=$message");
+        exit;
+    }
+}
 
 ?>
 <!DOCTYPE html>
@@ -40,8 +45,8 @@ session_start();
                 <?php include 'php/pages/nav.php' ?>
                 <div class="container-fluid">
 
-                    <h1 class="h3 mb-2 text-gray-800">Department List</h1>
-                    <p class="mb-4">All Department List is here. You want to <a target="_blank" href="department_add.php">add more?</a></p>
+                    <h1 class="h3 mb-2 text-gray-800">Manage Departments</h1>
+                    <p class="mb-4">Review and manage all listed departments. Need to add a new one? <a target="_blank" href="department_add.php">Click here</a>.</p>
 
                     <br>
                     <?php
@@ -105,7 +110,7 @@ session_start();
                                                         </a>
                                                     </td>
                                                     <td>
-                                                        <a href="#" data-toggle="modal" data-target="#infomesage<?= $id ?>" class="btn btn-primary btn-sm btn-circle">
+                                                        <a href="department_edit.php?edit&id=<?= $id?>"  class="btn btn-primary btn-sm btn-circle">
                                                             <i class="fas fa-pen"></i>
                                                         </a>
                                                     </td>
@@ -123,7 +128,7 @@ session_start();
                                                                 </button>
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <button type="button" onclick="window.location.href = 'contact.php?delete_product=true&pid=<?= $p_id ?>'" class="btn btn-danger">Delete Now</button>
+                                                                <button type="button" onclick="window.location.href = 'department_list.php?delete_department=true&id=<?= $id ?>'" class="btn btn-danger">Delete Now</button>
                                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                                                             </div>
                                                         </div>

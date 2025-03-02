@@ -5,15 +5,23 @@ session_start();
 //     header("Location:login.php");
 //     exit();
 // }
-if (isset($_GET['delete_product'])) {
-    $pid = $_GET['pid'];
-    $img = "../assets/img/products/" . $_GET['img'];
-    $query_d = mysqli_query($con, "DELETE FROM `products` WHERE `id`='$pid'");
-    if ($query_d) {
-        $message = "Product Added!";
-        unlink($img);
-        header("location:products_list.php?success=$message");
-        exit;
+if (isset($_GET['delete_college'])) {
+    $id = $_GET['id'];
+    $college_logo = $_GET['college_logo'];
+    $college_brochure = $_GET['college_brochure'];
+    $college_campus = $_GET['college_campus'];
+    $delete_college = "DELETE FROM `colleges` WHERE `id` = '$id'";
+    $delete_campus_images = "DELETE FROM `campus_images` WHERE `college_id` = '$id'";
+
+    if ($con->query($delete_college) === TRUE &&  $con->query($delete_campus_images) === TRUE) {
+
+        unlink("../assets/img/college/" . $college_logo);
+        unlink("../assets/brochure/" . $college_brochure);
+        unlink("../assets/img/campus_images/" . $college_campus);
+        echo "<script>alert('College Deleted Successfully');</script>";
+        header("Location:college_list.php?success=College Deleted Successfully");
+    } else {
+        echo "<script>alert('Error Deleting College');</script>";
     }
 }
 
@@ -41,8 +49,9 @@ if (isset($_GET['delete_product'])) {
                 <?php include 'php/pages/nav.php' ?>
                 <div class="container-fluid">
 
-                    <h1 class="h3 mb-2 text-gray-800">College List</h1>
-                    <p class="mb-4">All College list is here. you want <a target="_blank" href="college_add.php">add more ?</a></p>
+                <h1 class="h3 mb-2 text-gray-800">Manage Colleges</h1>
+<p class="mb-4">View and manage the list of colleges. Need to add a new one? <a target="_blank" href="college_add.php">Click here to add a college.</a></p>
+
                     <?php
                     if (isset($_GET['err'])) { ?>
                         <div class="alert alert-danger" role="alert">
@@ -154,11 +163,32 @@ FROM colleges c;
                                             </p>
 
                                             <div class="text-center mt-3">
-                                                <a href="<?= $clg_data['google_map_link'] ?>" target="_blank" class="btn btn-info btn-sm">Edit</a>
+                                                <a href="college_edit.php?edit&id=<?= $clg_data['id'] ?>" target="_blank" class="btn btn-info btn-sm">Edit</a>
                                                 <a href="../assets/brochure/<?= $clg_data['college_brochure'] ?>" class="btn btn-warning btn-sm" target="_blank">Check Brochure</a>
                                                 <a href="../college-details.php?u=<?= $clg_data['tag_id'] ?>" class="btn btn-success btn-sm">Check Live</a>
                                                 <a href="campus_images_list.php?clg_id=<?= $clg_data['id'] ?>" class="btn btn-secondary btn-sm">Check Campus Images</a>
-                                                <a href="" class="btn btn-danger btn-sm">Delete</a>
+                                                <a href="#" data-toggle="modal" data-target="#deleteModel<?= $clg_data['id'] ?>" class="btn btn-danger btn-sm">Delete</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php $college_name = $clg_data['college_name'];
+                                $college_logo = $clg_data['college_logo'];
+                                $college_campus = $clg_data['college_campus'];
+                                $college_brochure = $clg_data['college_brochure'];
+                                $college_id = $clg_data['id']; ?>
+                                <div class="modal" id="deleteModel<?= $college_id ?>" tabindex="-1" role="dialog">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Are you sure want to delete <strong> <?= htmlspecialchars($college_name) ?> </strong> </h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" onclick="window.location.href = 'college_list.php?delete_college=true&id=<?= $college_id ?>&college_logo=<?= $college_logo ?>&college_brochure=<?= $college_brochure ?>&college_campus=<?= $college_campus ?>'" class="btn btn-danger">Delete Now</button>
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                                             </div>
                                         </div>
                                     </div>

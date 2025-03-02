@@ -41,8 +41,8 @@ if (isset($_GET['delete_product'], $_GET['id'],$_GET['img'])) {
             <div id="content">
                 <?php include 'php/pages/nav.php' ?>
                 <div class="container-fluid">
-                    <h1 class="h3 mb-2 text-gray-800">Images List</h1>
-                    <p class="mb-4">All product realated Images list is here. You want to <a target="_blank" href="campus_images_add.php">add more?</a></p>
+                <h1 class="h3 mb-2 text-gray-800">Campus Images</h1>
+<p class="mb-4">Manage all campus-related images here. Need to upload more? <a target="_blank" href="campus_images_add.php">Click here to add images.</a></p>
 
                     <?php if (isset($_GET['err'])) : ?>
                         <div class="alert alert-danger" role="alert">
