@@ -26,6 +26,7 @@ if (isset($_POST['add_college'])) {
     $online_Students = $_POST['online_Students'];
     $ofline_Students = $_POST['ofline_Students'];
     $college_campus = $_FILES['college_campus']['name'];
+    $google_map_link = $_POST['google_map_link'];
     $tag_id =  uniqid();
 
     $target_dir = "../assets/img/college/";
@@ -44,7 +45,7 @@ if (isset($_POST['add_college'])) {
 
     $extensions_arr = array("jpg", "jpeg", "png", "gif", "pdf");
     if (in_array($imageFileType, $extensions_arr)) {
-        $sql = "INSERT INTO `colleges`(`college_name`, `city_name`, `district_name`, `admission_type`, `courseId`, `desciption_of_college`, `university_details`, `admission_process`, `placement_details`, `college_logo`, `college_brochure`, `median_salary`, `avarage_package`, `highest_package`, `finance_type`, `university_name`, `total_Students`, `online_Students`, `ofline_Students`,`tag_id`,`college_campus`) VALUES ('$college_name','$city_name','$district_name','$admission_type','$courseId','$desciption_of_college','$university_details','$admission_process','$placement_details','$college_logo','$college_brochure','$median_salary','$avarage_package','$highest_package','$finance_type','$university_name','$total_Students','$online_Students','$ofline_Students','$tag_id','$college_campus')";
+        $sql = "INSERT INTO `colleges`(`college_name`, `city_name`, `district_name`, `admission_type`, `courseId`, `desciption_of_college`, `university_details`, `admission_process`, `placement_details`, `college_logo`, `college_brochure`, `median_salary`, `avarage_package`, `highest_package`, `finance_type`, `university_name`, `total_Students`, `online_Students`, `ofline_Students`,`tag_id`,`college_campus`,`google_map_link`) VALUES ('$college_name','$city_name','$district_name','$admission_type','$courseId','$desciption_of_college','$university_details','$admission_process','$placement_details','$college_logo','$college_brochure','$median_salary','$avarage_package','$highest_package','$finance_type','$university_name','$total_Students','$online_Students','$ofline_Students','$tag_id','$college_campus','$google_map_link')";
         if ($con->query($sql) === TRUE) {
             move_uploaded_file($_FILES['college_logo']['tmp_name'], $target_dir . $college_logo);
             move_uploaded_file($_FILES['college_brochure']['tmp_name'], $college_brochure_dir . $college_brochure);
@@ -280,6 +281,12 @@ The candidate must pass specified English skills tests, entrance examination cut
                                     For example, if the original price is ₹100 and you want to sell it for ₹80, enter 20 as the discount (20% off).
                                 </small> -->
                             </div>
+
+                            <div class="form-group">
+                                <label for="google_map_link">Google Map Link</label>
+                                <input type="text" name="google_map_link" required class="form-control" id="google_map_link" placeholder="Enter Google Map  Link">
+                            </div>
+
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col">

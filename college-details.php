@@ -445,7 +445,7 @@ if (isset($_GET['u'])) {
                 <!-- Google Map Section -->
                 <div class="col-lg-6">
                     <div class="ratio ratio-16x9 shadow rounded">
-                        <iframe src="https://www.google.com/maps/embed?pb=!4v1740854267138!6m8!1m7!1s9a8Xn4UdnRreTxwk7dfS7g!2m2!1d23.16660324401472!2d72.51856777971231!3f244.569653282823!4f-1.1715989236337379!5f0.4000000000000002"
+                        <iframe src="<?= $college['google_map_link'] ?>"
                             style="border:0; max-height: 350px;" allowfullscreen="" loading="lazy"
                             referrerpolicy="no-referrer-when-downgrade">
                         </iframe>
@@ -454,8 +454,7 @@ if (isset($_GET['u'])) {
             </div>
 
         </section>
-
-
+     
 
         <!-- want sec  -->
         <div class="banner-part container-fluid text-center theme-bg text-white p-5 mt-5 rounded shadow">

@@ -39,7 +39,7 @@ if (isset($_GET['cid'])) {
                                 <img src="assets/img/course/<?= $courses['course_thumbnail']; ?>" class="w-100" alt="">
                             </div>
                             <div class="courses-tag-btn">
-                                <a href="#">Find College</a>
+                                <a href="colleges.php">Find College</a>
                                 <a href="#">Share</a>
 
                             </div>

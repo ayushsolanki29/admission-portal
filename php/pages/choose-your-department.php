@@ -21,7 +21,7 @@
                     ?>
                             <div class="single-item">
                                 <div class="single-box mb-30 text-center p-3 shadow-sm rounded">
-                                    <a href="courses.php?d=<?= $departmentId ?>" class="d-block text-decoration-none">
+                                    <a href="courses.php?d=<?= $departmentName ?>" class="d-block text-decoration-none">
                                         <h4 class="sub-title mb-2 font-weight-bold" style="color: #FF723A;"><?= $departmentName ?></h4>
                                         <p class="text-muted">Explore all courses in <?= $departmentName ?></p>
                                     </a>

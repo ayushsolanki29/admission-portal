@@ -221,7 +221,6 @@
   <script src="assets/js/slick.min.js"></script>
   <script src="assets/js/metisMenu.min.js"></script>
   <script src="assets/js/jquery.nice-select.js"></script>
-  <script src="assets/js/ajax-form.js"></script>
 
   <script src="assets/js/wow.min.js"></script>
 

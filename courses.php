@@ -20,46 +20,46 @@
             <div class="feature-blur-two"></div>
             <br>
             <?php if (!isset($_GET['d'])) { ?>
-    <div class="deal-active owl-carousel mb-30">
-        <?php
-        // Fetch all departments
-        $sql = "SELECT * FROM department ORDER BY department_name ASC";
-        $result = $con->query($sql);
+                <div class="deal-active owl-carousel mb-30">
+                    <?php
+                    // Fetch all departments
+                    $sql = "SELECT * FROM department ORDER BY department_name ASC";
+                    $result = $con->query($sql);
 
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                $departmentName = htmlspecialchars($row['department_name'], ENT_QUOTES, 'UTF-8');
-                $departmentId = urlencode($row['id']); // Ensure URL safety
-        ?>
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            $departmentName = htmlspecialchars($row['department_name'], ENT_QUOTES, 'UTF-8');
+                            $departmentId = urlencode($row['id']); // Ensure URL safety
+                    ?>
+                            <div class="single-item">
+                                <div class="single-box mb-30 text-center p-3 shadow-sm rounded">
+                                    <a href="courses.php?d=<?= $departmentName ?>" class="d-block text-decoration-none">
+                                        <h4 class="sub-title mb-2 font-weight-bold "><?= $departmentName ?></h4>
+                                        <p class="text-muted">Discover top courses in <?= $departmentName ?> and advance your career.</p>
+                                    </a>
+                                </div>
+                            </div>
+                        <?php
+                        }
+                    } else {
+                        ?>
+                        <div class="text-center">
+                            <p class="text-danger">No departments available at the moment.</p>
+                        </div>
+                    <?php
+                    }
+                    ?>
+                </div>
+            <?php } else { ?>
                 <div class="single-item">
                     <div class="single-box mb-30 text-center p-3 shadow-sm rounded">
-                        <a href="courses.php?d=<?= $departmentId ?>" class="d-block text-decoration-none">
-                            <h4 class="sub-title mb-2 font-weight-bold "><?= $departmentName ?></h4>
-                            <p class="text-muted">Discover top courses in <?= $departmentName ?> and advance your career.</p>
+                        <a href="courses.php" class="d-block text-decoration-none">
+                            <h4 class="sub-title mb-2 font-weight-bold text-danger">Clear Filter</h4>
+                            <p class="text-muted">Click here to view all Department again.</p>
                         </a>
                     </div>
                 </div>
-        <?php
-            }
-        } else {
-        ?>
-            <div class="text-center">
-                <p class="text-danger">No departments available at the moment.</p>
-            </div>
-        <?php
-        }
-        ?>
-    </div>
-<?php } else { ?>
-    <div class="single-item">
-        <div class="single-box mb-30 text-center p-3 shadow-sm rounded">
-            <a href="courses.php" class="d-block text-decoration-none">
-                <h4 class="sub-title mb-2 font-weight-bold text-danger">Clear Filter</h4>
-                <p class="text-muted">Click here to view all Department again.</p>
-            </a>
-        </div>
-    </div>
-<?php } ?>
+            <?php } ?>
 
 
             <div class="container">
@@ -75,8 +75,12 @@
                 </div>
                 <div class="grid row">
                     <?php
-                    // Secure SQL query to fetch courses sorted alphabetically
-                    $sql = "SELECT id, course_name, short_form, fees, duration_of_Course, study_mode, enterance_exam, eligibility, department, course_thumbnail FROM courses ORDER BY course_name ASC";
+                    if (isset($_GET['d'])) {
+                        $department_name = $_GET['d'];
+                        $sql = "SELECT id, course_name, short_form, fees, duration_of_Course, study_mode, enterance_exam, eligibility, department, course_thumbnail FROM courses WHERE department = '$department_name' ORDER BY course_name ASC";
+                    } else {
+                        $sql = "SELECT id, course_name, short_form, fees, duration_of_Course, study_mode, enterance_exam, eligibility, department, course_thumbnail FROM courses ORDER BY course_name ASC";
+                    }
                     $result = $con->query($sql);
 
                     if ($result->num_rows > 0) {
@@ -128,7 +132,9 @@
                     <?php
                         }
                     } else {
-                        echo '<div class="col-12 text-center"><p class="text-danger">No courses found.</p></div>';
+                        echo "<div class='col  grid-item text-center'>";
+                        echo '<div class="col-12 p-5 text-center"><h2 class="text-danger">No courses found.</h2></div>';
+                        echo "</div>";
                     }
                     ?>
                 </div>

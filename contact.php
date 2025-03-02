@@ -36,7 +36,7 @@
                                     <h5>27/2b , street road -04 ,New York , USA</h5>
                                 </div>
                             </div>
-                            <div class="single-contact-box cb-2 mb-30">
+                            <div class="single-contact-box cb-2 mb-30" >
                                 <div class="contact__iocn">
                                     <img src="assets/img/icon/phone-alt.svg" alt="">
                                 </div>
@@ -45,11 +45,11 @@
                                     <h5>+000 (125) 3654 34</h5>
                                 </div>
                             </div>
-                            <div class="single-contact-box cb-3 mb-30">
+                            <div class="single-contact-box cb-3 mb-30" >
                                 <div class="contact__iocn">
                                     <img src="assets/img/icon/feather-mail.svg" alt="">
                                 </div>
-                                <div class="contact__text">
+                                <div class="contact__text" id="form">
                                     <h5>info@example.com</h5>
                                     <h5>info2@example.com</h5>
                                 </div>
@@ -73,24 +73,27 @@
           </div>
       </section> -->
         <!--contact-map-area end-->
+
+
         <!--contact-form-area start-->
-        <section class="contact-form-area  pb-120 pt-md-100 pt-xs-100 pb-md-70 pb-xs-70">
+        <section class="contact-form-area  pb-120 pt-md-100 pt-xs-100 pb-md-70 pb-xs-70" >
             <div class="container">
                 <div class="align-items-center">
                     <div class="contact-form-wrapper mb-30">
                         <h2 class="mb-45">Contact Us</h2>
-                        <form action="#" class="row gx-3 comments-form contact-form">
+                        
+                        <form action="#" method="post" class="row gx-3 comments-form contact-form">
                             <div class="col-lg-6 col-md-6 mb-30">
-                                <input type="text" placeholder="Full Name">
+                                <input type="text" name="full_name" placeholder="Full Name">
                             </div>
                             <div class="col-lg-6 col-md-6 mb-30">
-                                <input type="text" placeholder="Phone Number">
+                                <input type="tel" name="phone_number"  placeholder="Phone Number">
                             </div>
                             <div class="col-lg-6 col-md-6 mb-30">
-                                <input type="text" placeholder="Email Name">
+                                <input type="text" name="email" placeholder="Email Name">
                             </div>
                             <div class="col-lg-6 col-md-6 mb-30">
-                                <input type="text" placeholder="City">
+                                <input type="text" name="city" placeholder="City">
                             </div>
 
                             <style>
@@ -103,7 +106,7 @@
                                 }
                             </style>
                             <div class="col-lg-12 mb-30">
-                                <select name="select-cat" id="select" class="nice-select">
+                                <select name="topic" id="select" class="nice-select">
                                     <option value="" selected disabled>Select a Topic</option>
                                     <optgroup label="General Inquiries">
                                         <option value="admissions">College Admissions</option>
@@ -126,27 +129,29 @@
                                 </select>
                             </div>
                             <div class="col-lg-12 col-md-6 mb-30" id="other" style="display: none;">
-                                <input type="text" placeholder="Other Topic">
+                                <input type="text" name="other_topic" placeholder="Other Topic">
                             </div>
                             <div class="col-lg-12 col-md-6 mb-30" id="developer" style="display: none;">
-                                <input type="text" readonly placeholder="Click Here to Direct Contact" onclick="window.location.href='developer.php'">
+                                <input type="text" readonly value="Click Here to Direct Contact" onclick="window.location.href='developer.php'">
                             </div>
                             <div class="col-lg-12 mb-30">
-                                <textarea name="commnent" id="commnent" cols="30" rows="10" placeholder="Write a Message"></textarea>
+                                <textarea name="message" id="commnent" cols="30" rows="10" placeholder="Write a Message"></textarea>
                             </div>
+                            <div class="response_container container">
+
+                        </div>
+                            <button type="submit" class="theme_btn message_btn mt-20">Send Message</button>
                         </form>
-                        <button class="theme_btn message_btn mt-20">Send Message</button>
-
                     </div>
-
-
                 </div>
             </div>
         </section>
         <!--contact-form-area end-->
+        <!-- bootstrap alert message  -->
 
     </main>
     <?php include 'php/pages/footer.php' ?>
+    <script src="assets/js/contact-form.js"></script>
     <script>
         $(document).ready(function() {
             $('select.nice-select').niceSelect();
