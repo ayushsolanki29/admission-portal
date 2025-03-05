@@ -125,8 +125,7 @@ session_start();
                     <div class="col-lg-7">
                         <div class="about__img__box mb-60">
                             <img class="about-main-thumb pl-110" src="assets/img/slider/01.png" alt="about-img">
-                            <img class="about-img about_01" src="assets/img/about/01.png" alt="about-img">
-                            <img class="about-img about_02" src="assets/img/about/02.png" alt="about-img">
+
                             <img class="about-img about_03" src="assets/img/slider/earth-bg.svg" alt="about-img">
                         </div>
                     </div>
