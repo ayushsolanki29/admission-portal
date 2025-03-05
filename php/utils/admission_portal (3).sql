@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Mar 02, 2025 at 05:47 PM
+-- Generation Time: Mar 05, 2025 at 05:37 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -153,6 +153,67 @@ INSERT INTO `department` (`id`, `department_name`) VALUES
 (1, 'IT Section'),
 (5, 'Engineering');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rememberme_tokens`
+--
+
+CREATE TABLE `rememberme_tokens` (
+  `id` int NOT NULL,
+  `user_id` int NOT NULL,
+  `token` varchar(255) NOT NULL,
+  `expiration` timestamp NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `rememberme_tokens`
+--
+
+INSERT INTO `rememberme_tokens` (`id`, `user_id`, `token`, `expiration`) VALUES
+(1, 9, '8ad66757138078b3a3818a77caba968619912a5612119a8ffc7a5fad86ecca42', '2025-04-04 08:32:04'),
+(2, 9, '15e9972c971f5268979e1c69b30fdbaff3806d75c8663c80d6d78ac64b84cc2d', '2025-04-04 08:47:18'),
+(3, 9, '974db972c86730a52126ed692d3117a6a31eb0cbc4eb002a6b5cdac237b3d4a3', '2025-04-04 08:56:28'),
+(4, 9, '8b02ae4a74d4ca4392521847626589171dc2c4b90ed86c19c95d4c985407822a', '2025-04-04 08:59:24'),
+(5, 9, '5af822d0513a6fe642612ca0a665cc69afd827dbf374b97dd237a8658d7482c2', '2025-04-04 10:44:04'),
+(6, 10, 'e45afb008bdd298e0ec7cdf8e2c57138abfa1c9cf1a716b186c9b87ae7be4349', '2025-04-04 10:48:40');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int NOT NULL,
+  `username` varchar(200) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `phone_number` varchar(200) NOT NULL,
+  `gender` varchar(100) NOT NULL,
+  `department` varchar(100) NOT NULL,
+  `profile_pic` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT 'default.png',
+  `password` varchar(255) NOT NULL,
+  `acc_status` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'inactive',
+  `verification_code` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `city` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `email`, `phone_number`, `gender`, `department`, `profile_pic`, `password`, `acc_status`, `verification_code`, `created_at`, `city`) VALUES
+(2, 'admin_marcha', 'waxihid146@arinuse.com', '9876543210', 'female', 'Finance', NULL, '$2y$10$XoSreUpjdND0EthPkiLwc.S3/PlMuIEL.TORkUR7exFF1388ZPH5y', 'inactive', 'z0VU6w4Yes82NKMiktBE9FZCh', '2025-03-04 17:36:17', 'kalol'),
+(3, 'steamuser', 'gigoye1471@anomgo.com', '9876543210', 'male', 'Engineering', NULL, '$2y$10$dCdH6BDxTE7O7IlY8hgGD.WCORakRznlPDChM5Px7l3AvJTAtXpS.', 'inactive', 'Pu4mWC7cOwsfqSb8TKkvp5jQiraELAeUIF02NYGVoR6BgDtZJ1MxhH3lnz9dXy', '2025-03-04 18:23:21', 'india'),
+(4, 'ayush', 'ayushsolanki2901+newprime@gmail.com', '9876543210', 'male', 'Engineering', NULL, '$2y$10$a1iqk6oxM5UA2E65yqqkneQ7JZTqlSykh2xM0ADsm28y79wG/krWG', 'inactive', '849HTIs0eFwuXGaS6QL7obWmhUcgr3KAqidCO1VZtDEjlPNBM2fYJvRyknxz5p', '2025-03-04 18:34:27', 'india'),
+(5, 'ayush1', 'ayushsolanki2901+newprime2@gmail.com', '9876543210', 'male', 'Engineering', NULL, '$2y$10$e4PS1OG42uvwUpW8IWPV9ebzcb7HG1Y6AHc1PS45/.UzHjq4MigmC', 'inactive', '416B5Yk2VvtrSiAGHbIWRT7Luw8hxZn3ejdK0XDCqpamfQcFgOyJNUMEolsz9P', '2025-03-04 18:45:52', 'india'),
+(6, 'steamuser2', 'ayushsolanki2901+new@gmail.com', '9876543210', 'male', 'Engineering', NULL, '$2y$10$efW8HwjWPBVtEn.wsvHQ6O9WW4waJKFTrmA70fPmFk7kqjmWPEkYC', 'active', '', '2025-03-04 18:47:19', 'india'),
+(7, 'ayush.exeaa12', 'ayushsolanki2901+new123@gmail.com', '9876543210', 'male', 'Engineering', NULL, '$2y$10$O8mX9.9TvQTLgj5u52RBRuRy1XDuKfprRYpyVsntxgH4n4qA0Yikq', 'active', '', '2025-03-04 18:52:02', 'india'),
+(9, 'ayush.exeaa', 'ayushsolanki2901@gmail.com', '9876543210', 'male', 'Engineering', NULL, '$2y$10$xMLNIgIfvxccZY99ctummeMCndcBtPk0nf1z7m/qLq3ODrWZDUBUa', 'active', '', '2025-03-05 14:00:48', 'kalol'),
+(10, 'sheshan', 'aimgodmanagement@gmail.com', '9876543210', 'male', 'Engineering', 'default.png', '$2y$10$W.19ugoBnvgc49SZC9dDHutGzTD36eZz8qAbqe4b4SOCHg5wabCFC', 'active', '', '2025-03-05 16:15:08', 'india'),
+(11, 'ayush.exe', 'gisor58437@chodyi.com', '9876543210', 'male', 'Engineering', 'default.png', '$2y$10$4tPIzpcoOHCoM/JgPU.9O.Bv5kUWwgHGzeBcfZZZIx/gck2Gkk9t6', 'inactive', 'A1zbk05SDqQIaM4vl7iTEN63WOGfVoxdh9CRFsyKHPr2UpLBgJuXtwjmZYnce8', '2025-03-05 17:26:31', 'india');
+
 --
 -- Indexes for dumped tables
 --
@@ -188,6 +249,18 @@ ALTER TABLE `department`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `rememberme_tokens`
+--
+ALTER TABLE `rememberme_tokens`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -220,6 +293,18 @@ ALTER TABLE `courses`
 --
 ALTER TABLE `department`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `rememberme_tokens`
+--
+ALTER TABLE `rememberme_tokens`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

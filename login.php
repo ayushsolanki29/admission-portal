@@ -37,13 +37,13 @@ session_start();
                                 <!-- Email Field -->
                                 <div class="col-lg-12 mb-30">
                                     <input type="text" placeholder="Email" name="email" value="<?= showFormData('email') ?>">
-                                    <?= showError('email') ?>
+                                  
                                 </div>
 
                                 <!-- Password Field -->
                                 <div class="col-lg-12 mb-30">
                                     <input type="password" placeholder="Password" name="password">
-                                    <?= showError('password') ?>
+                                 
                                 </div>
 
 

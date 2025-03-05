@@ -81,6 +81,11 @@
 
     <!-- Nav Item - Tables -->
     <li class="nav-item">
+        <a class="nav-link" href="users_list.php">
+            <i class="fas fa-user"></i>
+            <span>Users</span></a>
+    </li>
+    <li class="nav-item">
         <a class="nav-link" href="contact.php">
             <i class="fas fa-headset"></i>
             <span>Contact</span></a>

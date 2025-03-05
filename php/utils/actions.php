@@ -66,7 +66,7 @@ if (isset($_GET['login'])) {
             echo "<script>alert('Error while saving login session, please try again.');</script>";
         }
         mysqli_stmt_close($stmt);
-        
+
 
         header("Location: ../../index.php");
         exit();
