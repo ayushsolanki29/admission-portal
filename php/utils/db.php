@@ -4,6 +4,7 @@ $user = "root";
 $pass = "";
 $host = "localhost";
 $db_name = "admission_portal";
+$domain = "http://localhost/collegenew.com";
 
 $con = mysqli_connect($host, $user, $pass, $db_name);
 if (!$con) {

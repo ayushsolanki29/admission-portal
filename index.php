@@ -1,4 +1,8 @@
-<?php include 'php/utils/db.php'; ?>
+<?php
+include 'php/utils/db.php';
+include 'php/utils/functions.php';
+session_start();
+?>
 
 <!DOCTYPE html>
 <html class="no-js" lang="en">
@@ -31,7 +35,7 @@
                                 <img class="slide-shape img-two" src="assets/img/slider/02.png" alt="">
                                 <img class="slide-shape img-three" src="assets/img/slider/03.png" alt="">
                                 <img class="slide-shape img-four" src="assets/img/shape/dot-box-1.svg" alt="">
-                                <img class="slide-shape img-five" src="assets/img/shape/dot-box-2.svg" alt="">
+                                <!-- <img class="slide-shape img-five" src="assets/img/shape/dot-box-2.svg" alt=""> -->
                                 <img class="slide-shape img-six" src="assets/img/shape/zigzg-1.svg" alt="">
                                 <img class="slide-shape img-seven wow fadeInRight animated" data-delay="1.5s" src="assets/img/icon/dot-plan-1.svg" alt="Chose-img">
                                 <img class="slide-shape img-eight" src="assets/img/slider/earth-bg.svg" alt="">
@@ -56,7 +60,20 @@
                                         <button id="search_btn" class="theme_btn search_btn ml-35">Search Now</button>
                                     </li>
                                 </ul>
-                                <p class="highlight-text"><span>#1</span> Worldwide Online Learning & Skills Development Platform</p>
+                                <?php
+                                if (isset($_SESSION['Auth'])) {
+                                  
+                                ?>
+
+                                    <p class="highlight-text">hello, <span><?= $user['username'] ?>. 
+
+                                </span> welcome back! </p>
+
+                                <?php
+                                } else { ?>
+                                    <p class="highlight-text"><span>#1</span> Worldwide Online Learning & Skills Development Platform</p>
+
+                                <?php } ?>
                             </div>
                         </div>
                     </div>

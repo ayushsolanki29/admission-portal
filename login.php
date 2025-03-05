@@ -1,3 +1,8 @@
+<?php
+include 'php/utils/db.php';
+include 'php/utils/functions.php';
+session_start();
+?>
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 
@@ -12,69 +17,66 @@
 
 
     <main>
-     <!--page-title-area start-->
-      <section class="page-title-area d-flex align-items-end" style="background-image: url(assets/img/page-title-bg/01.jpg);">
-          <div class="container">
-              <div class="row align-items-end">
-                  <div class="col-lg-12">
-                      <div class="page-title-wrapper mb-50">
-                         <h1 class="page-title mb-25">Login</h1>
-                         <div class="breadcrumb-list">
-                            <ul class="breadcrumb">
-                                <li><a href="index.html">Home -</a></li>
-                                <li><a href="#">Login</a></li>
-                            </ul>
-                         </div>
-                    </div>
-                  </div>
-              </div>
-          </div>
-      </section>
-      <!--page-title-area end-->
-      <!--contact-form-area start-->
-      <section class="contact-form-area pt-150 pb-120 pt-md-100 pt-xs-100 pb-md-70 pb-xs-70">
-          <div class="container">
-              <div class="row justify-content-center align-items-center">
-                  <div class="col-lg-6">
-                    <div class="contact-form-wrapper text-center mb-30">
-                        <h2 class="mb-45">Login</h2>
-                        <form action="#" class="row gx-3 comments-form contact-form">
-                            <div class="col-lg-12 mb-30">
-                                <input type="text" placeholder="Username">
-                            </div>
-                            <div class="col-lg-12 mb-30">
-                                <input type="password" placeholder="******">
-                            </div>
-                        </form>
-                        <button class="theme_btn message_btn mt-20">Login</button>
-                    </div>
-                  </div>
-              </div>
-          </div>
-      </section>
-      <!--contact-form-area end-->
-       <!-- subscribe-area start -->
-       <section class="subscribe-area footer-bg border-bot pt-145 pb-50 pt-md-90 pt-xs-90">
+
+        <section class="contact-form-area pb-120 pt-md-100 pt-xs-100 pb-md-70 pb-xs-70">
             <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-xl-8">
-                        <div class="subscribe-wrapper text-center mb-30">
-                            <h2>Subscribe our Newsletter & Get every updates.</h2>
-                           <div class="subscribe-form-box pos-rel">
-                                <form class="subscribe-form">
-                                    <input type="text" placeholder="Write Your E-mail">
-                                </form>
-                                <button class="sub_btn">Subscribe Now</button>
-                           </div>
+                <div class="row justify-content-center align-items-center">
+                    <div class="col-lg-6">
+                        <div class="contact-form-wrapper gradient-bg p-4 rounded text-center mb-30">
+                            <h2 class="mb-45">Login</h2>
+
+                            <?php if (isset($_SESSION['error'])): ?>
+                                <div class="alert alert-<?= $_SESSION['error']['type'] ?> text-start">
+                                    <?= $_SESSION['error']['msg'] ?>
+                                </div>
+
+                            <?php endif; ?>
+
+                            <form action="php/utils/actions.php?login=true&api" method="post" class="row gx-3 comments-form contact-form">
+
+                                <!-- Email Field -->
+                                <div class="col-lg-12 mb-30">
+                                    <input type="text" placeholder="Email" name="email" value="<?= showFormData('email') ?>">
+                                    <?= showError('email') ?>
+                                </div>
+
+                                <!-- Password Field -->
+                                <div class="col-lg-12 mb-30">
+                                    <input type="password" placeholder="Password" name="password">
+                                    <?= showError('password') ?>
+                                </div>
+
+
+
+                                <!-- Submit Button -->
+                                <button class="theme_btn message_btn mt-20" type="submit">Login</button>
+                                <br>
+
+                                <!-- Register Link -->
+                                <p class="mt-4">
+                                    Don't have an account?
+                                    <a href="register.php" class="theme-color">Register</a>
+                                </p>
+                                <!-- Register Link -->
+                                <p class="mt-4">
+                                    Forget Your Password ?
+                                    <a href="forget-password.php" class="theme-color">Click Here</a>
+                                </p>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
-       </section>
-       <!-- subscribe-area end -->
+        </section>
+
+
     </main>
-    
-    <?php include 'php/pages/footer.php'?>
+
+    <?php include 'php/pages/footer.php' ?>
 </body>
 
 </html>
+<?php
+unset($_SESSION['error']);
+unset($_SESSION['formdata']);
+?>
