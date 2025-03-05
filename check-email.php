@@ -1,3 +1,8 @@
+<?php
+include 'php/utils/db.php';
+include 'php/utils/functions.php';
+session_start();
+?>
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 

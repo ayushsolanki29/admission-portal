@@ -1,25 +1,15 @@
-<?php include 'php/utils/db.php';
+<?php
+include 'php/utils/db.php';
+include 'php/utils/functions.php';
+session_start();
 
-// Function to safely get file paths
-function getFilePath($folder, $file)
-{
-    return "assets/{$folder}/" . htmlspecialchars($file, ENT_QUOTES, 'UTF-8');
-}
-
-// Function to process comma-separated values
-function parseCSV($string)
-{
-    return array_filter(array_map('trim', explode(' | ', $string)));
-}
 
 // Check if 'u' parameter is set
 if (isset($_GET['u'])) {
     $tagId = $_GET['u'];
 
     // Fetch college details (excluding courses and campus images)
-    $stmt = $con->prepare("
-        SELECT * FROM colleges WHERE tag_id = ?
-    ");
+    $stmt = $con->prepare("SELECT * FROM colleges WHERE tag_id = ?");
     $stmt->bind_param("s", $tagId);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -75,8 +65,6 @@ if (isset($_GET['u'])) {
     exit();
 }
 
-
-
 ?>
 <!DOCTYPE html>
 <html class="no-js" lang="en">
@@ -92,7 +80,7 @@ if (isset($_GET['u'])) {
 
 <body>
 
-    <?php include 'php/pages/header.php' ?>
+<?php include 'php/pages/header.php' ?>
     <main>
 
         <!-- Fisrt-section  -->

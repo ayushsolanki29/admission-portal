@@ -1,4 +1,8 @@
-<?php include 'php/utils/db.php';
+<?php
+include 'php/utils/db.php';
+include 'php/utils/functions.php';
+session_start();
+
 if (isset($_GET['code'])) {
     $code = $_GET['code'];
     $sql = "SELECT * FROM `users` WHERE `verification_code` = '$code'";

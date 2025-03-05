@@ -1,4 +1,8 @@
-<?php include 'php/utils/db.php';
+<?php
+include 'php/utils/db.php';
+include 'php/utils/functions.php';
+session_start();
+
 if (isset($_GET['cid'])) {
     $tagId = $_GET['cid'];
     $stmt = $con->prepare("SELECT * FROM courses WHERE id = ?");

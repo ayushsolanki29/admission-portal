@@ -39,13 +39,13 @@
 </div>
 <?php
 if (isset($_COOKIE['rememberme'])) {
-    $token = mysqli_real_escape_string($con, $_COOKIE['rememberme']);
-    $query = "SELECT * FROM rememberme_tokens WHERE token = '$token' AND expiration > NOW()";
-    $result = mysqli_query($con, $query);
+    $rememberme_token = mysqli_real_escape_string($con, $_COOKIE['rememberme']);
+    $rememberme_tokens_query = "SELECT * FROM `rememberme_tokens` WHERE `token` = '$rememberme_token' AND `expiration` > NOW()";
+    $rememberme_tokens_result = mysqli_query($con, $rememberme_tokens_query);
 
-    if ($result && mysqli_num_rows($result) === 1) {
-        $row = mysqli_fetch_assoc($result);
-        $_SESSION['Auth'] = $row['user_id'];
+    if ($rememberme_tokens_result && mysqli_num_rows($rememberme_tokens_result) === 1) {
+        $rememberme_tokens_row = mysqli_fetch_assoc($rememberme_tokens_result);
+        $_SESSION['Auth'] = $rememberme_tokens_row['user_id'];
     } else {
         echo "<script>alert('Login Session is ended Please Login Again')</script>";
         setcookie("rememberme", "", time() - 3600, "/");
@@ -97,6 +97,15 @@ if (isset($_SESSION['Auth'])) {
                                     <li class="nav-item <?php if (basename($_SERVER['PHP_SELF']) == 'contact.php' || basename($_SERVER['PHP_SELF']) == 'contact.php') echo 'active'; ?>">
                                         <a class="nav-link" href="contact.php" id="navbarDropdown5" role="button" aria-expanded="false">Contact</a>
                                     </li>
+                                    <?php
+                                    if (isset($_SESSION['Auth'])) { ?>
+                                        <li class="nav-item  <?php if (basename($_SERVER['PHP_SELF']) == 'profile.php' || basename($_SERVER['PHP_SELF']) == 'profile.php') echo 'active'; ?>">
+                                            <a class="nav-link" href="profile.php">
+                                                Profile
+                                            </a>
+                                        </li>
+
+                                    <?php } ?>
                                 </ul>
                             </div>
                         </div>
@@ -143,19 +152,18 @@ if (isset($_SESSION['Auth'])) {
     <!-- offset-sidebar start -->
     <div class="offset-sidebar">
         <div class="offset-widget offset-logo mb-30">
-            <a href="index.html">
-                <img src="assets/img/logo/header_logo_one.svg" alt="logo">
+            <a href="index.php">
+                <img src="assets/img/logo/header_logo_one.png" alt="logo">
             </a>
         </div>
         <div class="offset-widget mb-40">
             <div class="info-widget">
                 <h4 class="offset-title mb-20">About Us</h4>
                 <p class="mb-30">
-                    But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain
-                    was born and will give you a complete account of the system and expound the actual teachings of
-                    the great explore
+                    We are your trusted guide for securing admissions in your dream colleges. At <strong>CollegeNew.com</strong>, we help students find the best courses and colleges, providing expert guidance throughout the admission process.
+
                 </p>
-                <a class="theme_btn theme_btn_bg" href="contact.html">Contact Us</a>
+                <a class="theme_btn theme_btn_bg" href="contact.php">Contact Us</a>
             </div>
         </div>
         <div class="offset-widget mb-30 pr-10">
@@ -177,13 +185,41 @@ if (isset($_SESSION['Auth'])) {
             <li class="has-dropdown">
                 <a href="index.html">Colleges</a>
                 <ul class="sub-menu">
-                    <li><a href="index.html">Home Style 1</a></li>
-                    <li><a href="index-2.html">Home Style 2</a></li>
-                    <li><a href="index-3.html">Home Style 3</a></li>
+                    <?php
+                    // Securely fetch all colleges using prepared statements
+                    $college_stmt = $con->prepare("SELECT `college_name`, `tag_id` FROM colleges ORDER BY `college_name` ASC");
+                    $college_stmt->execute();
+                    $college_result = $college_stmt->get_result();
+
+                    if ($college_result->num_rows > 0) {
+                        while ($college_res = $college_result->fetch_assoc()) {
+                            $college_name = htmlspecialchars($college_res['college_name'], ENT_QUOTES, 'UTF-8');
+
+                            $tag_id = urlencode($college_res['tag_id']); // Ensures URL safety
+                    ?>
+                            <li><a href="college-details.php?u=<?php echo $tag_id; ?>"><?php echo $college_name; ?></a></li>
+                    <?php }
+                    $college_stmt->close();
+                    } ?>
                 </ul>
             </li>
 
+            <li><a href="courses.php">Courses</a></li>
+            <li><a href="about.php">About us</a></li>
             <li><a href="contact.php">Contacts Us</a></li>
+            <?php
+            if (isset($_SESSION['Auth'])) { ?>
+                <li class="has-dropdown">
+                    <a href="index.html"><?= $user['username'] ?></a>
+                    <ul class="sub-menu">
+
+                        <li><a href="profile.php">Profile</a></li>
+                        <li><a href="logout.php">Logout</a></li>
+
+                    </ul>
+                </li>
+            <?php }
+            ?>
         </ul>
     </nav>
     <!-- side-mobile-menu end -->

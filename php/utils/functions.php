@@ -287,3 +287,13 @@ function getUserData($user_id)
 
     return $user;
 }
+function getFilePath($folder, $file)
+{
+    return "assets/{$folder}/" . htmlspecialchars($file, ENT_QUOTES, 'UTF-8');
+}
+
+// Function to process comma-separated values
+function parseCSV($string)
+{
+    return array_filter(array_map('trim', explode(' | ', $string)));
+}
