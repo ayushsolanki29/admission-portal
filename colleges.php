@@ -22,15 +22,34 @@ session_start();
         <div class="container">
             <div class="row">
                 <?php
-                // Fetch colleges with multiple courses grouped by " | "
-                $stmt = $con->prepare("
-        SELECT c.id, c.college_name, c.admission_type, c.college_logo, c.tag_id, 
-               c.university_name, c.finance_type,c.highest_package, 
-               GROUP_CONCAT(cr.short_form SEPARATOR ' | ') AS courses
-        FROM colleges c
-        LEFT JOIN courses cr ON FIND_IN_SET(cr.id, c.courseId) > 0
-        GROUP BY c.id
-    ");
+              
+                if (isset($_GET['cid'])) {
+                    $cid = $_GET['cid'];
+                    $stmt = $con->prepare("
+                        SELECT c.id, c.college_name, c.admission_type, c.college_logo, c.tag_id, 
+                               c.university_name, c.finance_type, c.highest_package, 
+                               GROUP_CONCAT(cr.short_form SEPARATOR ' | ') AS courses
+                        FROM colleges c
+                        LEFT JOIN courses cr ON FIND_IN_SET(cr.id, c.courseId) > 0
+                        WHERE FIND_IN_SET(?, c.courseId) > 0
+                        GROUP BY c.id
+                    ");
+                    $stmt->bind_param("s", $cid);
+                } else {
+                    $stmt = $con->prepare("
+                        SELECT c.id, c.college_name, c.admission_type, c.college_logo, c.tag_id, 
+                               c.university_name, c.finance_type, c.highest_package, 
+                               GROUP_CONCAT(cr.short_form SEPARATOR ' | ') AS courses
+                        FROM colleges c
+                        LEFT JOIN courses cr ON FIND_IN_SET(cr.id, c.courseId) > 0
+                        GROUP BY c.id
+                    ");
+                }
+                
+                $stmt->execute();
+                $result = $stmt->get_result();
+                $colleges = $result->fetch_all(MYSQLI_ASSOC);
+                
                 $stmt->execute();
                 $result = $stmt->get_result();
 

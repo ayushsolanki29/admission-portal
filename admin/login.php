@@ -101,8 +101,9 @@ if (empty($_SESSION['csrf_token'])) {
     <?php include 'php/pages/head.php' ?>
     <style>
         .bg-login-image {
-            background: url('img/steam-games.in.png') no-repeat center center;
+            background: url('img/collegenew.com.png') no-repeat center center;
             background-size: cover;
+            
         }
 
         .card {

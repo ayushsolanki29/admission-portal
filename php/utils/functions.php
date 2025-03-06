@@ -270,22 +270,7 @@ function getUserData($user_id)
         return ['error' => 'Database query failed: ' . mysqli_error($con)];
     }
 
-    // Fetch user data
-    $user = mysqli_fetch_assoc($result);
-
-    // If no user is found, return a default user profile
-    if (!$user) {
-        $fallbackQuery = "SELECT * FROM users WHERE id='31'";
-        $fallbackResult = mysqli_query($con, $fallbackQuery);
-
-        if ($fallbackResult && mysqli_num_rows($fallbackResult) > 0) {
-            return mysqli_fetch_assoc($fallbackResult);
-        }
-
-        return ['error' => 'User not found and no fallback user exists.'];
-    }
-
-    return $user;
+    return mysqli_fetch_assoc($result);
 }
 function getFilePath($folder, $file)
 {
@@ -297,3 +282,7 @@ function parseCSV($string)
 {
     return array_filter(array_map('trim', explode(' | ', $string)));
 }
+
+
+
+

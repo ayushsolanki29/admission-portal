@@ -32,25 +32,27 @@ if (isset($_GET['cid'])) {
     <main>
 
         <!--course-details-area start-->
-        <section class="course-details-area pt-md-100 pb-md-70 pt-xs-100 pb-xs-70">
+        <section class="course-details-area pt-md-100 pt-xs-100 pb-xs-70">
             <div class="container">
                 <div class="row">
                     <div class="col-xxl-8 col-xl-7">
-                        <div class="courses-details-wrapper mb-30">
+
+                        <div class="courses-details-wrapper ">
                             <h2 class="courses-title mb-2"><?= $courses['short_form'] ?></h2>
                             <h5><?= $courses['course_name'] ?></h5>
+
                             <div class="course-details-img">
                                 <img src="assets/img/course/<?= $courses['course_thumbnail']; ?>" class="w-100" alt="">
                             </div>
-                            <div class="courses-tag-btn">
-                                <a href="colleges.php">Find College</a>
-                                <a href="#">Share</a>
 
-                            </div>
                         </div>
                     </div>
-                    <div class="col-xxl-4 col-xl-5 mt-50">
+                    <div class="col-xxl-4 col-xl-5">
                         <div class="courses-ingredients">
+                            <div class="courses-tag-btn mb-4" style="margin-right: 10px;">
+                                <a href="colleges.php?cid=<?= $courses['id'] ?>" class="theme-bg text-white">Find College</a>
+                                <a href="#" id="shareBtn">Share</a>
+                            </div>
                             <h2 class="corses-title mb-30">Course Details</h2>
                             <p> <strong>Eligibility : </strong> <?= $courses['eligibility'] ?></p>
                             <ul class="courses-item mt-25">
@@ -61,6 +63,27 @@ if (isset($_GET['cid'])) {
                                 <li> <strong>Department :</strong> <?= $courses['department'] ?></li>
                             </ul>
                         </div>
+
+                        <script>
+                            document.getElementById('shareBtn').addEventListener('click', function(event) {
+                                event.preventDefault();
+
+                                if (navigator.share) {
+                                    navigator.share({
+                                        title: "<?= $courses['short_form'] ?> (<?= $courses['department'] ?>) - Course Details",
+                                        text: "Check out this course: <?= $courses['course_name'] ?>\nEligibility: <?= $courses['eligibility'] ?>\nFees: <?= $courses['fees'] ?>",
+                                        url: window.location.href
+                                    }).then(() => {
+                                        console.log('Thanks for sharing!');
+                                    }).catch((error) => {
+                                        console.error('Error sharing:', error);
+                                    });
+                                } else {
+                                    alert("Your browser doesn't support the Web Share API. Please copy the link manually.");
+                                }
+                            });
+                        </script>
+
                     </div>
                 </div>
             </div>

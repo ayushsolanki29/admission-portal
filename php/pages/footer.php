@@ -1,69 +1,63 @@
   <!--footer-area start-->
   <footer class="footer-area pt-70 pb-40">
       <div class="container">
-          <div class="row mb-15">
-              <div class="col-xl-3 col-lg-4 col-md-6  wow fadeInUp2 animated" data-wow-delay='.1s'>
-                  <div class="footer__widget mb-30">
-                      <div class="footer-log mb-20">
-                          <a href="index.html" class="logo">
-                              <img src="assets/img/logo/header_logo_one.png" alt="">
+          <div class="row">
+              <!-- Column 1: About & Social Media -->
+              <div class="col-lg-4 col-md-6 mb-4 wow fadeInUp2 animated" data-wow-delay=".1s">
+                  <div class="footer__widget">
+                      <div class="footer-logo mb-20">
+                          <a href="index.php" class="logo">
+                              <img src="assets/img/logo/header_logo_one.png" alt="College Logo">
                           </a>
                       </div>
-                      <p>Helping students find the best colleges and courses for a brighter future.</p>
-                      <div class="social-media footer__social mt-30">
-                          <a href="#"><i class="fab fa-facebook-f"></i></a>
-                          <a href="#"><i class="fab fa-twitter"></i></a>
-                          <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                          <a href="#"><i class="fab fa-google-plus-g"></i></a>
+                      <p>Find the best colleges and courses to shape your future. Get expert guidance and make informed decisions.</p>
+                      <div class="social-media footer__social mt-20">
+                          <?php include 'php/pages/social-icons.php' ?>
                       </div>
                   </div>
               </div>
-              <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp2 animated" data-wow-delay='.3s'>
-                  <div class="footer__widget mb-30 pl-40 pl-md-0 pl-xs-0">
-                      <h6 class="widget-title mb-35">Contact us</h6>
-                      <ul class="fot-list">
-                          <li><a href="#">info@example.com</a></li>
-                          <li><a href="#">+00 235 695 58</a></li>
-                          <li><a href="contact.php">Contacts</a></li>
 
-                      </ul>
-                  </div>
-              </div>
-              <div class="col-xl-3 col-lg-4 col-md-6  wow fadeInUp2 animated" data-wow-delay='.5s'>
-                  <div class="footer__widget mb-25 pl-90 pl-md-0 pl-xs-0">
-                      <h6 class="widget-title mb-35">Quick Links</h6>
+              <!-- Column 2: Quick Links & Contact -->
+              <div class="col-lg-4 col-md-6 mb-4 wow fadeInUp2 animated" data-wow-delay=".3s">
+                  <div class="footer__widget">
+                      <h6 class="widget-title mb-20">Quick Links</h6>
                       <ul class="fot-list">
-                          <li><a href="about.html">About US</a></li>
-                          <li><a href="#">Explore Pages</a></li>
-                          <li><a href="#">Our Services</a></li>
-                          <li><a href="#">Destinations</a></li>
+                          <li><a href="about.php">About Us</a></li>
+                          <li><a href="register.php">Register</a></li>
+                          <li><a href="login.php">Login</a></li>
+                          <li><a href="profile.php">My Profile</a></li>
+                          <li><a href="contact.php#form">Contact Us</a></li>
                       </ul>
                   </div>
               </div>
-              <div class="col-xl-3 col-lg-6 col-md-6  wow fadeInUp2 animated" data-wow-delay='.7s'>
-                  <div class="footer__widget mb-30 pl-150 pl-lg-0 pl-md-0 pl-xs-0">
-                      <h6 class="widget-title mb-35">Legal</h6>
-                      <ul class="fot-list mb-30">
-                          <li><a href="index.html">Terms </a> </li>
-                          <li><a href="index.html">Copyright</a> </li>
-                          <li><a href="index.html">Policy</a> </li>
+
+              <!-- Column 3: Legal & Developer -->
+              <div class="col-lg-4 col-md-12 wow fadeInUp2 animated" data-wow-delay=".5s">
+                  <div class="footer__widget">
+                      <h6 class="widget-title mb-20">Legal & Resources</h6>
+                      <ul class="fot-list">
+                          <li><a href="terms.php">Terms & Conditions</a></li>
+                          <li><a href="privacy.php">Privacy Policy</a></li>
+                          <li><a href="copyright.php">Copyright</a></li>
+                          <li><a href="developer.php">Developer</a></li>
                       </ul>
                   </div>
               </div>
           </div>
       </div>
-      <div class="copy-right-area border-bot pt-40">
+
+      <!-- Copyright Section -->
+      <div class="copy-right-area pt-30">
           <div class="container">
-              <div class="row align-items-center">
-                  <div class="col-lg-12">
-                      <div class="copyright text-center">
-                          <h5>Copyright@ 2025 <a href="#">collegenew.com</a>. All Rights Reserved</h5>
-                      </div>
+              <div class="row">
+                  <div class="col-lg-12 text-center">
+                      <p class="copyright">© 2025 <a href="index.php">collegenew.com</a>. All Rights Reserved.</p>
                   </div>
               </div>
           </div>
       </div>
   </footer>
+
   <!--footer-area end-->
 
 
@@ -95,7 +89,7 @@
                       <p>support@example.com</p>
                   </div>
               </div>
-              <div class="contact-item">
+              <div class="contact-item" onclick="window.location.href ='php/utils/actions.php?live_chat=true'">
                   <i class="fas fa-comment-dots"></i>
                   <div class="text-start">
                       <h6>Live Chat</h6>
@@ -103,18 +97,15 @@
                   </div>
               </div>
               <div class="social-media footer__social mt-30">
-                          <a href="#"><i class="fab fa-facebook-f"></i></a>
-                          <a href="#"><i class="fab fa-twitter"></i></a>
-                          <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                          <a href="#"><i class="fab fa-google-plus-g"></i></a>
-                      </div>
+                  <?php include 'php/pages/social-icons.php' ?>
+
+              </div>
           </div>
       </div>
   </div>
 
   <!-- Custom CSS for Modern Popup -->
   <style>
-   
       /* Modal Styling */
       .custom-modal {
           display: none;
@@ -191,16 +182,19 @@
           margin-top: 10px;
           transition: all 0.3s ease-in-out;
           cursor: pointer;
-          
+
       }
 
       .contact-item:hover {
           background: #FF723A;
           color: white;
       }
-      .contact-item:hover h6,.contact-item:hover p{
-        color: #fff;
+
+      .contact-item:hover h6,
+      .contact-item:hover p {
+          color: #fff;
       }
+
       .contact-item i {
           font-size: 20px;
           color: #FF723A;
@@ -232,7 +226,7 @@
   <script src="assets/js/jquery.easypiechart.js"></script>
   <script src="assets/js/plugins.js"></script>
   <script src="assets/js/main.js"></script>
- 
+
 
   <script>
       document.getElementById("contact_btn").addEventListener("click", function() {

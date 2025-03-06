@@ -62,12 +62,12 @@ session_start();
                                 </ul>
                                 <?php
                                 if (isset($_SESSION['Auth'])) {
-                                  
+
                                 ?>
 
-                                    <p class="highlight-text">hello, <span><?= $user['username'] ?>. 
+                                    <p class="highlight-text">hello, <span><?= $user['username'] ?>.
 
-                                </span> welcome back! </p>
+                                        </span> welcome back! </p>
 
                                 <?php
                                 } else { ?>
@@ -275,98 +275,58 @@ session_start();
                 </div>
             </section>
             <!-- why-chose-us end -->
-            <!-- course-instructor start -->
-            <section class="course-instructor nav-style-two nav-style-three pt-150 pb-120 pt-md-70 pb-md-70 pt-xs-95 pb-xs-70">
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-xl-7 col-lg-8">
-                            <div class="section-title section-title-3 text-center mb-60">
-                                <h5 class="mb-25">Meet Our Team</h5>
-                                <h2 class="mb-25">Driven by Passion, <span class="bottom-line">Empowered by Expertise</span></h2>
-                                <p>Our team of professionals is dedicated to excellence, bringing innovation, experience, and a commitment to your success. Together, we create impactful solutions and shape the future.</p>
-                            </div>
-                        </div>
 
-                    </div>
-                    <div class="instructor-active owl-carousel">
-                        <div class="item">
-                            <div class="z-instructors z-instructors-02 text-center mb-30">
-                                <div class="z-instructors__thumb mb-15">
-                                    <img src="assets/img/instructor/05.jpg" alt="">
-                                </div>
-                                <div class="z-instructors__content">
-                                    <h3 class="semi-title mb-20"><a href="instructor-profile.html">Ayush Solanki</a></h3>
-                                    <p>Role <strong>15+ Courses</strong></p>
-                                    <div class="social-media">
-                                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                        <a href="#"><i class="fab fa-twitter"></i></a>
-                                        <a href="#"><i class="fab fa-instagram"></i></a>
-                                        <a href="#"><i class="fab fa-youtube"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- course-instructor end -->
         </div>
         <!-- why-chose-section-wrapper start -->
+        <?php
+        $testimonials = [
+            ["name" => "Rohan Sharma", "course" => "B.Tech Student", "review" => "The admission process was so smooth! I got into my dream college without any hassle. Highly recommended!"],
+            ["name" => "Pooja Verma", "course" => "MBA Aspirant", "review" => "This platform provided me with proper guidance. The counselors were very helpful in clearing my doubts!"],
+            ["name" => "Vikram Patel", "course" => "Engineering Student", "review" => "I had many queries, but the team was always available to help me out. Thanks for the amazing service!"],
+            ["name" => "Sneha Joshi", "course" => "Medical Student", "review" => "I was unsure about which college to choose, but the experts guided me perfectly. Now I'm studying at my desired university!"],
+            ["name" => "Aditya Mehta", "course" => "BBA Student", "review" => "I applied through this platform and got admission without any trouble. The team was very supportive!"],
+            ["name" => "Simran Kaur", "course" => "M.Sc Aspirant", "review" => "I was struggling with the application process, but this service made everything easy and stress-free!"],
+            ["name" => "Rahul Desai", "course" => "B.Com Student", "review" => "This platform really cares about students. They helped me shortlist the best colleges according to my profile."],
+            ["name" => "Megha Reddy", "course" => "Law Student", "review" => "I received step-by-step guidance on admission procedures. I'm truly grateful for their support!"],
+            ["name" => "Amit Trivedi", "course" => "B.Sc Student", "review" => "The experts here helped me clear my doubts about colleges and courses. I highly recommend their services!"],
+            ["name" => "Neha Kapoor", "course" => "MBA Candidate", "review" => "I got admission into a top-tier college without any confusion. Their support team was very patient and helpful!"]
+        ];
+
+        $latestReviews = array_slice($testimonials, -10); // Get the latest 10 reviews
+        ?>
+
         <section class="testimonial-area nav-style-chevron pt-150 pb-120 pt-md-95 pb-md-70 pt-xs-95 pb-xs-5">
             <div class="container testimonial-bg">
                 <div class="row justify-content-center">
-                    <div class="col-lg-8">
-                        <div class="section-title section-title-2 text-center mb-60">
-                            <h5 class="bottom-line left-line mb-25 pl-40 pr-40">Our Testimonials</h5>
-                            <h2 class="mb-25">What people say About Us</h2>
-                        </div>
+                    <div class="col-lg-8 text-center mb-60">
+                        <h5 class="bottom-line left-line mb-25 pl-40 pr-40">Our Testimonials</h5>
+                        <h2 class="mb-25">What Students Say About Us</h2>
                     </div>
                 </div>
                 <div class="row justify-content-center">
                     <div class="col-lg-9">
                         <div class="testimonial-active-full owl-carousel">
-                            <div class="item">
-                                <div class="testimonial-wrapper test-wrapper-full text-center mb-30">
-                                    <div class="quote-icon mb-20">
-                                        <img src="assets/img/icon/Quotemarks-right.svg" alt="quote-icon">
-                                    </div>
-                                    <h5>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed di nonumy eirmod tempor invidunt ut labore et dolor magn aliq erat. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed di nonumy eirmod tempor invidunt labore et dolore magn aliq erat.</h5>
-                                    <div class="testimonial-authors__content mt-65">
-                                        <h3 class="mb-15">Sara William</h3>
-                                        <p>Content Writing</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="testimonial-wrapper test-wrapper-full text-center mb-30">
-                                    <div class="quote-icon mb-20">
-                                        <img src="assets/img/icon/Quotemarks-right.svg" alt="quote-icon">
-                                    </div>
-                                    <h5>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed di nonumy eirmod tempor invidunt ut labore et dolor magn aliq erat. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed di nonumy eirmod tempor invidunt labore et dolore magn aliq erat.</h5>
-                                    <div class="testimonial-authors__content mt-65">
-                                        <h3 class="mb-15">Sara William</h3>
-                                        <p>Content Writing</p>
+                            <?php foreach ($latestReviews as $review) : ?>
+                                <div class="item">
+                                    <div class="testimonial-wrapper text-center mb-30">
+                                        <div class="quote-icon mb-20">
+                                            <img src="assets/img/icon/Quotemarks-right.svg" alt="quote-icon">
+                                        </div>
+                                        <h5>"<?= $review['review']; ?>"</h5>
+                                        <div class="testimonial-authors__content mt-65">
+                                            <h3 class="mb-15"><?= $review['name']; ?></h3>
+                                            <p><?= $review['course']; ?></p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="item">
-                                <div class="testimonial-wrapper test-wrapper-full text-center mb-30">
-                                    <div class="quote-icon mb-20">
-                                        <img src="assets/img/icon/Quotemarks-right.svg" alt="quote-icon">
-                                    </div>
-                                    <h5>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed di nonumy eirmod tempor invidunt ut labore et dolor magn aliq erat. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed di nonumy eirmod tempor invidunt labore et dolore magn aliq erat.</h5>
-                                    <div class="testimonial-authors__content mt-65">
-                                        <h3 class="mb-15">Sara William</h3>
-                                        <p>Content Writing</p>
-                                    </div>
-                                </div>
-                            </div>
+                            <?php endforeach; ?>
                         </div>
                     </div>
                 </div>
-
             </div>
         </section>
+
+
 
 
     </main>

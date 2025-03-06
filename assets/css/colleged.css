@@ -155,14 +155,19 @@
   border-radius: 5px;
   padding: 10px 15px;
   cursor: pointer;
+
 }
 
 .filled {
   background-color: #e75115;
   color: white;
   border: none;
+  width: 100%;
 }
-
+.filled:hover{
+  color: #fff;
+  background-color: #a74c28;
+}
 .outline {
   background-color: white;
   color: #e75115;

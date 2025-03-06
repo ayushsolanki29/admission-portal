@@ -20,7 +20,7 @@
                            </div>
                            <h3>Join Our Learning Community</h3>
                            <p>Register today and unlock access to expert-led courses, career opportunities, and a thriving educational environment.</p>
-                           <a href="register.html" class="theme_btn border_btn">Get Started</a>
+                           <a href="register.php" class="theme_btn border_btn">Get Started</a>
                        </div>
                    </div>
                    <div class="col-xl-6 col-lg-6 col-md-6">

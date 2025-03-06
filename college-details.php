@@ -23,7 +23,7 @@ if (isset($_GET['u'])) {
 
     // Fetch courses separately
     $stmt = $con->prepare("
-        SELECT course_name, short_form, fees, duration_of_Course, study_mode, 
+        SELECT id, course_name, short_form, fees, duration_of_Course, study_mode, 
                enterance_exam, eligibility, department, course_thumbnail 
         FROM courses WHERE FIND_IN_SET(id, ?)
     ");
@@ -35,6 +35,7 @@ if (isset($_GET['u'])) {
     while ($row = $result->fetch_assoc()) {
         $courses[] = [
             'name' => $row['course_name'],
+            'id' => $row['id'],
             'short_form' => $row['short_form'],
             'fees' => $row['fees'],
             'duration' => $row['duration_of_Course'],
@@ -64,6 +65,7 @@ if (isset($_GET['u'])) {
     header("Location: 404.php");
     exit();
 }
+$apply_btn = "php/utils/actions.php?create_new_lead=true&lead_source=college&id=" . $college['id'];
 
 ?>
 <!DOCTYPE html>
@@ -80,7 +82,7 @@ if (isset($_GET['u'])) {
 
 <body>
 
-<?php include 'php/pages/header.php' ?>
+    <?php include 'php/pages/header.php' ?>
     <main>
 
         <!-- Fisrt-section  -->
@@ -104,8 +106,8 @@ if (isset($_GET['u'])) {
                 <div class="p-2 mt-5 gap-5 d-flex">
 
                     <a target="_blank" href="<?= getFilePath('brochure', $college['college_brochure']); ?>" download="<?php echo $college['college_name'] . ' Brochure' ?>" class="btn p-2" style="border:2px solid #EB571C; color:#EB571C; border-radius:40px;">Download Brochure</a>
+                    <a href="<?= $apply_btn?>" target="_blank" class="btn p-2 px-5" style="border:2px solid #EB571C; background-color: #EB571C; color: white; border-radius:40px;">Apply Now</a>
 
-                    <a href="" class="btn p-2 px-5" style="border:2px solid #EB571C; background-color: #EB571C; color: white; border-radius:40px;">Apply Now</a>
                 </div>
             </div>
 
@@ -123,9 +125,6 @@ if (isset($_GET['u'])) {
             <h5>About <?= $college['college_name'] ?>'s University Details</h5>
             <p class="mt-4"><?= $college['university_details'] ?>.</p>
         </div>
-        <!-- second end section -->
-
-        <!-- banner-download-part  -->
 
 
         <!-- banner-do -->
@@ -207,8 +206,7 @@ if (isset($_GET['u'])) {
                                 <?= htmlspecialchars($course['department'] ?? 'N/A', ENT_QUOTES, 'UTF-8'); ?>
                             </p>
                             <div class="button-card">
-                                <button class="btn filled"> Apply Now</button>
-                                <button class="btn outline">View More</button>
+                                <button onclick="window.location.href = 'course-details.php?cid=<?= $course['id'] ?>'"  class="btn filled"> View More</button>
                             </div>
                         </div>
                     </div>
@@ -267,7 +265,7 @@ if (isset($_GET['u'])) {
                 <div class="banner-content p-2">
                     <h5>Are you Confused? Talk to <?= $college['college_name'] ?> Expert</h5>
                     <p>Who offers personalized guidance, mentorship, and invaluable insights tailored to your academic and career aspirations.</p>
-                    <button class="banner-button1">Connect Now</button>
+                    <a  href="<?= $apply_btn?>" target="_blank"  class="banner-button1">Connect Now</a>
                 </div>
                 <div class="banner-image">
                     <img src="https://nj1-static.collegedekho.com/_next/static/media/askQueCtaIcon.8c3ad181.svg?width=256&q=80" alt="Confusion Illustration">
@@ -442,13 +440,13 @@ if (isset($_GET['u'])) {
             </div>
 
         </section>
-     
+
 
         <!-- want sec  -->
         <div class="banner-part container-fluid text-center theme-bg text-white p-5 mt-5 rounded shadow">
             <h3 class="fw-bold">Ready to Begin Your Journey at <?= $college['college_name'] ?>?</h3>
             <p class="mt-2">Unlock endless opportunities and shape your future with us. Apply today and take the first step toward success!</p>
-            <button class="btn btn-light theme-color fw-bold px-4 py-2 mt-3 rounded-pill">Apply Now</button>
+            <a href="<?= $apply_btn?>" target="_blank"   class="btn btn-light theme-color fw-bold px-4 py-2 mt-3 rounded-pill">Apply Now</a>
         </div>
 
 

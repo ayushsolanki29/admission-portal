@@ -2,6 +2,9 @@
 include 'php/utils/db.php';
 include 'php/utils/functions.php';
 session_start();
+if (isset($_SESSION['Auth'])) {
+    header("Location: index.php");
+}
 ?>
 <!DOCTYPE html>
 <html class="no-js" lang="en">

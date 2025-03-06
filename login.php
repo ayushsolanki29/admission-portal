@@ -2,6 +2,11 @@
 include 'php/utils/db.php';
 include 'php/utils/functions.php';
 session_start();
+
+if (isset($_SESSION['Auth'])) {
+    header("Location: index.php");
+}
+
 ?>
 <!DOCTYPE html>
 <html class="no-js" lang="en">
@@ -31,19 +36,25 @@ session_start();
                                 </div>
 
                             <?php endif; ?>
+                            <?php if (isset($_GET['error'])): ?>
+                                <div class="alert alert-danger text-start">
+                                    <?= $_GET['error'] ?>
+                                </div>
+
+                            <?php endif; ?>
 
                             <form action="php/utils/actions.php?login=true&api" method="post" class="row gx-3 comments-form contact-form">
 
                                 <!-- Email Field -->
                                 <div class="col-lg-12 mb-30">
                                     <input type="text" placeholder="Email" name="email" value="<?= showFormData('email') ?>">
-                                  
+
                                 </div>
 
                                 <!-- Password Field -->
                                 <div class="col-lg-12 mb-30">
                                     <input type="password" placeholder="Password" name="password">
-                                 
+
                                 </div>
 
 
@@ -62,6 +73,7 @@ session_start();
                                     Forget Your Password ?
                                     <a href="forget-password.php" class="theme-color">Click Here</a>
                                 </p>
+                                <input type="hidden" name="cb" value="<?= isset($_GET['cb']) ?  $_GET['cb'] : "" ?>">
                             </form>
                         </div>
                     </div>
