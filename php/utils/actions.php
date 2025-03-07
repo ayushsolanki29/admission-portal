@@ -83,7 +83,6 @@ if (isset($_GET['login'])) {
 }
 
 
-
 if (isset($_GET['create_new_lead'], $_GET['lead_source'], $_GET['id'])) {
     if (!isset($_SESSION['Auth'])) {
         header("Location: ../../login.php?error=Please Login First&cb=profile.php");
@@ -124,8 +123,9 @@ if (isset($_GET['create_new_lead'], $_GET['lead_source'], $_GET['id'])) {
         mysqli_stmt_close($stmt);
 
         if ($inserted) {
+
             $user = getUserData($user_id);
-            $phone = "+919723054735";
+            $phone =   urlencode("+91" . getWhatsAppNumber());
 
             $message = "Hello, I would like to get Admission.\n";
             $message .= "----- *College Details* -----\n";
@@ -136,6 +136,7 @@ if (isset($_GET['create_new_lead'], $_GET['lead_source'], $_GET['id'])) {
             $message .= "- Email : {$user['email']}\n";
             $message .= "- Phone : {$user['phone_number']}\n";
             $message .= "Could you please provide more information about this? Thank you. 🙌";
+            createNotification($user['username'] . " Just Applied in " . $college_name, "leads_list.php?s=" . $user['email']);
 
             $whatsappURL = "https://wa.me/$phone?text=" . urlencode($message);
             header("Location: $whatsappURL");
@@ -146,10 +147,11 @@ if (isset($_GET['create_new_lead'], $_GET['lead_source'], $_GET['id'])) {
 
 if (isset($_GET['live_chat'])) {
     session_start();
-    
+
     $user_id = isset($_SESSION['Auth']) ? $_SESSION['Auth'] : null;
     $user = $user_id ? getUserData($user_id) : null;
-    $phone = "+919723054735";
+    $phone =   urlencode("+91" . getWhatsAppNumber());
+
 
     if ($user) {
         // Structured message for logged-in users

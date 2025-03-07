@@ -11,10 +11,10 @@ if (!$con) {
     echo "db connection faild";
 }
 
-// if (!isset($_COOKIE['steamgames-viewed'])) {
-//     // Update database and set cookie
-//     $sql = "UPDATE settings SET `data1` = `data1` + 1 WHERE id = 2";
-//     $con->query($sql);
+if (!isset($_COOKIE['collegenew-viewed'])) {
+    // Update database and set cookie
+    $sql = "UPDATE settings SET `data1` = `data1` + 1 WHERE id = 1";
+    $con->query($sql);
 
-//     setcookie('steamgames-viewed', true, time() + (7 * 24 * 60 * 60));
-// }
+    setcookie('collegenew-viewed', true, time() + (7 * 24 * 60 * 60));
+}

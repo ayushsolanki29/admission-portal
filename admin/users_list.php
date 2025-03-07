@@ -6,20 +6,26 @@ session_start();
 //     exit();
 // }
 
-if (isset($_GET['delete_course'], $_GET['id'], $_GET['course_thumbnail'])) {
+if (isset($_GET['delete_user'], $_GET['id'])) {
     $id = $_GET['id'];
-    $course_thumbnail = $_GET['course_thumbnail'];
 
-    $delete_course = "DELETE FROM `courses` WHERE `id` = '$id'";
+    $delete_user = "DELETE FROM `users` WHERE `id` = '$id'";
 
-    if ($con->query($delete_course) === TRUE) {
-        unlink("../assets/img/course/" . $course_thumbnail);
-        header("Location:course_list.php?success=course Deleted Successfully");
+    if ($con->query($delete_user) === TRUE) {
+        header("Location:users_list.php?success=User Deleted Successfully");
     } else {
-        echo "<script>alert('Error Deleting course');</script>";
+        echo "<script>alert('Error Deleting User');</script>";
     }
 }
-
+if (isset($_GET['activate_user'], $_GET['id'])) {
+    $user_id = $_GET['id'];
+    $run = mysqli_query($con, "UPDATE `users` SET `acc_status` = 'active',`verification_code`='' WHERE `id`='$user_id'");
+    if ($run) {
+        header("Location: users_list.php?success=User activated!");
+    } else {
+        header("Location: users_list.php?err=failed to active User");
+    }
+}
 ?>
 <!DOCTYPE html>
 
@@ -128,32 +134,41 @@ if (isset($_GET['delete_course'], $_GET['id'], $_GET['course_thumbnail'])) {
                                                             } ?>
                                                         </p>
                                                     </td>
-                                                    <td>
-                                                        <?php
-                                                        if ($acc_status != "active") { ?>
 
+                                                    <?php
+
+                                                    if ($acc_status != "active") { ?>
+                                                        <td class="d-flex align-items-center mx-2 text-center">
                                                             <a href="#" data-toggle="modal" data-target="#deleteModel<?= $id ?>" class="btn btn-danger btn-sm btn-circle">
                                                                 <i class="fas fa-trash"></i>
                                                             </a>
 
-                                                            <a href="#" data-toggle="modal" data-target="#deleteModel<?= $id ?>" class="btn btn-success btn-sm btn-circle mt-1">
-                                                            <i class="fas fa-check-circle"></i>
+                                                            <a href="users_list.php?activate_user&id=<?= $id ?>" class="btn btn-success btn-sm btn-circle mt-1">
+                                                                <i class="fas fa-check-circle"></i>
                                                             </a>
+                                                        </td>
+                                                    <?php } else { ?>
+                                                        <td>
 
-                                                        <?php } ?>
-                                                    </td>
+                                                            <a href="leads_list.php?s=<?= $id ?>" class="btn btn-success btn-sm btn-circle mt-1">
+                                                                <i class="fas fa-headset"></i>
+                                                            </a>
+                                                        </td>
+
+                                                    <?php                                   } ?>
+                                                    
                                                     <td>
-                                                        <a href="#" data-toggle="modal" data-target="#deleteModel<?= $id ?>" class="btn btn-sm btn-circle text-white" style="background-color: #25d366;">
+                                                        <a target="_blank" href="https://wa.me/<?= $phone_number ?>" class="btn btn-sm btn-circle text-white" style="background-color: #25d366;">
                                                             <i class="fab fa-whatsapp"></i>
                                                         </a>
                                                     </td>
                                                     <td>
-                                                        <a href="course_edit.php?edit&id=<?= $id ?>" class="btn btn-primary btn-sm btn-circle">
+                                                        <a target="_blank" href="tel:<?= $phone_number ?>" class="btn btn-primary btn-sm btn-circle">
                                                             <i class="fas fa-phone-volume"></i>
                                                         </a>
                                                     </td>
                                                     <td>
-                                                        <a href="course_edit.php?edit&id=<?= $id ?>" class="btn btn-secondary  btn-sm btn-circle">
+                                                        <a target="_blank" href="mailto:<?= $email ?>" class="btn btn-secondary  btn-sm btn-circle">
                                                             <i class="fas fa-envelope"></i>
                                                         </a>
                                                     </td>
@@ -165,13 +180,13 @@ if (isset($_GET['delete_course'], $_GET['id'], $_GET['course_thumbnail'])) {
                                                     <div class="modal-dialog" role="document">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h5 class="modal-title">Are you sure want to delete <strong> <?= htmlspecialchars($short_form) ?> </strong> </h5>
+                                                                <h5 class="modal-title">Are you sure want to delete <strong> <?= htmlspecialchars($username) ?> </strong>'s Account </h5>
                                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                     <span aria-hidden="true">&times;</span>
                                                                 </button>
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <button type="button" onclick="window.location.href = 'course_list.php?delete_course=true&id=<?= $id ?>&course_thumbnail=<?= $course_thumbnail ?>'" class="btn btn-danger">Delete Now</button>
+                                                                <button type="button" onclick="window.location.href = 'users_list.php?delete_user&id=<?= $id ?>'" class="btn btn-danger">Delete Now</button>
                                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                                                             </div>
                                                         </div>

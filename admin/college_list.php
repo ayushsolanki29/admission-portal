@@ -49,8 +49,8 @@ if (isset($_GET['delete_college'])) {
                 <?php include 'php/pages/nav.php' ?>
                 <div class="container-fluid">
 
-                <h1 class="h3 mb-2 text-gray-800">Manage Colleges</h1>
-<p class="mb-4">View and manage the list of colleges. Need to add a new one? <a target="_blank" href="college_add.php">Click here to add a college.</a></p>
+                    <h1 class="h3 mb-2 text-gray-800">Manage Colleges</h1>
+                    <p class="mb-4">View and manage the list of colleges. Need to add a new one? <a target="_blank" href="college_add.php">Click here to add a college.</a></p>
 
                     <?php
                     if (isset($_GET['err'])) { ?>
@@ -137,8 +137,8 @@ FROM colleges c;
                                                             <a href="campus_images_add.php" class="btn btn-warning btn-sm">Upload Images</a>
                                                         <?php } ?>
                                                     </p>
-
                                                 </div>
+
                                                 <div class="col-md-6">
                                                     <p><strong>Total Students:</strong> <?= $clg_data['total_Students'] ?></p>
                                                     <p><strong>Online Students:</strong> <?= $clg_data['online_Students'] ?></p>
@@ -146,6 +146,7 @@ FROM colleges c;
                                                     <p><strong>Median Salary:</strong> <?= $clg_data['median_salary'] ?></p>
                                                     <p><strong>Average Package:</strong> <?= $clg_data['avarage_package'] ?></p>
                                                     <p><strong>Highest Package:</strong> <?= $clg_data['highest_package'] ?></p>
+                                                    <p><strong>College Views :</strong> <?= $clg_data['views'] ?></p>
                                                 </div>
                                             </div>
                                             <hr>

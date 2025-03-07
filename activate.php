@@ -12,6 +12,8 @@ if (isset($_GET['code'])) {
         $email = $row['email'];
         $sql = "UPDATE `users` SET `acc_status` = 'active',`verification_code`= '' WHERE email = '$email'";
         if ($con->query($sql)) {
+            createNotification($row['username'] . " Just Registered Successfull " , "users_list.php?s=" . $row['email']);
+
             header('Location: activate.php?success');
         } else {
             header('Location: activate.php?error');

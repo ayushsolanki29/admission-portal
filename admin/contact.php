@@ -7,6 +7,18 @@ session_start();
 // }
 
 
+if (isset($_GET['delete_contact'], $_GET['id'])) {
+    $id = $_GET['id'];
+
+    $delete_user = "DELETE FROM `contact` WHERE `id` = '$id'";
+
+    if ($con->query($delete_user) === TRUE) {
+        header("Location:contact.php?success=Submisson Deleted Successfully");
+    } else {
+        echo "<script>alert('Error Deleting Submisson');</script>";
+    }
+}
+
 
 ?>
 <!DOCTYPE html>
@@ -63,10 +75,10 @@ session_start();
                                             <th>City</th>
                                             <th>Topic</th>
                                             <th>Message</th>
-                                        
+
                                             <th>Date</th>
 
-                                            <th colspan="2">Actions</th>
+                                            <th colspan="3" class="text-center">Actions</th>
                                         </tr>
                                     </thead>
 
@@ -76,7 +88,7 @@ session_start();
                                         $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
                                         $start = ($page - 1) * $limit;
 
-                                        $query = "SELECT * FROM `contact` ORDER BY `id` ASC LIMIT $start, $limit";
+                                        $query = "SELECT * FROM `contact` ORDER BY `id` DESC LIMIT $start, $limit";
 
                                         $stmt = mysqli_prepare($con, $query);
                                         mysqli_stmt_execute($stmt);
@@ -96,8 +108,8 @@ session_start();
                                                     <td><?= htmlspecialchars($city) ?></td>
                                                     <td><?= $topic != "other" ? htmlspecialchars($topic) : htmlspecialchars($other_topic) ?></td>
 
-                                                    <td><?= htmlspecialchars($message) ?></td>
-                                                  
+                                                    <td title="<?= htmlspecialchars($message) ?>">Hover Here</td>
+
                                                     <td>
                                                         <p title="<?php echo $created_at ?>">
 
@@ -123,9 +135,14 @@ session_start();
                                                             <i class="fas fa-trash"></i>
                                                         </a>
                                                     </td>
-                                                   
                                                     <td>
-                                                        <a href="#" data-toggle="modal" data-target="#infomesage<?= $id ?>" class="btn btn-primary btn-sm btn-circle">
+                                                        <a href="#" data-toggle="modal" data-target="#view<?= $id ?>" class="btn btn-info btn-sm btn-circle">
+                                                            <i class="fas fa-info"></i>
+                                                        </a>
+                                                    </td>
+
+                                                    <td>
+                                                        <a href="mailto:<?= $email ?>" class="btn btn-primary btn-sm btn-circle">
                                                             <i class="fas fa-pen"></i>
                                                         </a>
                                                     </td>
@@ -143,12 +160,42 @@ session_start();
                                                                 </button>
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <button type="button" onclick="window.location.href = 'contact.php?delete_product=true&pid=<?= $p_id ?>'" class="btn btn-danger">Delete Now</button>
+                                                                <button type="button" onclick="window.location.href = 'contact.php?delete_contact=true&id=<?= $id ?>'" class="btn btn-danger">Delete Now</button>
                                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
+
+                                                <div class="modal" id="view<?= $id ?>" tabindex="-1" role="dialog">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title">Query from <strong><?= htmlspecialchars($full_name) ?></strong></h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <ul class="list-group">
+                                                                    <li class="list-group-item"><strong>Email:</strong> <?= htmlspecialchars($email) ?></li>
+                                                                    <li class="list-group-item"><strong>Phone:</strong> <?= htmlspecialchars($phone) ?> <a href="tel:<?= $phone?>">Make a Call</a></li>
+                                                                    <li class="list-group-item"><strong>City:</strong> <?= htmlspecialchars($city) ?></li>
+                                                                    <li class="list-group-item"><strong>Topic:</strong> <?= htmlspecialchars($topic) ?></li>
+                                                                    <?php if (!empty($other_topic)) : ?>
+                                                                        <li class="list-group-item"><strong>Other Topic:</strong> <?= htmlspecialchars($other_topic) ?></li>
+                                                                    <?php endif; ?>
+                                                                    <li class="list-group-item"><strong>Message:</strong> <?= nl2br(htmlspecialchars($message)) ?></li>
+                                                                    <li class="list-group-item"><strong>Submitted:</strong> <?= date("M d, Y h:i A", strtotime($created_at)) ?></li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
                                         <?php
                                             }
                                         } else {

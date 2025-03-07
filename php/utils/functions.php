@@ -285,4 +285,20 @@ function parseCSV($string)
 
 
 
+function createNotification($message, $url)
+{
+    global $con;
+    $query = mysqli_query($con, "INSERT INTO `notifications`(`message`, `url`) VALUES ('$message','$url')");
+    if ($query) {
+        return true;
+    } else {
+        return false;
+    }
+}
 
+function getWhatsAppNumber()
+{
+    global $con;
+    $number = mysqli_fetch_assoc(mysqli_query($con,  "SELECT `data1` FROM `settings` WHERE `id` = '3'"));
+    return $number['data1'];
+}

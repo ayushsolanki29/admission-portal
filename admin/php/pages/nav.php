@@ -1,4 +1,3 @@
-
 <script>
     document.querySelector("body").insertAdjacentHTML(
         "beforeend",
@@ -46,66 +45,85 @@
             </div>
         </li>
 
-        <!-- Nav Item - Alerts -->
         <li class="nav-item dropdown no-arrow mx-1">
             <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-bell fa-fw"></i>
 
-              
+                <!-- Counter - Alerts -->
+                <?php
+                // Fetch the total count of unread notifications from the database
+                $total_noty_result = mysqli_query($con, "SELECT COUNT(*) AS `total_notification` FROM `notifications` WHERE `status` = 'unread'");
+                $total_noty = mysqli_fetch_assoc($total_noty_result);
 
-               
-                    <span class="badge badge-danger badge-counter">0</span>
-  
+                // Get the number of unread notifications, default to 0 if not set
+                $total_notification = isset($total_noty['total_notification']) ? (int)$total_noty['total_notification'] : 0;
+                ?>
+
+                <?php if ($total_notification > 0) : ?>
+                    <span class="badge badge-danger badge-counter"><?= $total_notification ?></span>
+                <?php endif; ?> </a>
             <!-- Dropdown - Alerts -->
             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
                 <h6 class="dropdown-header">
                     Alerts Center
                 </h6>
-         
+                <?php
+                function timeAgo($datetime)
+                {
+                    $timestamp = strtotime($datetime);
+                    $timeDiff = time() - $timestamp;
+
+                    if ($timeDiff < 3600) { // Less than 1 hour
+                        return floor($timeDiff / 60) . " minutes ago";
+                    } elseif ($timeDiff < 86400) { // Less than 1 day
+                        return floor($timeDiff / 3600) . " hours ago";
+                    } elseif ($timeDiff < 604800) { // Less than 1 week
+                        return floor($timeDiff / 86400) . " days ago";
+                    } else { // More than 1 week
+                        return date("M d, Y", $timestamp);
+                    }
+                }
+                ?>
+                <?php $noti_query = mysqli_query($con, "SELECT * FROM `notifications`  WHERE `status` = 'unread' ORDER BY `notifications`.`id` DESC LIMIT 10");
+                if (mysqli_num_rows($noti_query) > 0) {
+                    while ($noty = mysqli_fetch_array($noti_query)) { ?>
+                        <a class="dropdown-item d-flex align-items-center" href="<?= $noty['url'] ?>">
+                            <div>
+
+
+                                <div class="small text-gray-500"><?= timeAgo($noty['date']) ?></div>
+
+                                <span class="font-weight-bold"><?= $noty['message'] ?></span>
+                            </div>
+                        </a>
+                    <?php }
+                } else { ?>
                     <a class="dropdown-item d-flex align-items-center" href="notifications.php">
                         <div>
                             <div class="small text-gray-500"></div>
                             <span class="font-weight-bold">No new Notifications</span>
                         </div>
                     </a>
-              
+                <?php }
+                ?>
                 <a class="dropdown-item text-center small text-gray-500" href="notifications.php">Show All Alerts</a>
             </div>
         </li>
 
-        <!-- Nav Item - Messages -->
-        <li class="nav-item dropdown no-arrow mx-1">
-            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-comments"></i>
-           
 
-            </a>
-            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
-                <h6 class="dropdown-header">
-                    Message Center
-                </h6>
-               
-                 
-                    <a class="dropdown-item d-flex align-items-center" href="">
-                        <div class="font-weight-bold">
-                            <div class="text-truncate">NO NEW MESSAGES </div>
 
-                        </div>
-                    </a>
-           
-
-                <a class="dropdown-item text-center small text-gray-500" href="chat.php">Read More Messages</a>
-            </div>
-        </li>
 
         <div class="topbar-divider d-none d-sm-block"></div>
 
         <!-- Nav Item - User Information -->
         <li class="nav-item dropdown no-arrow">
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-             
-                <!-- <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= $a_profile['data2'] ?></span>
-                <img class="img-profile rounded-circle" src="../assets/img/profile/<?= $a_profile['data3'] ?>"> -->
+                <?php
+                $admin_profile = mysqli_query($con, "SELECT `data1`,`data2` FROM `settings` WHERE `id` = 2");
+                $a_profile = mysqli_fetch_array($admin_profile);
+                ?>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= $a_profile['data1'] ?></span>
+
             </a>
             <!-- Dropdown - User Information -->
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">

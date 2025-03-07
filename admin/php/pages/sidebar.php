@@ -13,7 +13,7 @@
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
+    <li class="nav-item ">
         <a class="nav-link" href="index.php">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
@@ -81,6 +81,11 @@
 
     <!-- Nav Item - Tables -->
     <li class="nav-item">
+        <a class="nav-link" href="leads_list.php">
+            <i class="fas fa-chart-line"></i>
+            <span>Leads</span></a>
+    </li>
+    <li class="nav-item">
         <a class="nav-link" href="users_list.php">
             <i class="fas fa-user"></i>
             <span>Users</span></a>
@@ -91,7 +96,7 @@
             <span>Contact</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="banner.php">
+        <a class="nav-link" href="settings.php">
             <i class="fas fa-cog"></i>
             <span>Settings</span></a>
     </li>

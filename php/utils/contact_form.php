@@ -1,5 +1,6 @@
 <?php
 require 'db.php'; // Include your database connection
+require 'functions.php'; // Include your database connection
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Required fields check
@@ -29,14 +30,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Insert into database
-    $sql = "INSERT INTO contact (full_name, email, phone, city, topic, other_topic, message, status, created_at) 
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO contact (full_name, email, phone, city, topic, other_topic, message, created_at) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     
     $stmt = $con->prepare($sql);
     if ($stmt) {
-        $stmt->bind_param("sssssssss", $full_name, $email, $phone_number, $city, $topic, $other_topic, $message, $status, $created_at);
+        $stmt->bind_param("ssssssss", $full_name, $email, $phone_number, $city, $topic, $other_topic, $message, $created_at);
         
         if ($stmt->execute()) {
+            createNotification($full_name . " Just Submited Contact Form" , "contact.php?s=" . $email);
+
             echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
                     <strong>Thank you for contacting us!</strong> We will get back to you shortly.
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
