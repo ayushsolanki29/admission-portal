@@ -9,6 +9,31 @@ session_start();
 
 <head>
     <?php include 'php/pages/meta.php' ?>
+    <?php
+    $meta_title = "CollegeNew.com - Your Trusted College Admission Guide | Find Top Colleges & Courses";
+    $meta_dec = "Discover the best colleges and courses with CollegeNew.com. Get expert admission guidance, compare institutions, and enroll in your dream college with ease.";
+    $meta_keywords = "college admissions, best colleges, courses, university admission, education guidance, career counseling, college search, study programs, higher education";
+    $meta_img = $domain . "assets/img/og-img.png";
+    ?>
+
+
+    <title><?= $meta_title ?></title>
+    <meta name="title" content="<?= $meta_title ?>">
+    <meta name="description" content=<?= $meta_dec ?>>
+    <meta name="keywords" content=<?= $meta_keywords ?>>
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="<?= $domain ?>">
+    <meta property="og:title" content="<?= $meta_title ?>">
+    <meta property="og:description" content="<?= $meta_dec ?>">
+    <meta property="og:image" content="<?= $meta_img ?>">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="<?= $domain ?>">
+    <meta property="twitter:title" content="<?= $meta_title ?>">
+    <meta property="twitter:description" content=<?= $meta_dec ?>>
+    <meta property="twitter:image" content="<?= $meta_img ?>">
+    <link rel="canonical" href="<?= $domain ?>">
 </head>
 
 <body>
@@ -43,8 +68,13 @@ session_start();
                         </div>
                         <div class="col-xl-6 col-lg-6">
                             <div class="slider__content pt-15">
-                                <h1 class="main-title mb-40 wow fadeInUp2 animated" data-wow-delay='.1s'>Learn Everyday & Any New Skills Online with Top <span class="vec-shape">Instructors.</span></h1>
-                                <h5 class="mb-35 wow fadeInUp2 animated" data-wow-delay='.2s'>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.</h5>
+                            <h1 class="main-title mb-40 wow fadeInUp2 animated" data-wow-delay='.1s'>
+    Find the Best Colleges & Courses with Expert <span class="vec-shape">Guidance.</span>
+</h1>
+<h5 class="mb-35 wow fadeInUp2 animated" data-wow-delay='.2s'>
+    Explore top colleges, compare courses, and secure hassle-free admissions with personalized support from our experts.
+</h5>
+
                                 <ul class="search__area d-md-inline-flex align-items-center justify-content-between mb-30">
                                     <li>
                                         <div class="widget__search">
@@ -71,7 +101,8 @@ session_start();
 
                                 <?php
                                 } else { ?>
-                                    <p class="highlight-text"><span>#1</span> Worldwide Online Learning & Skills Development Platform</p>
+                                  <p class="highlight-text"><span>#1</span> Trusted Platform for College Admissions & Career Guidance</p>
+
 
                                 <?php } ?>
                             </div>
@@ -103,7 +134,7 @@ session_start();
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 gx-4 online__course__cat">
                     <?php
                     // Securely fetch all colleges using prepared statements
-                    $stmt = $con->prepare("SELECT `college_name`, `college_logo`, `tag_id` FROM colleges ORDER BY `college_name` ASC");
+                    $stmt = $con->prepare("SELECT `college_name`, `college_logo`, `tag_id` FROM colleges ORDER BY `college_name` ASC LIMIT 6");
                     $stmt->execute();
                     $result = $stmt->get_result();
 
@@ -159,7 +190,7 @@ session_start();
                 <div class="grid row">
                     <?php
                     // Secure SQL query to fetch courses sorted alphabetically
-                    $sql = "SELECT id, course_name, short_form, fees, duration_of_Course, study_mode, enterance_exam, eligibility, department, course_thumbnail FROM courses ORDER BY course_name ASC";
+                    $sql = "SELECT id, course_name, short_form, fees, duration_of_Course, study_mode, enterance_exam, eligibility, department, course_thumbnail FROM courses ORDER BY course_name ASC LIMIT 6";
                     $result = $con->query($sql);
 
                     if ($result->num_rows > 0) {
@@ -218,7 +249,7 @@ session_start();
                 >
                 <div class="row">
                     <div class="col-xxl-12 mt-20 text-center mb-20 wow fadeInUp2 animated" data-wow-delay='.3s'>
-                        <a href="courses.html" class="theme_btn">Explore More</a>
+                        <a href="courses.php" class="theme_btn">Explore More</a>
                     </div>
                 </div>
             </div>

@@ -8,6 +8,30 @@ session_start();
 
 <head>
     <?php include 'php/pages/meta.php' ?>
+    <?php
+    $meta_title = "About Us - CollegeNew.com | Expert College Admission Guidance";
+    $meta_dec = "Learn about CollegeNew.com, your trusted guide for college admissions. We help students find the best colleges and courses with expert guidance and seamless enrollment support.";
+    $meta_keywords = "about CollegeNew, college admissions help, education platform, career counseling, best colleges, study programs, admission assistance";
+    $meta_img = $domain . "assets/img/og-img.png";
+?>
+
+    <title><?= $meta_title ?></title>
+    <meta name="title" content="<?= $meta_title ?>">
+    <meta name="description" content=<?= $meta_dec ?>>
+    <meta name="keywords" content=<?= $meta_keywords ?>>
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="<?= $domain ?>">
+    <meta property="og:title" content="<?= $meta_title ?>">
+    <meta property="og:description" content="<?= $meta_dec ?>">
+    <meta property="og:image" content="<?= $meta_img ?>">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="<?= $domain ?>">
+    <meta property="twitter:title" content="<?= $meta_title ?>">
+    <meta property="twitter:description" content=<?= $meta_dec ?>>
+    <meta property="twitter:image" content="<?= $meta_img ?>">
+    <link rel="canonical" href="<?= $domain ?>">
     <style>
         .banner-part {
             display: flex;

@@ -1,10 +1,11 @@
 <?php
 include '../php/utils/db.php';
 session_start();
-// if (!isset($_SESSION['is_admin']) && $_SESSION['is_admin'] != 'true') {
-//     header("Location:login.php");
-//     exit();
-// }
+
+if (!isset($_SESSION['is_admin'])) {
+    header("Location:login.php");
+    exit();
+}
 if (isset($_GET['delete_college'])) {
     $id = $_GET['id'];
     $college_logo = $_GET['college_logo'];

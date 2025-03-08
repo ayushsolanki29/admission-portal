@@ -11,6 +11,30 @@ if (isset($_SESSION['Auth'])) {
 
 <head>
     <?php include 'php/pages/meta.php' ?>
+    <?php
+    $meta_title = "Register Now - Join CollegeNew.com for Easy Admissions";
+    $meta_dec = "Create your free CollegeNew.com account to explore top colleges, compare courses, and get expert admission guidance. Sign up now and start your journey!";
+    $meta_keywords = "register CollegeNew, student signup, create account, college admissions, education portal, career guidance, course comparison, admission help";
+    $meta_img = $domain . "assets/img/og-img.png";
+?>
+
+    <title><?= $meta_title ?></title>
+    <meta name="title" content="<?= $meta_title ?>">
+    <meta name="description" content=<?= $meta_dec ?>>
+    <meta name="keywords" content=<?= $meta_keywords ?>>
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="<?= $domain ?>">
+    <meta property="og:title" content="<?= $meta_title ?>">
+    <meta property="og:description" content="<?= $meta_dec ?>">
+    <meta property="og:image" content="<?= $meta_img ?>">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="<?= $domain ?>">
+    <meta property="twitter:title" content="<?= $meta_title ?>">
+    <meta property="twitter:description" content=<?= $meta_dec ?>>
+    <meta property="twitter:image" content="<?= $meta_img ?>">
+    <link rel="canonical" href="<?= $domain ?>">
 </head>
 
 <body>

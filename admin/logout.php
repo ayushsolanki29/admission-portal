@@ -1,7 +1,7 @@
 <?php
 session_start();
 session_destroy();
-setcookie("0ffac8ca", "", time() - 3600, '/');
+setcookie("6oxM5UA2E65", "", time() - 3600, '/');
 header("Location:login.php");
 exit();
 ?>

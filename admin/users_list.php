@@ -1,10 +1,11 @@
 <?php
 include '../php/utils/db.php';
 session_start();
-// if (!isset($_SESSION['is_admin']) && $_SESSION['is_admin'] != 'true') {
-//     header("Location:login.php");
-//     exit();
-// }
+
+if (!isset($_SESSION['is_admin'])) {
+    header("Location:login.php");
+    exit();
+}
 
 if (isset($_GET['delete_user'], $_GET['id'])) {
     $id = $_GET['id'];
@@ -156,7 +157,7 @@ if (isset($_GET['activate_user'], $_GET['id'])) {
                                                         </td>
 
                                                     <?php                                   } ?>
-                                                    
+
                                                     <td>
                                                         <a target="_blank" href="https://wa.me/<?= $phone_number ?>" class="btn btn-sm btn-circle text-white" style="background-color: #25d366;">
                                                             <i class="fab fa-whatsapp"></i>

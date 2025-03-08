@@ -30,7 +30,7 @@
                            </div>
                            <h3>Explore Our Top Courses in India</h3>
                            <p>Discover a wide range of courses tailored to your interests and career goals. Find the perfect course and start learning today!</p>
-                           <a href="courses.html" class="theme_btn border_btn active">Browse Courses</a>
+                           <a href="courses.php" class="theme_btn border_btn active">Browse Courses</a>
                        </div>
                    </div>
                </div>

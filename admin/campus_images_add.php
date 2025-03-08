@@ -1,11 +1,11 @@
 <?php
 session_start();
 include '../php/utils/db.php';
-// if (!isset($_SESSION['is_admin']) && $_SESSION['is_admin'] != 'true') {
-//     header("Location:login.php");
-//     exit();
-// }
 
+if (!isset($_SESSION['is_admin'])) {
+    header("Location:login.php");
+    exit();
+}
 if (isset($_POST['upload_images'])) {
     $college_id = $_POST['college_id'];
 

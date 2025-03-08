@@ -2,10 +2,10 @@
 include '../php/utils/db.php';
 session_start();
 $total_rows = "0";
-// if (!isset($_SESSION['is_admin']) && $_SESSION['is_admin'] != 'true') {
-//     header("Location:login.php");
-//     exit();
-// }
+if (!isset($_SESSION['is_admin'])) {
+    header("Location:login.php");
+    exit();
+}
 
 if (isset($_GET['delete_product'], $_GET['id'],$_GET['img'])) {
     $id = $_GET['id'];

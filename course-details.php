@@ -20,6 +20,30 @@ if (isset($_GET['cid'])) {
 
 <head>
     <?php include 'php/pages/meta.php' ?>
+    <?php
+    $meta_title = "{$courses['course_name']} - Course Details, Fees & Admissions | CollegeNew.com";
+    $meta_dec = "Get complete details about {$courses['course_name']} including course fees, duration, eligibility, and admission process. Find the best colleges offering this course.";
+    $meta_keywords = "{$courses['course_name']}, course details, course fees, best courses, study programs, higher education, career guidance, admissions";
+    $meta_img = $domain . "assets/img/course/{$courses['course_thumbnail']}";
+?>
+
+    <title><?= $meta_title ?></title>
+    <meta name="title" content="<?= $meta_title ?>">
+    <meta name="description" content=<?= $meta_dec ?>>
+    <meta name="keywords" content=<?= $meta_keywords ?>>
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="<?= $domain ?>">
+    <meta property="og:title" content="<?= $meta_title ?>">
+    <meta property="og:description" content="<?= $meta_dec ?>">
+    <meta property="og:image" content="<?= $meta_img ?>">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="<?= $domain ?>">
+    <meta property="twitter:title" content="<?= $meta_title ?>">
+    <meta property="twitter:description" content=<?= $meta_dec ?>>
+    <meta property="twitter:image" content="<?= $meta_img ?>">
+    <link rel="canonical" href="<?= $domain ?>">
     <title>
         <?= $courses['course_name'] . " - Details" ?>
     </title>

@@ -8,6 +8,30 @@ session_start();
 
 <head>
     <?php include 'php/pages/meta.php' ?>
+    <?php
+    $meta_title = "Top Colleges in India - Find Best Colleges & Courses | CollegeNew.com";
+    $meta_dec = "Explore the best colleges in India. Compare courses, admission details, and fees to find the perfect college for your career goals with expert guidance.";
+    $meta_keywords = "top colleges in India, best universities, college admissions, higher education, career counseling, study programs, courses and fees";
+    $meta_img = $domain . "assets/img/og-img.png";
+?>
+
+    <title><?= $meta_title ?></title>
+    <meta name="title" content="<?= $meta_title ?>">
+    <meta name="description" content=<?= $meta_dec ?>>
+    <meta name="keywords" content=<?= $meta_keywords ?>>
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="<?= $domain ?>">
+    <meta property="og:title" content="<?= $meta_title ?>">
+    <meta property="og:description" content="<?= $meta_dec ?>">
+    <meta property="og:image" content="<?= $meta_img ?>">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="<?= $domain ?>">
+    <meta property="twitter:title" content="<?= $meta_title ?>">
+    <meta property="twitter:description" content=<?= $meta_dec ?>>
+    <meta property="twitter:image" content="<?= $meta_img ?>">
+    <link rel="canonical" href="<?= $domain ?>">
     <link rel="stylesheet" href="assets\css\college.css">
 
 </head>

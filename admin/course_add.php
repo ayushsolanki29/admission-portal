@@ -2,10 +2,10 @@
 
 session_start();
 include '../php/utils/db.php';
-// if (!isset($_SESSION['is_admin']) && $_SESSION['is_admin'] != 'true') {
-//     header("Location:login.php");
-//     exit();
-// }
+if (!isset($_SESSION['is_admin'])) {
+    header("Location:login.php");
+    exit();
+}
 
 if (isset($_POST['add_course'])) {
     $course_name = $_POST['course_name'];

@@ -1,10 +1,10 @@
 <?php
 include '../php/utils/db.php';
 session_start();
-// if (!isset($_SESSION['is_admin']) && $_SESSION['is_admin'] != 'true') {
-//     header("Location:login.php");
-//     exit();
-// }
+if (!isset($_SESSION['is_admin'])) {
+    header("Location:login.php");
+    exit();
+}
 
 if (isset($_GET['delete_department'])) {
     $pid = $_GET['id'];
@@ -46,7 +46,7 @@ if (isset($_GET['delete_department'])) {
                 <div class="container-fluid">
 
                     <h1 class="h3 mb-2 text-gray-800">Manage Leads</h1>
-                    <p class="mb-4">Review and manage all listed departments. Need to add a new one? <a target="_blank" href="department_add.php">Click here</a>.</p>
+                   
 
                     <br>
                     <?php

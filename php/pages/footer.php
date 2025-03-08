@@ -62,7 +62,7 @@
 
 
 
-  <button id="contact_btn" style="position: fixed; z-index: 2147483647;"><i class="fas fa-headset"></i></button>
+  <button id="contact_btn" style="position: fixed; z-index: 2147483647;"><i class="fas fa-comments"></i></button>
   <!-- Popup Modal -->
 
 

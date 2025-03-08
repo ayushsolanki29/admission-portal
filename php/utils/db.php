@@ -1,10 +1,16 @@
 <?php
 
-$user = "root";
-$pass = "";
+$user = "collegen_admin";
+$pass = "L!7wfT07)6qoID";
 $host = "localhost";
-$db_name = "admission_portal";
-$domain = "http://localhost/collegenew.com";
+$db_name = "collegen_main";
+$domain = "https://collegenew.com";
+
+// $user = "root";
+// $pass = "";
+// $host = "localhost";
+// $db_name = "admission_portal";
+// $domain = "http://localhost/collegenew.com";
 
 $con = mysqli_connect($host, $user, $pass, $db_name);
 if (!$con) {

@@ -93,8 +93,30 @@ $apply_btn = "php/utils/actions.php?create_new_lead=true&lead_source=college&id=
 
 <head>
     <?php include 'php/pages/meta.php' ?>
+    <?php
+    $meta_title = "{$college['college_name']} - Admission, Courses & Fees | CollegeNew.com";
+    $meta_dec = "Explore {$college['college_name']} in {$college['city_name']}. Get details on admissions, courses, fees, and expert guidance to secure your seat.";
+    $meta_keywords = "{$college['college_name']}, {$college['city_name']} colleges, college admissions, best colleges, university courses, education guidance, study programs";
+    $meta_img = $domain . "/assets/img/college/{$college['college_logo']}"; // Ensure the correct image path
+?>
 
-    <title><?= htmlspecialchars($college['college_name'], ENT_QUOTES, 'UTF-8'); ?> - Details</title>
+    <title><?= $meta_title ?></title>
+    <meta name="title" content="<?= $meta_title ?>">
+    <meta name="description" content=<?= $meta_dec ?>>
+    <meta name="keywords" content=<?= $meta_keywords ?>>
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="<?= $domain ?>">
+    <meta property="og:title" content="<?= $meta_title ?>">
+    <meta property="og:description" content="<?= $meta_dec ?>">
+    <meta property="og:image" content="<?= $meta_img ?>">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="<?= $domain ?>">
+    <meta property="twitter:title" content="<?= $meta_title ?>">
+    <meta property="twitter:description" content=<?= $meta_dec ?>>
+    <meta property="twitter:image" content="<?= $meta_img ?>">
+    <link rel="canonical" href="<?= $domain ?>">
 
     <link rel="stylesheet" href="assets\css\colleged.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">

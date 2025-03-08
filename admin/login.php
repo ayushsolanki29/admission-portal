@@ -6,8 +6,8 @@ if (isset($_SESSION['is_admin'])) {
     header("Location:index.php");
     exit();
 }
-if (isset($_COOKIE['0ffac8ca'])) {
-    $token = mysqli_real_escape_string($con, $_COOKIE['0ffac8ca']);
+if (isset($_COOKIE['6oxM5UA2E65'])) {
+    $token = mysqli_real_escape_string($con, $_COOKIE['6oxM5UA2E65']);
     $query = "SELECT * FROM rememberme_tokens WHERE token = '$token' AND expiration > NOW()";
     $result = mysqli_query($con, $query);
 
@@ -18,7 +18,7 @@ if (isset($_COOKIE['0ffac8ca'])) {
         exit();
     } else {
         echo "<script>alert('Login Session is ended Please Login Again')</script>";
-        setcookie("0ffac8ca", "", time() - 3600, "/");
+        setcookie("6oxM5UA2E65", "", time() - 3600, "/");
 
         echo "<script>window.location.href = 'login.php';</script>";
     }
@@ -54,21 +54,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login_admin'])) {
     $username = mysqli_real_escape_string($con, $_POST['username']);
     $password = mysqli_real_escape_string($con, $_POST['password']);
 
-    $stmt = $con->prepare("SELECT `data`, `data1` FROM `settings` WHERE `id` = ?");
-    $id = 4;
+    $stmt = $con->prepare("SELECT `data2`, `data1` FROM `settings` WHERE `id` = ?");
+    $id = 2;
     $stmt->bind_param("i", $id);
     $stmt->execute();
     $result = $stmt->get_result();
 
     if ($result->num_rows == 1) {
         $data = $result->fetch_assoc();
-        if ($data['data'] == $username && password_verify($password, $data['data1'])) {
-            $user_id = 4;
+        if ($data['data1'] == $username && password_verify($password, $data['data2'])) {
+            $user_id = 2;
             $token = bin2hex(random_bytes(42));
             $expiration = date('Y-m-d H:i:s', strtotime('3 days'));
             $insertQuery = "INSERT INTO rememberme_tokens (user_id, token, expiration) VALUES ($user_id, '$token', '$expiration')";
             $run = mysqli_query($con, $insertQuery);
-            setcookie("0ffac8ca", $token, strtotime('+30 days'), '/', '', false, true);
+            setcookie("6oxM5UA2E65", $token, strtotime('+30 days'), '/', '', false, true);
             $_SESSION['attempt'] = 0;
             $_SESSION['is_admin'] = true;
             header("location: index.php");
@@ -97,13 +97,13 @@ if (empty($_SESSION['csrf_token'])) {
 
 <head>
 
-    <title>Login - steam-games.in</title>
+    <title>Login - collegenew.com</title>
     <?php include 'php/pages/head.php' ?>
     <style>
         .bg-login-image {
             background: url('img/collegenew.com.png') no-repeat center center;
             background-size: cover;
-            
+
         }
 
         .card {

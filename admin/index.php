@@ -2,10 +2,10 @@
 include '../php/utils/db.php';
 session_start();
 
-// if (!isset($_SESSION['is_admin'])) {
-//     header("Location:login.php");
-//     exit();
-// }
+if (!isset($_SESSION['is_admin'])) {
+    header("Location:login.php");
+    exit();
+}
 
 // Fetch required data
 $today_date = date('Y-m-d');

@@ -1,10 +1,10 @@
 <?php
 include '../php/utils/db.php';
 session_start();
-// if (!isset($_SESSION['is_admin']) && $_SESSION['is_admin'] != 'true') {
-//     header("Location:login.php");
-//     exit();
-// }
+if (!isset($_SESSION['is_admin'])) {
+    header("Location:login.php");
+    exit();
+}
 
 if (isset($_POST['update_Taxes_data'])) {
     $tax_value = $_POST['tax_value'];

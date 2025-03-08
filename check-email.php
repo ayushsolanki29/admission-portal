@@ -8,6 +8,7 @@ session_start();
 
 <head>
     <?php include 'php/pages/meta.php' ?>
+    
 </head>
 
 <body>
