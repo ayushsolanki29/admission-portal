@@ -32,7 +32,7 @@ session_start();
     <meta property="twitter:title" content="<?= $meta_title ?>">
     <meta property="twitter:description" content=<?= $meta_dec ?>>
     <meta property="twitter:image" content="<?= $meta_img ?>">
-    <link rel="canonical" href="<?= $domain ?>">
+    <link rel="canonical" href="<?= $domain ?>/developer.php">
     <style>
         /* Apple SF Pro Font */
         @import url('https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;600;700&display=swap');

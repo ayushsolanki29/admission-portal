@@ -117,7 +117,7 @@ if (isset($_SESSION['Auth'])) {
     <div class="offset-sidebar">
         <div class="offset-widget offset-logo mb-30">
             <a href="index.php">
-                <img src="assets/img/logo/header_logo_one.png" alt="logo">
+                <img src="assets/img/logo/header_logo_one.png" alt="logo" width="250px">
             </a>
         </div>
         <div class="offset-widget mb-40">
@@ -182,6 +182,8 @@ if (isset($_SESSION['Auth'])) {
 
                     </ul>
                 </li>
+            <?php }else{ ?>
+                        <li><a href="register.php">Register</a></li>
             <?php }
             ?>
         </ul>

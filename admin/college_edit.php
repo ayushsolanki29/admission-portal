@@ -1,28 +1,26 @@
 <?php
 include '../php/utils/db.php';
 session_start();
+
 if (!isset($_SESSION['is_admin'])) {
-    header("Location:login.php");
+    header("Location: login.php");
     exit();
 }
 
 if (isset($_GET['edit'], $_GET['id'])) {
-    $id = $_GET['id'];
-    $select_colleges = "SELECT * FROM `colleges` WHERE `id` = '$id'";
-    $college_result = $con->query($select_colleges);
-    if ($college_result->num_rows > 0) {
-        $college = $college_result->fetch_assoc();
+    $id = intval($_GET['id']);
+    $result = $con->query("SELECT * FROM `colleges` WHERE `id` = $id");
+
+    if ($result->num_rows > 0) {
+        $college = $result->fetch_assoc();
     } else {
-        echo "<script>alert('college Not Found');</script>";
-        header("Location:college_list.php");
+        header("Location: college_list.php?err=College Not Found");
         exit();
     }
 }
 
-if (isset($_POST['edit_college'])) {
-
-    // Get form data
-    $college_id = $id; // Ensure college_id is passed for updating
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['edit_college'])) {
+    $college_id = intval($_GET['id']);
     $college_name = trim($_POST['college_name']);
     $city_name = trim($_POST['city_name']);
     $district_name = trim($_POST['district_name']);
@@ -41,111 +39,52 @@ if (isset($_POST['edit_college'])) {
     $total_Students = trim($_POST['total_Students']);
     $online_Students = trim($_POST['online_Students']);
     $ofline_Students = trim($_POST['ofline_Students']);
-    
-    // Old file paths
-    $old_college_brochure = $_POST['old_college_brochure'];
-    $old_college_campus = $_POST['old_college_campus'];
-    $old_college_logo = $_POST['old_college_logo'];
-    
-    // Directories
-    $college_logo_dir = "../assets/img/college/";
-    $college_campus_dir = "../assets/img/campus_images/";
-    $college_brochure_dir = "../assets/brochure/";
 
-    // File upload function
-    function uploadFile($file, $target_dir, $old_file) {
-        if (!empty($file['name'])) {
-            $file_name = uniqid() . "_" . basename($file['name']);
-            $target_file = $target_dir . $file_name;
-            $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-            $valid_extensions = ["jpg", "jpeg", "png", "gif", "pdf"];
+    $upload_dirs = [
+        "college_logo" => "../assets/img/college/",
+        "college_campus" => "../assets/img/campus_images/",
+        "college_brochure" => "../assets/brochure/"
+    ];
 
-            // Validate file type
-            if (!in_array($imageFileType, $valid_extensions)) {
-                return ["error" => "Invalid File Type"];
-            }
-
-            // Check MIME type
-            $mime = mime_content_type($file['tmp_name']);
-            if (!str_starts_with($mime, "image/") && $imageFileType !== "pdf") {
-                return ["error" => "Invalid MIME Type"];
-            }
-
-            // Move file
-            if (move_uploaded_file($file['tmp_name'], $target_file)) {
-                if (!empty($old_file) && file_exists($target_dir . $old_file)) {
-                    unlink($target_dir . $old_file); // Delete old file
-                }
-                return ["success" => $file_name];
-            }
-            return ["error" => "Failed to upload"];
+    function uploadFile($fileKey, $target_dir, $old_file)
+    {
+        if (!isset($_FILES[$fileKey]) || $_FILES[$fileKey]['error'] !== UPLOAD_ERR_OK) {
+            return $old_file;
         }
-        return ["success" => $old_file]; // Keep old file if no new file is uploaded
+
+        $file_name = uniqid() . "_" . basename($_FILES[$fileKey]['name']);
+        $target_file = $target_dir . $file_name;
+
+        if (move_uploaded_file($_FILES[$fileKey]['tmp_name'], $target_file)) {
+            if (!empty($old_file) && file_exists($target_dir . $old_file)) {
+                unlink($target_dir . $old_file);
+            }
+            return $file_name;
+        }
+        return $old_file;
     }
 
-    // Process file uploads
-    $college_logo = uploadFile($_FILES['college_logo'], $college_logo_dir, $old_college_logo);
-    $college_campus = uploadFile($_FILES['college_campus'], $college_campus_dir, $old_college_campus);
-    $college_brochure = uploadFile($_FILES['college_brochure'], $college_brochure_dir, $old_college_brochure);
+    $college_logo = uploadFile("college_logo", $upload_dirs["college_logo"], $_POST['old_college_logo']);
+    $college_campus = uploadFile("college_campus", $upload_dirs["college_campus"], $_POST['old_college_campus']);
+    $college_brochure = uploadFile("college_brochure", $upload_dirs["college_brochure"], $_POST['old_college_brochure']);
 
-    // Check for upload errors
-    if (isset($college_logo['error']) || isset($college_campus['error']) || isset($college_brochure['error'])) {
-        echo "<script>alert('File upload failed: Check file format');</script>";
-        header("location: college_list.php?err=File upload failed: Check file format");
-        exit;
-    }
+    $update_query = "UPDATE colleges SET 
+        college_name = '$college_name', city_name = '$city_name', district_name = '$district_name', 
+        admission_type = '$admission_type', courseId = '$courseId', desciption_of_college = '$desciption_of_college',
+        university_details = '$university_details', admission_process = '$admission_process', placement_details = '$placement_details',
+        college_logo = '$college_logo', college_brochure = '$college_brochure', median_salary = '$median_salary',
+        avarage_package = '$avarage_package', highest_package = '$highest_package', finance_type = '$finance_type',
+        university_name = '$university_name', total_Students = '$total_Students', online_Students = '$online_Students',
+        ofline_Students = '$ofline_Students', college_campus = '$college_campus', google_map_link = '$google_map_link'
+        WHERE id = $college_id";
 
-    // Prepare update query
-    $stmt = $con->prepare("UPDATE colleges SET college_name = ?, city_name = ?, district_name = ?, admission_type = ?, courseId = ?, desciption_of_college = ?, university_details = ?, admission_process = ?, placement_details = ?, college_logo = ?, college_brochure = ?, median_salary = ?, avarage_package = ?, highest_package = ?, finance_type = ?, university_name = ?, total_Students = ?, online_Students = ?, ofline_Students = ?, college_campus = ?, google_map_link = ? WHERE id = ?");
-
-    if ($stmt) {
-        // Bind parameters
-        $stmt->bind_param(
-            "sssssssssssssssssssssi",
-            $college_name,
-            $city_name,
-            $district_name,
-            $admission_type,
-            $courseId,
-            $desciption_of_college,
-            $university_details,
-            $admission_process,
-            $placement_details,
-            $college_logo['success'],
-            $college_brochure['success'],
-            $median_salary,
-            $avarage_package,
-            $highest_package,
-            $finance_type,
-            $university_name,
-            $total_Students,
-            $online_Students,
-            $ofline_Students,
-            $college_campus['success'],
-            $google_map_link,
-            $college_id
-        );
-
-        // Execute query
-        if ($stmt->execute()) {
-            echo "<script>alert('College Updated Successfully');</script>";
-            header("location: college_list.php?success=College Updated Successfully");
-        } else {
-            echo "<script>alert('Error Updating College');</script>";
-            header("location: college_list.php?err=Error Updating College");
-
-        }
-        
-        $stmt->close(); // Close statement
+    if ($con->query($update_query)) {
+        header("Location: college_list.php?success=College Updated Successfully");
     } else {
-        echo "<script>alert('Database Error: Failed to prepare statement');</script>";
-        header("location: college_list.php?err=Database Error: Failed to prepare statement");
-
+        header("Location: college_list.php?err=Update Failed");
     }
-    
-    $con->close(); // Close DB connection
+    exit();
 }
-
 ?>
 
 <!DOCTYPE html>

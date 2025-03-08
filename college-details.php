@@ -3,6 +3,12 @@ include 'php/utils/db.php';
 include 'php/utils/functions.php';
 session_start();
 
+if (isset($_SESSION['Auth'])) {
+    $user_id = $_SESSION['Auth'];
+} else {
+    header('Location: login.php?error=Please Login First For Checking College');
+    exit();
+}
 
 // Check if 'u' parameter is set
 if (isset($_GET['u'])) {
@@ -98,7 +104,7 @@ $apply_btn = "php/utils/actions.php?create_new_lead=true&lead_source=college&id=
     $meta_dec = "Explore {$college['college_name']} in {$college['city_name']}. Get details on admissions, courses, fees, and expert guidance to secure your seat.";
     $meta_keywords = "{$college['college_name']}, {$college['city_name']} colleges, college admissions, best colleges, university courses, education guidance, study programs";
     $meta_img = $domain . "/assets/img/college/{$college['college_logo']}"; // Ensure the correct image path
-?>
+    ?>
 
     <title><?= $meta_title ?></title>
     <meta name="title" content="<?= $meta_title ?>">
@@ -116,10 +122,10 @@ $apply_btn = "php/utils/actions.php?create_new_lead=true&lead_source=college&id=
     <meta property="twitter:title" content="<?= $meta_title ?>">
     <meta property="twitter:description" content=<?= $meta_dec ?>>
     <meta property="twitter:image" content="<?= $meta_img ?>">
-    <link rel="canonical" href="<?= $domain ?>">
+    <link rel="canonical" href="<?= $domain ?>/college-details.php?u=<?=  $tagId?>">
 
     <link rel="stylesheet" href="assets\css\colleged.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
 </head>
 
 <body>
@@ -399,27 +405,28 @@ $apply_btn = "php/utils/actions.php?create_new_lead=true&lead_source=college&id=
                 <div class="row g-3">
                     <?php
                     $facilities = [
-                        ["fa-book-open", "Academic Zone"],
-                        ["fa-money-check-alt", "ATM"],
-                        ["fa-bed", "Boys Hostel"],
-                        ["fa-utensils", "Canteen"],
-                        ["fa-desktop", "Computer Lab"],
-                        ["fa-bed", "Girls Hostel"],
-                        ["fa-burger", "Mess"],
-                        ["fa-book", "Library"],
-                        ["fa-hospital", "Medical Facilities"],
-                        ["fa-chalkboard-teacher", "Classroom"],
-                        ["fa-briefcase", "Placement"],
-                        ["fa-futbol", "Sports"],
-                        ["fa-envelope", "Post Office"],
-                        ["fa-flask", "R&D"],
-                        ["fa-university", "Residential Institute"],
-                        ["fa-home", "Residential Zone"],
-                        ["fa-building", "Residential Zone"],
-                        ["fa-shopping-cart", "Shopping"],
-                        ["fa-bus", "Transport"],
-                        ["fa-wifi", "WiFi"]
+                        ["fas fa-book-open", "Academic Zone"],
+                        ["fas fa-money-check-alt", "ATM"],
+                        ["fas fa-bed", "Boys Hostel"],
+                        ["fas fa-utensils", "Canteen"],
+                        ["fas fa-desktop", "Computer Lab"],
+                        ["fas fa-bed", "Girls Hostel"],
+                        ["fas fa-hamburger", "Mess"],
+                        ["fas fa-book", "Library"],
+                        ["fas fa-hospital", "Medical Facilities"],
+                        ["fas fa-chalkboard-teacher", "Classroom"],
+                        ["fas fa-briefcase", "Placement"],
+                        ["fas fa-futbol", "Sports"],
+                        ["fas fa-envelope", "Post Office"],
+                        ["fas fa-flask", "R&D"],
+                        ["fas fa-university", "Residential Institute"],
+                        ["fas fa-home", "Residential Zone"],
+                        ["fas fa-building", "Residential Zone"],
+                        ["fas fa-shopping-cart", "Shopping"],
+                        ["fas fa-bus", "Transport"],
+                        ["fas fa-wifi", "WiFi"]
                     ];
+
                     ?>
                     <?php foreach ($facilities as $facility): ?>
                         <div class="col-6 col-md-4 col-lg-3">

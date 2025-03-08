@@ -1,8 +1,10 @@
 <?php
 include '../php/utils/db.php';
 session_start();
+
+// Check if admin is logged in
 if (!isset($_SESSION['is_admin'])) {
-    header("Location:login.php");
+    header("Location: login.php");
     exit();
 }
 
@@ -28,101 +30,43 @@ if (isset($_POST['add_college'])) {
     $google_map_link = trim($_POST['google_map_link']);
     $tag_id = uniqid();
 
-    // Directories
+    // File directories
     $college_logo_dir = "../assets/img/college/";
     $college_brochure_dir = "../assets/brochure/";
     $college_campus_dir = "../assets/img/campus_images/";
 
-    // File Upload Handling
+    // Upload file function using only $_FILES[]
     function uploadFile($file, $target_dir)
     {
-        $file_name = uniqid() . "_" . basename($file['name']);
-        $target_file = $target_dir . $file_name;
-        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-        $valid_extensions = ["jpg", "jpeg", "png", "gif", "pdf"];
-
-        // Validate file type
-        if (!in_array($imageFileType, $valid_extensions)) {
-            return ["error" => "Invalid File Type"];
+        if ($file['error'] == 0) {
+            $file_name = uniqid() . "_" . basename($file['name']);
+            $target_file = $target_dir . $file_name;
+            if (move_uploaded_file($file['tmp_name'], $target_file)) {
+                return $file_name;
+            }
         }
-
-        // Check MIME type (better security)
-        $mime = mime_content_type($file['tmp_name']);
-        if (!str_starts_with($mime, "image/") && $imageFileType !== "pdf") {
-            return ["error" => "Invalid MIME Type"];
-        }
-
-        // Move file
-        if (move_uploaded_file($file['tmp_name'], $target_file)) {
-            return ["success" => $file_name];
-        }
-
-        return ["error" => "Failed to upload"];
+        return null;
     }
 
-    // Process uploads
-    $college_logo = !empty($_FILES['college_logo']['name']) ? uploadFile($_FILES['college_logo'], $college_logo_dir) : null;
-    $college_brochure = !empty($_FILES['college_brochure']['name']) ? uploadFile($_FILES['college_brochure'], $college_brochure_dir) : null;
-    $college_campus = !empty($_FILES['college_campus']['name']) ? uploadFile($_FILES['college_campus'], $college_campus_dir) : null;
+    // Process file uploads
+    $college_logo = isset($_FILES['college_logo']) && $_FILES['college_logo']['error'] == 0 ? uploadFile($_FILES['college_logo'], $college_logo_dir) : '';
+    $college_brochure = isset($_FILES['college_brochure']) && $_FILES['college_brochure']['error'] == 0 ? uploadFile($_FILES['college_brochure'], $college_brochure_dir) : '';
+    $college_campus = isset($_FILES['college_campus']) && $_FILES['college_campus']['error'] == 0 ? uploadFile($_FILES['college_campus'], $college_campus_dir) : '';
 
-    // Check for upload errors
-    if (isset($college_logo['error']) || isset($college_brochure['error']) || isset($college_campus['error'])) {
-        echo "<script>alert('File upload failed: Check file format');</script>";
-        exit;
-    }
+    // Construct SQL query
+    $sql = "INSERT INTO colleges (college_name, city_name, district_name, admission_type, courseId, desciption_of_college, university_details, admission_process, placement_details, college_logo, college_brochure, median_salary, avarage_package, highest_package, finance_type, university_name, total_Students, online_Students, ofline_Students, tag_id, college_campus, google_map_link) 
+            VALUES ('$college_name', '$city_name', '$district_name', '$admission_type', '$courseId', '$description_of_college', '$university_details', '$admission_process', '$placement_details', '$college_logo', '$college_brochure', '$median_salary', '$average_package', '$highest_package', '$finance_type', '$university_name', '$total_Students', '$online_Students', '$offline_Students', '$tag_id', '$college_campus', '$google_map_link')";
 
-    // Prepare SQL statement to prevent SQL injection
-    $stmt = $con->prepare("INSERT INTO colleges (college_name, city_name, district_name, admission_type, courseId, desciption_of_college, university_details, admission_process, placement_details, college_logo, college_brochure, median_salary, avarage_package, highest_package, finance_type, university_name, total_Students, online_Students, ofline_Students, tag_id, college_campus, google_map_link) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-
-    if ($stmt) {
-        // Bind parameters
-        $stmt->bind_param(
-            "ssssssssssssssssssssss",
-            $college_name,
-            $city_name,
-            $district_name,
-            $admission_type,
-            $courseId,
-            $description_of_college,
-            $university_details,
-            $admission_process,
-            $placement_details,
-            $college_logo['success'],
-            $college_brochure['success'],
-            $median_salary,
-            $average_package,
-            $highest_package,
-            $finance_type,
-            $university_name,
-            $total_Students,
-            $online_Students,
-            $offline_Students,
-            $tag_id,
-            $college_campus['success'],
-            $google_map_link
-        );
-
-        // Execute statement
-        if ($stmt->execute()) {
-            echo "<script>alert('College Added Successfully');</script>";
-            header("location:college_list.php?success=College Added Successfully!");
-        } else {
-            echo "<script>alert('Error Adding College');</script>";
-            header("location:college_list.php?err=Error Adding College!");
-        }
-
-        // Close statement
-        $stmt->close();
+    if ($con->query($sql) === TRUE) {
+        header("location:college_list.php?success=College Added Successfully!");
     } else {
-        echo "<script>alert('Database Error: Failed to prepare statement');</script>";
+        echo "Error: " . $con->error;
     }
 
-    // Close connection
     $con->close();
 }
-
-
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">

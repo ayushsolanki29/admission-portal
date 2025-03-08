@@ -2,7 +2,12 @@
 include 'php/utils/db.php';
 include 'php/utils/functions.php';
 session_start();
-
+if (isset($_SESSION['Auth'])) {
+    $user_id = $_SESSION['Auth'];
+} else {
+    header('Location: login.php?error=Please Login First For Checking Course');
+    exit();
+}
 if (isset($_GET['cid'])) {
     $tagId = $_GET['cid'];
     $stmt = $con->prepare("SELECT * FROM courses WHERE id = ?");
@@ -43,7 +48,7 @@ if (isset($_GET['cid'])) {
     <meta property="twitter:title" content="<?= $meta_title ?>">
     <meta property="twitter:description" content=<?= $meta_dec ?>>
     <meta property="twitter:image" content="<?= $meta_img ?>">
-    <link rel="canonical" href="<?= $domain ?>">
+    <link rel="canonical" href="<?= $domain ?>/course-details.php?u=<?= $tagId ?>">
     <title>
         <?= $courses['course_name'] . " - Details" ?>
     </title>

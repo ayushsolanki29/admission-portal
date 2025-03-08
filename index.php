@@ -33,7 +33,7 @@ session_start();
     <meta property="twitter:title" content="<?= $meta_title ?>">
     <meta property="twitter:description" content=<?= $meta_dec ?>>
     <meta property="twitter:image" content="<?= $meta_img ?>">
-    <link rel="canonical" href="<?= $domain ?>">
+    <link rel="canonical" href="<?= $domain ?>/">
 </head>
 
 <body>
@@ -60,8 +60,8 @@ session_start();
                                 <img class="slide-shape img-two" src="assets/img/slider/02.png" alt="">
                                 <img class="slide-shape img-three" src="assets/img/slider/03.png" alt="">
                                 <img class="slide-shape img-four" src="assets/img/shape/dot-box-1.svg" alt="">
-                                <!-- <img class="slide-shape img-five" src="assets/img/shape/dot-box-2.svg" alt=""> -->
-                                <img class="slide-shape img-six" src="assets/img/shape/zigzg-1.svg" alt="">
+                                <img class="slide-shape img-five" src="assets/img/shape/dot-box-2.svg" alt="">
+                                <!-- <img class="slide-shape img-six" src="assets/img/shape/zigzg-1.svg" alt=""> -->
                                 <img class="slide-shape img-seven wow fadeInRight animated" data-delay="1.5s" src="assets/img/icon/dot-plan-1.svg" alt="Chose-img">
                                 <img class="slide-shape img-eight" src="assets/img/slider/earth-bg.svg" alt="">
                             </div>

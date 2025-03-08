@@ -32,7 +32,7 @@ session_start();
     <meta property="twitter:title" content="<?= $meta_title ?>">
     <meta property="twitter:description" content=<?= $meta_dec ?>>
     <meta property="twitter:image" content="<?= $meta_img ?>">
-    <link rel="canonical" href="<?= $domain ?>">
+    <link rel="canonical" href="<?= $domain ?>/developer.php">
 </head>
 
 <body>
@@ -117,7 +117,6 @@ session_start();
                             $course_id = (int) $row['id'];
                             $course_name = htmlspecialchars($row['course_name'], ENT_QUOTES, 'UTF-8');
                             $short_form = htmlspecialchars($row['short_form'], ENT_QUOTES, 'UTF-8');
-                            $fees = htmlspecialchars($row['fees'], ENT_QUOTES, 'UTF-8');
                             $duration = htmlspecialchars($row['duration_of_Course'], ENT_QUOTES, 'UTF-8');
                             $study_mode = htmlspecialchars($row['study_mode'], ENT_QUOTES, 'UTF-8');
                             $entrance_exam = htmlspecialchars($row['enterance_exam'], ENT_QUOTES, 'UTF-8');
@@ -151,7 +150,7 @@ session_start();
                                                     <span>Entrance Exam: <?= $entrance_exam ?></span>
                                                 </div>
                                             </div>
-                                            <p>Fees: <span>₹<?= $fees ?></span></p>
+                                            <p>Fees: <span>Click Here</span></p>
                                         </div>
 
                                     </div>

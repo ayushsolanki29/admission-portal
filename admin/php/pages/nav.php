@@ -3,7 +3,7 @@
         "beforeend",
         `
     <div class="loader_box">
-        <img src='../assets/img/f.gif' ;/>
+        <img src='../assets/img/logo/header_logo_one.png' ;/>
     </div>
     `
     );
