@@ -43,7 +43,7 @@ session_start();
 
     <main>
         <!--slider-area start-->
-        <section class="slider-area pt-180 pt-xs-150 pt-150 pb-xs-35">
+        <section class="slider-area  pt-xs-150 pt-100 pb-xs-35">
             <img class="sl-shape shape_01" src="assets/img/icon/01.svg" alt="">
             <img class="sl-shape shape_02" src="assets/img/icon/02.svg" alt="">
             <img class="sl-shape shape_03" src="assets/img/icon/03.svg" alt="">
@@ -60,7 +60,7 @@ session_start();
                                 <img class="slide-shape img-two" src="assets/img/slider/02.png" alt="">
                                 <img class="slide-shape img-three" src="assets/img/slider/03.png" alt="">
                                 <img class="slide-shape img-four" src="assets/img/shape/dot-box-1.svg" alt="">
-                                <img class="slide-shape img-five" src="assets/img/shape/dot-box-2.svg" alt="">
+                                <!-- <img class="slide-shape img-five" src="assets/img/shape/dot-box-2.svg" alt=""> -->
                                 <!-- <img class="slide-shape img-six" src="assets/img/shape/zigzg-1.svg" alt=""> -->
                                 <img class="slide-shape img-seven wow fadeInRight animated" data-delay="1.5s" src="assets/img/icon/dot-plan-1.svg" alt="Chose-img">
                                 <img class="slide-shape img-eight" src="assets/img/slider/earth-bg.svg" alt="">
@@ -68,12 +68,12 @@ session_start();
                         </div>
                         <div class="col-xl-6 col-lg-6">
                             <div class="slider__content pt-15">
-                            <h1 class="main-title mb-40 wow fadeInUp2 animated" data-wow-delay='.1s'>
-    Find the Best Colleges & Courses with Expert <span class="vec-shape">Guidance.</span>
-</h1>
-<h5 class="mb-35 wow fadeInUp2 animated" data-wow-delay='.2s'>
-    Explore top colleges, compare courses, and secure hassle-free admissions with personalized support from our experts.
-</h5>
+                                <h1 class="main-title mb-40 wow fadeInUp2 animated" data-wow-delay='.1s'>
+                                    Find the Best Colleges & Courses with Expert <span class="vec-shape">Guidance.</span>
+                                </h1>
+                                <h5 class="mb-35 wow fadeInUp2 animated" data-wow-delay='.2s'>
+                                    Explore top colleges, compare courses, and secure hassle-free admissions with personalized support from our experts.
+                                </h5>
 
                                 <ul class="search__area d-md-inline-flex align-items-center justify-content-between mb-30">
                                     <li>
@@ -101,7 +101,7 @@ session_start();
 
                                 <?php
                                 } else { ?>
-                                  <p class="highlight-text"><span>#1</span> Trusted Platform for College Admissions & Career Guidance</p>
+                                    <p class="highlight-text"><span>#1</span> Trusted Platform for College Admissions & Career Guidance</p>
 
 
                                 <?php } ?>
@@ -112,10 +112,7 @@ session_start();
             </div>
         </section>
         <!--slider-area end-->
-        <!--great-deal-area start-->
-        <section class="great-deal-area pt-150 pb-0 pt-md-100 pb-md-40 pt-xs-100 pb-xs-40">
-            <?php include 'php/pages/choose-your-department.php'; ?>
-        </section>
+   
         <!--great-deal-area end-->
         <?php include 'php/pages/what-are-you-looking-for.php'; ?>
 
@@ -124,7 +121,7 @@ session_start();
                 <div class="row justify-content-center">
                     <div class="col-xl-6 col-lg-8">
                         <div class="section-title section-title-3 text-center mb-60">
-                            <h5 class="mb-25">Discover Top Colleges</h5>
+                       
                             <h2 class="mb-20">Explore <span class="bottom-line">Leading Institutions</span></h2>
                             <p>Find the best colleges offering a variety of courses to kickstart your academic journey. Choose from accredited institutions and get started today!</p>
                         </div>
@@ -134,7 +131,7 @@ session_start();
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 gx-4 online__course__cat">
                     <?php
                     // Securely fetch all colleges using prepared statements
-                    $stmt = $con->prepare("SELECT `college_name`, `college_logo`, `tag_id` FROM colleges ORDER BY `college_name` ASC LIMIT 6");
+                    $stmt = $con->prepare("SELECT `college_name`, `college_logo`, `tag_id` FROM colleges ORDER BY `college_name` ASC LIMIT 3");
                     $stmt->execute();
                     $result = $stmt->get_result();
 
@@ -182,7 +179,7 @@ session_start();
                     <div class="section-title section-title-3 text-center text-xl-start mb-30">
                         <h5 class="mb-25">Featured Courses</h5>
                         <h2 class="mb-20">Explore our <span class="bottom-line">Popular Courses</span></h2>
-                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour.</p>
+                       
                     </div>
 
 
@@ -190,7 +187,7 @@ session_start();
                 <div class="grid row">
                     <?php
                     // Secure SQL query to fetch courses sorted alphabetically
-                    $sql = "SELECT id, course_name, short_form, fees, duration_of_Course, study_mode, enterance_exam, eligibility, department, course_thumbnail FROM courses ORDER BY course_name ASC LIMIT 6";
+                    $sql = "SELECT id, course_name, short_form, fees, duration_of_Course, study_mode, enterance_exam, eligibility, department, course_thumbnail FROM courses ORDER BY course_name ASC LIMIT 3";
                     $result = $con->query($sql);
 
                     if ($result->num_rows > 0) {
@@ -208,33 +205,16 @@ session_start();
                             $course_thumbnail = htmlspecialchars($row['course_thumbnail'], ENT_QUOTES, 'UTF-8');
 
                             // Course Details URL with ID
-                            $course_url = "course-details.php?id=$course_id";
+                            $course_url = "colleges.php?cid=$course_id";
                     ?>
                             <div class="col-lg-4 col-md-6 grid-item">
                                 <div class="z-gallery z-gallery-two gallery-03 mb-30">
-                                    <div class="z-gallery__thumb mb-20">
-                                        <a href="<?= $course_url ?>">
-                                            <img class="img-fluid" src="assets/img/course/<?= $course_thumbnail ?>" alt="<?= $course_name ?>">
-                                        </a>
-                                    </div>
+                                 
                                     <div class="z-gallery__content pos-rel">
-                                        <div class="course__meta d-flex align-items-center justify-content-between mb-15">
-                                            <span><img class="icon" src="assets/img/icon/time.svg" alt="course-meta"> <?= $duration ?></span>
-                                            <span><img class="icon" src="assets/img/icon/bar-chart.svg" alt="course-meta"> <?= $study_mode ?></span>
-                                        </div>
-                                        <h4 class="sub-title mb-15">
-                                            <a href="<?= $course_url ?>"><?= $course_name ?> (<?= $short_form ?>)</a>
+                                    
+                                        <h4 class="sub-title  p-3">
+                                            <a href="<?= $course_url ?>"><?= $course_name ?></a>
                                         </h4>
-                                        <p class="mb-20">Eligibility: <?= $eligibility ?></p>
-                                        <div class="course__authors d-xl-flex align-items-center justify-content-between mb-20">
-                                            <div class="course__authors-box d-flex align-items-center">
-                                                <div class="course__authors-box-text ml-10">
-                                                    <h5><?= $department ?></h5>
-                                                    <span>Entrance Exam: <?= $entrance_exam ?></span>
-                                                </div>
-                                            </div>
-                                            <p>Fees: <span>₹<?= $fees ?></span></p>
-                                        </div>
 
                                     </div>
                                 </div>
@@ -246,7 +226,7 @@ session_start();
                     }
                     ?>
                 </div>
-                >
+                
                 <div class="row">
                     <div class="col-xxl-12 mt-20 text-center mb-20 wow fadeInUp2 animated" data-wow-delay='.3s'>
                         <a href="courses.php" class="theme_btn">Explore More</a>
@@ -276,8 +256,9 @@ session_start();
                                     <div class="feature tag_01"><span><img src="assets/img/icon/shield-check.svg" alt=""></span> Safe & Secured</div>
                                     <div class="feature tag_02"><span><img src="assets/img/icon/catalog.svg" alt=""></span> 120+ Colleges</div>
                                     <div class="feature tag_03"><span><i class="fal fa-check"></i></span> Gerruntide Admission</div>
+                               
                                     <div class="video-wrapper">
-                                        <a href="https://www.youtube.com/watch?v=7omGYwdcS04" class="popup-video"><i class="fas fa-play"></i></a>
+                                        <a href="https://www.youtube.com/watch?v=aF-sOuKfSKk" class="popup-video"><i class="fas fa-play"></i></a>
                                     </div>
                                     <div class="img-bg pos-rel">
                                         <img class="chose_05 pl-70 pl-lg-0 pl-md-0 pl-xs-0" src="assets/img/chose/05.png" alt="Chose-img">
@@ -310,22 +291,22 @@ session_start();
         </div>
         <!-- why-chose-section-wrapper start -->
         <?php
-        $testimonials = [
-            ["name" => "Rohan Sharma", "course" => "B.Tech Student", "review" => "The admission process was so smooth! I got into my dream college without any hassle. Highly recommended!"],
-            ["name" => "Pooja Verma", "course" => "MBA Aspirant", "review" => "This platform provided me with proper guidance. The counselors were very helpful in clearing my doubts!"],
-            ["name" => "Vikram Patel", "course" => "Engineering Student", "review" => "I had many queries, but the team was always available to help me out. Thanks for the amazing service!"],
-            ["name" => "Sneha Joshi", "course" => "Medical Student", "review" => "I was unsure about which college to choose, but the experts guided me perfectly. Now I'm studying at my desired university!"],
-            ["name" => "Aditya Mehta", "course" => "BBA Student", "review" => "I applied through this platform and got admission without any trouble. The team was very supportive!"],
-            ["name" => "Simran Kaur", "course" => "M.Sc Aspirant", "review" => "I was struggling with the application process, but this service made everything easy and stress-free!"],
-            ["name" => "Rahul Desai", "course" => "B.Com Student", "review" => "This platform really cares about students. They helped me shortlist the best colleges according to my profile."],
-            ["name" => "Megha Reddy", "course" => "Law Student", "review" => "I received step-by-step guidance on admission procedures. I'm truly grateful for their support!"],
-            ["name" => "Amit Trivedi", "course" => "B.Sc Student", "review" => "The experts here helped me clear my doubts about colleges and courses. I highly recommend their services!"],
-            ["name" => "Neha Kapoor", "course" => "MBA Candidate", "review" => "I got admission into a top-tier college without any confusion. Their support team was very patient and helpful!"]
-        ];
+        // $testimonials = [
+        //     ["name" => "Rohan Sharma", "course" => "B.Tech Student", "review" => "The admission process was so smooth! I got into my dream college without any hassle. Highly recommended!"],
+        //     ["name" => "Pooja Verma", "course" => "MBA Aspirant", "review" => "This platform provided me with proper guidance. The counselors were very helpful in clearing my doubts!"],
+        //     ["name" => "Vikram Patel", "course" => "Engineering Student", "review" => "I had many queries, but the team was always available to help me out. Thanks for the amazing service!"],
+        //     ["name" => "Sneha Joshi", "course" => "Medical Student", "review" => "I was unsure about which college to choose, but the experts guided me perfectly. Now I'm studying at my desired university!"],
+        //     ["name" => "Aditya Mehta", "course" => "BBA Student", "review" => "I applied through this platform and got admission without any trouble. The team was very supportive!"],
+        //     ["name" => "Simran Kaur", "course" => "M.Sc Aspirant", "review" => "I was struggling with the application process, but this service made everything easy and stress-free!"],
+        //     ["name" => "Rahul Desai", "course" => "B.Com Student", "review" => "This platform really cares about students. They helped me shortlist the best colleges according to my profile."],
+        //     ["name" => "Megha Reddy", "course" => "Law Student", "review" => "I received step-by-step guidance on admission procedures. I'm truly grateful for their support!"],
+        //     ["name" => "Amit Trivedi", "course" => "B.Sc Student", "review" => "The experts here helped me clear my doubts about colleges and courses. I highly recommend their services!"],
+        //     ["name" => "Neha Kapoor", "course" => "MBA Candidate", "review" => "I got admission into a top-tier college without any confusion. Their support team was very patient and helpful!"]
+        // ];
 
-        $latestReviews = array_slice($testimonials, -10); // Get the latest 10 reviews
-        ?>
-
+        // $latestReviews = array_slice($testimonials, -10); // Get the latest 10 reviews
+        // ?>
+<!-- 
         <section class="testimonial-area nav-style-chevron pt-150 pb-120 pt-md-95 pb-md-70 pt-xs-95 pb-xs-5">
             <div class="container testimonial-bg">
                 <div class="row justify-content-center">
@@ -355,7 +336,7 @@ session_start();
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
 
 
 

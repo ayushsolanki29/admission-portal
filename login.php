@@ -18,7 +18,7 @@ if (isset($_SESSION['Auth'])) {
     $meta_dec = "Access your CollegeNew.com account to explore top colleges, compare courses, and manage your admission process with ease.";
     $meta_keywords = "CollegeNew login, student login, college admissions, course comparison, education portal, secure login, account access";
     $meta_img = $domain . "assets/img/og-img.png";
-?>
+    ?>
 
     <title><?= $meta_title ?></title>
     <meta name="title" content="<?= $meta_title ?>">
@@ -66,6 +66,12 @@ if (isset($_SESSION['Auth'])) {
                                 </div>
 
                             <?php endif; ?>
+                            <?php if (isset($_GET['success'])): ?>
+                                <div class="alert alert-success text-start">
+                                    <?= $_GET['success'] ?>
+                                </div>
+
+                            <?php endif; ?>
 
                             <form action="php/utils/actions.php?login=true&api" method="post" class="row gx-3 comments-form contact-form">
 
@@ -75,12 +81,14 @@ if (isset($_SESSION['Auth'])) {
 
                                 </div>
 
-                                <!-- Password Field -->
-                                <div class="col-lg-12 mb-30">
-                                    <input type="password" placeholder="Password" name="password">
-
+                                <div class="col-lg-12 mb-30 position-relative">
+                                    <input type="password" class="form-control" placeholder="Password" name="password" id="password">
+                                    <span id="togglePassword" class="position-absolute"
+                                        style="right: 25px; top: 50%; transform: translateY(-50%); cursor: pointer;">
+                                        <i class="fas fa-eye"></i>
+                                    </span>
+                                     
                                 </div>
-
 
 
                                 <!-- Submit Button -->
@@ -109,6 +117,22 @@ if (isset($_SESSION['Auth'])) {
     </main>
 
     <?php include 'php/pages/footer.php' ?>
+    <script>
+    $(document).ready(function () {
+        $("#togglePassword").click(function () {
+            let input = $("#password");
+            let icon = $(this).find("i");
+            
+            if (input.attr("type") === "password") {
+                input.attr("type", "text");
+                icon.removeClass("fa-eye").addClass("fa-eye-slash");
+            } else {
+                input.attr("type", "password");
+                icon.removeClass("fa-eye-slash").addClass("fa-eye");
+            }
+        });
+    });
+</script>
 </body>
 
 </html>

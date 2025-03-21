@@ -74,7 +74,7 @@ if (isset($_SESSION['Auth'])) {
                                     <?= showError('phone_number') ?>
                                 </div>
                                 <div class="col-lg-12 mb-30">
-                                    <input type="tel" placeholder="City" name="city" value="<?= showFormData('city') ?>">
+                                    <input type="text" placeholder="City" name="city" value="<?= showFormData('city') ?>">
                                     <?= showError('city') ?>
                                 </div>
                                 <div class="col-lg-12 mb-30">
@@ -112,16 +112,20 @@ if (isset($_SESSION['Auth'])) {
 
                                     <?= showError('department') ?>
                                 </div>
-                                <div class="col-lg-12 mb-30">
-                                    <input type="password" placeholder="password" name="password">
+                              
+                                <div class="col-lg-12 mb-30 position-relative">
+                                    <input type="password" class="form-control" placeholder="Password" name="password" id="password">
+                                    <span id="togglePassword" class="position-absolute"
+                                        style="right: 25px; top: 50%; transform: translateY(-50%); cursor: pointer;">
+                                        <i class="fas fa-eye"></i>
+                                    </span>
                                     <?= showError('password') ?>
                                 </div>
 
 
 
-
                                 <p class="text-start ">
-                                    By clicking the <strong>Register Now</strong>, you agree to our <a href="#" class="theme-color">Terms & Conditions</a> and <a href="#" class="theme-color">Privacy Policy</a>
+                                    By clicking the <strong>Register Now</strong>, you agree to our <a href="terms.php" class="theme-color">Terms & Conditions</a> and <a href="policy.php" class="theme-color">Privacy Policy</a>
                                 </p>
                                 <button class="theme_btn message_btn mt-20" type="submit">Register Now</button>
                                 <br>
@@ -139,6 +143,22 @@ if (isset($_SESSION['Auth'])) {
     </main>
 
     <?php include 'php/pages/footer.php' ?>
+    <script>
+    $(document).ready(function () {
+        $("#togglePassword").click(function () {
+            let input = $("#password");
+            let icon = $(this).find("i");
+            
+            if (input.attr("type") === "password") {
+                input.attr("type", "text");
+                icon.removeClass("fa-eye").addClass("fa-eye-slash");
+            } else {
+                input.attr("type", "password");
+                icon.removeClass("fa-eye-slash").addClass("fa-eye");
+            }
+        });
+    });
+</script>
 </body>
 
 </html>

@@ -94,7 +94,7 @@ function createUser($data)
         return false;
     }
 
-    $verify_code = createRandomCode(62);
+    $verify_code = createRandomCode(4);
     $hashed_password = password_hash($data['password'], PASSWORD_BCRYPT);
 
     mysqli_stmt_bind_param(
@@ -117,10 +117,22 @@ function createUser($data)
         return false;
     }
 }
+function updatePassowrd($data)
+{
+    $email = $data['email'];
+    $hashed_password = password_hash($data['password'], PASSWORD_BCRYPT);
+    global $con;
+    $query = mysqli_query($con, "UPDATE `users` SET `password`='$hashed_password' WHERE `email` = '$email'  ");
+    if ($query) {
+        return true;
+    } else {
+        return false;
+    }
+}
 //create a random code for email verification 
 function createRandomCode($length)
 {
-    $chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    $chars = "0123456789";
     return substr(str_shuffle($chars), 0, $length);
 }
 //show prev form data
@@ -284,7 +296,27 @@ function parseCSV($string)
 }
 
 
+function validateForgetpasswordForm($form_data)
+{
+    $response = array();
+    $response['status'] = true;
 
+    if (!isEmailRegistered($form_data['email'])) {
+        $response['msg'] = "This Email is Not Registered";
+        $response['status'] = false;
+        $response['field'] = "email";
+    }
+
+    if (!filter_var($form_data['email'], FILTER_VALIDATE_EMAIL)) {
+        $response['msg'] = "Email is not valid!";
+        $response['status'] = false;
+        $response['field'] = "email";
+    }
+
+
+
+    return $response;
+}
 function createNotification($message, $url)
 {
     global $con;
@@ -295,10 +327,49 @@ function createNotification($message, $url)
         return false;
     }
 }
+function validateChangePasswordForm($form_data)
+{
+    $response = array();
+    $response['status'] = true;
 
+    $password = trim($form_data['password'] ?? '');
+
+    if (strlen($password) < 6) {
+        return [
+            'status' => false,
+            'msg' => "Password must be at least 6 characters long!",
+            'field' => "password",
+        ];
+    }
+
+    return $response;
+}
 function getWhatsAppNumber()
 {
     global $con;
     $number = mysqli_fetch_assoc(mysqli_query($con,  "SELECT `data1` FROM `settings` WHERE `id` = '3'"));
     return $number['data1'];
+}
+function createCookieToken($user_id, $token, $expiration)
+{
+    global $con;
+    // Use prepared statements to prevent SQL injection
+    $stmt = mysqli_prepare($con, "INSERT INTO rememberme_tokens (user_id, token, expiration) VALUES (?, ?, ?)");
+    mysqli_stmt_bind_param($stmt, "iss", $user_id, $token, $expiration);
+
+    if (mysqli_stmt_execute($stmt)) {
+        setcookie(
+            "rememberme",
+            $token,
+            [
+                'expires' => time() + (30 * 24 * 60 * 60), // 30 days
+                'path' => '/',
+                'secure' => true,  // Ensures HTTPS-only transmission
+                'httponly' => true // Prevents JavaScript access
+            ]
+        );
+        return 1;
+    } else {
+        return 0;
+    }
 }

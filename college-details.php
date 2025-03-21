@@ -27,13 +27,16 @@ if (isset($_GET['u'])) {
         exit();
     }
 
-    // Fetch courses separately
+    // Fetch courses and merge fees using JOIN
     $stmt = $con->prepare("
-        SELECT id, course_name, short_form, fees, duration_of_Course, study_mode, 
-               enterance_exam, eligibility, department, course_thumbnail 
-        FROM courses WHERE FIND_IN_SET(id, ?)
+        SELECT c.id, c.course_name, c.short_form, c.duration_of_Course, 
+               c.study_mode, c.enterance_exam, c.eligibility, 
+               c.department, c.course_thumbnail, f.fees
+        FROM courses c
+        LEFT JOIN fees f ON c.id = f.course_id AND f.college_id = ?
+        WHERE FIND_IN_SET(c.id, ?)
     ");
-    $stmt->bind_param("s", $college['courseId']);
+    $stmt->bind_param("is", $college['id'], $college['courseId']);
     $stmt->execute();
     $result = $stmt->get_result();
     $courses = [];
@@ -43,7 +46,7 @@ if (isset($_GET['u'])) {
             'name' => $row['course_name'],
             'id' => $row['id'],
             'short_form' => $row['short_form'],
-            'fees' => $row['fees'],
+            'fees' => $row['fees'] ?? "N/A", // Show "N/A" if no fee is found
             'duration' => $row['duration_of_Course'],
             'study_mode' => $row['study_mode'],
             'entrance_exam' => $row['enterance_exam'],
@@ -55,9 +58,7 @@ if (isset($_GET['u'])) {
     $stmt->close();
 
     // Fetch campus images separately
-    $stmt = $con->prepare("
-        SELECT DISTINCT image FROM campus_images WHERE college_id = ?
-    ");
+    $stmt = $con->prepare("SELECT DISTINCT image FROM campus_images WHERE college_id = ?");
     $stmt->bind_param("i", $college['id']);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -122,7 +123,7 @@ $apply_btn = "php/utils/actions.php?create_new_lead=true&lead_source=college&id=
     <meta property="twitter:title" content="<?= $meta_title ?>">
     <meta property="twitter:description" content=<?= $meta_dec ?>>
     <meta property="twitter:image" content="<?= $meta_img ?>">
-    <link rel="canonical" href="<?= $domain ?>/college-details.php?u=<?=  $tagId?>">
+    <link rel="canonical" href="<?= $domain ?>/college-details.php?u=<?= $tagId ?>">
 
     <link rel="stylesheet" href="assets\css\colleged.css">
 
@@ -148,12 +149,14 @@ $apply_btn = "php/utils/actions.php?create_new_lead=true&lead_source=college&id=
                 </p>
                 <div class="p-2 ">
                     <i class="fa-solid fa-location-dot d-flex align-items-center gap-2">
+                        <!-- location icon  -->
+
                         <p style="color:#EB571C"><?= $college['city_name'] ?> (<?= $college['district_name'] ?>)</p>
                     </i>
                 </div>
                 <div class="p-2 mt-5 gap-5 d-flex">
 
-                    <a target="_blank" href="<?= getFilePath('brochure', $college['college_brochure']); ?>" download="<?php echo $college['college_name'] . ' Brochure' ?>" class="btn p-2" style="border:2px solid #EB571C; color:#EB571C; border-radius:40px;">Download Brochure</a>
+
                     <a href="<?= $apply_btn ?>" target="_blank" class="btn p-2 px-5" style="border:2px solid #EB571C; background-color: #EB571C; color: white; border-radius:40px;">Apply Now</a>
 
                 </div>
@@ -254,7 +257,7 @@ $apply_btn = "php/utils/actions.php?create_new_lead=true&lead_source=college&id=
                                 <?= htmlspecialchars($course['department'] ?? 'N/A', ENT_QUOTES, 'UTF-8'); ?>
                             </p>
                             <div class="button-card">
-                                <button onclick="window.location.href = 'course-details.php?cid=<?= $course['id'] ?>'" class="btn filled"> View More</button>
+                                <button onclick="window.location.href = '<?= $apply_btn?>'" class="btn filled"> Apply Now</button>
                             </div>
                         </div>
                     </div>

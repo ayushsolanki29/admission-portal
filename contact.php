@@ -60,8 +60,8 @@ session_start();
                                     <img src="assets/img/icon/phone-alt.svg" alt="">
                                 </div>
                                 <div class="contact__text">
-                                    <h5>+000 (125) 3654 34</h5>
-                                    <h5>+000 (125) 3654 34</h5>
+                                    <h5>+91 8460042040</h5>
+                                    <h5>+91 7984289940</h5>
                                 </div>
                             </div>
                             <div class="single-contact-box cb-3 mb-30">
@@ -69,8 +69,8 @@ session_start();
                                     <img src="assets/img/icon/feather-mail.svg" alt="">
                                 </div>
                                 <div class="contact__text" id="form">
-                                    <h5>info@example.com</h5>
-                                    <h5>info2@example.com</h5>
+                                   <a href="mailto:collegenewadmission@gmail.com"><h5>collegenewadmission@gmail.com</h5></a> 
+                                   <a href="mailto:contact@collegenew.com"> <h5>contact@collegenew.com</h5></a>
                                 </div>
                             </div>
                             <div class="social-media footer__social mt-30 text-center">

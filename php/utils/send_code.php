@@ -12,9 +12,9 @@ require 'PHPMailer/src/SMTP.php';
 
 function send_activation_link($email, $subject, $verification_code, $username, $date)
 {
-    $SMTP_HOST = "mail.steam-games.in";
-    $SMTP_USER = "admin@steam-games.in";
-    $SMTP_PASS = ";89s6#7tvnCXGB";
+    $SMTP_HOST = "mail.collegenew.com";
+    $SMTP_USER = "contact@collegenew.com";
+    $SMTP_PASS = "L!7wfT07)6qoID";
 
     $mail = new PHPMailer(true);
 
@@ -30,7 +30,7 @@ function send_activation_link($email, $subject, $verification_code, $username, $
         // $mail->SMTPDebug  = SMTP::DEBUG_OFF; // Disable debug mode for production
 
         // Recipients
-        $mail->setFrom($SMTP_USER, 'Dream Creations');
+        $mail->setFrom($SMTP_USER, 'Collegenew.com');
         $mail->addAddress($email);
 
         // Email Template
@@ -40,7 +40,7 @@ function send_activation_link($email, $subject, $verification_code, $username, $
         }
 
         $templateContent = file_get_contents($templatePath);
-        $templateContent = str_replace(["{username}", "{date}", "{verification_code}"], [$username, $date, $verification_code], $templateContent);
+        $templateContent = str_replace(["{username}", "{date}", "{code}"], [$username, $date, $verification_code], $templateContent);
 
         // Email content
         $mail->isHTML(true);

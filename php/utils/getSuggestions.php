@@ -10,14 +10,14 @@ if (isset($_POST['searchIn'])) {
                     WHERE college_name LIKE ? 
                     OR city_name LIKE ? 
                     OR university_name LIKE ? 
-                    LIMIT 5";
+                    LIMIT 3";
 
     // Query to search in courses
-    $sqlCourses = "SELECT DISTINCT id, course_name, short_form, course_thumbnail 
+    $sqlCourses = "SELECT DISTINCT id, course_name, short_form 
                    FROM courses 
                    WHERE course_name LIKE ? 
                    OR short_form LIKE ? 
-                   LIMIT 5";
+                   LIMIT 3";
 
     // Prepare and execute the college query
     $stmtColleges = $con->prepare($sqlColleges);
@@ -52,7 +52,7 @@ if (isset($_POST['searchIn'])) {
             while ($row = $resultCourses->fetch_assoc()) {
                 echo "<div class='suggestion' onclick='selectSuggestion(\"" . htmlspecialchars($row["course_name"]) . "\")'>
                         <a href='course-details.php?cid=" . urlencode($row["id"]) . "'>
-                            <img class='searchIMG' src='./assets/img/course/" . htmlspecialchars($row["course_thumbnail"]) . "' alt='" . htmlspecialchars($row["course_name"]) . "'>
+
                             " . htmlspecialchars($row["course_name"]) . " (" . htmlspecialchars($row["short_form"]) . ")
                         </a>
                     </div>";

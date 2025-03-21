@@ -14,7 +14,7 @@ session_start();
     $meta_dec = "Discover the best courses in India. Compare course details, eligibility, fees, and career opportunities to find the perfect program for your future.";
     $meta_keywords = "top courses in India, best career programs, higher education, course details, study programs, professional courses, course fees, career guidance";
     $meta_img = $domain . "assets/img/og-img.png";
-?>
+    ?>
 
     <title><?= $meta_title ?></title>
     <meta name="title" content="<?= $meta_title ?>">
@@ -96,7 +96,7 @@ session_start();
                     <div class="section-title section-title-3 text-center text-xl-start mb-30">
                         <h5 class="mb-25">Featured Courses</h5>
                         <h2 class="mb-20">Explore our <span class="bottom-line">Popular Courses</span></h2>
-                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour.</p>
+
                     </div>
 
 
@@ -125,34 +125,15 @@ session_start();
                             $course_thumbnail = htmlspecialchars($row['course_thumbnail'], ENT_QUOTES, 'UTF-8');
 
                             // Course Details URL with ID
-                            $course_url = "course-details.php?cid=$course_id";
+                            $course_url = "colleges.php?cid=$course_id";
                     ?>
-                            <div class="col-lg-4 col-md-6 grid-item">
+                            <div class="col-lg-4 col-md-6 grid-item" style="max-height: 150px !important;">
                                 <div class="z-gallery z-gallery-two gallery-03 mb-30">
-                                    <div class="z-gallery__thumb mb-20">
-                                        <a href="<?= $course_url ?>">
-                                            <img class="img-fluid" src="assets/img/course/<?= $course_thumbnail ?>" alt="<?= $course_name ?>">
-                                        </a>
-                                    </div>
                                     <div class="z-gallery__content pos-rel">
-                                        <div class="course__meta d-flex align-items-center justify-content-between mb-15">
-                                            <span><img class="icon" src="assets/img/icon/time.svg" alt="course-meta"> <?= $duration ?></span>
-                                            <span><img class="icon" src="assets/img/icon/bar-chart.svg" alt="course-meta"> <?= $study_mode ?></span>
-                                        </div>
+
                                         <h4 class="sub-title mb-15">
                                             <a href="<?= $course_url ?>"><?= $course_name ?> (<?= $short_form ?>)</a>
                                         </h4>
-                                        <p class="mb-20">Eligibility: <?= $eligibility ?></p>
-                                        <div class="course__authors d-xl-flex align-items-center justify-content-between mb-20">
-                                            <div class="course__authors-box d-flex align-items-center">
-                                                <div class="course__authors-box-text ml-10">
-                                                    <h5><?= $department ?></h5>
-                                                    <span>Entrance Exam: <?= $entrance_exam ?></span>
-                                                </div>
-                                            </div>
-                                            <p>Fees: <span>Click Here</span></p>
-                                        </div>
-
                                     </div>
                                 </div>
                             </div>

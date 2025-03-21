@@ -47,28 +47,29 @@ session_start();
             <div class="row">
                 <?php
               
-                if (isset($_GET['cid'])) {
-                    $cid = $_GET['cid'];
-                    $stmt = $con->prepare("
-                        SELECT c.id, c.college_name, c.admission_type, c.college_logo, c.tag_id, 
-                               c.university_name, c.finance_type, c.highest_package, 
-                               GROUP_CONCAT(cr.short_form SEPARATOR ' | ') AS courses
-                        FROM colleges c
-                        LEFT JOIN courses cr ON FIND_IN_SET(cr.id, c.courseId) > 0
-                        WHERE FIND_IN_SET(?, c.courseId) > 0
-                        GROUP BY c.id
-                    ");
-                    $stmt->bind_param("s", $cid);
-                } else {
-                    $stmt = $con->prepare("
-                        SELECT c.id, c.college_name, c.admission_type, c.college_logo, c.tag_id, 
-                               c.university_name, c.finance_type, c.highest_package, 
-                               GROUP_CONCAT(cr.short_form SEPARATOR ' | ') AS courses
-                        FROM colleges c
-                        LEFT JOIN courses cr ON FIND_IN_SET(cr.id, c.courseId) > 0
-                        GROUP BY c.id
-                    ");
-                }
+              if (isset($_GET['cid'])) {
+                $cid = $_GET['cid'];
+                $stmt = $con->prepare("
+                    SELECT c.id, c.city_name, c.college_name, c.admission_type, c.college_logo, c.tag_id, 
+                           c.university_name, c.finance_type, c.highest_package, 
+                           SUBSTRING_INDEX(GROUP_CONCAT(cr.short_form ORDER BY cr.id SEPARATOR ' | '), ' | ', 3) AS courses
+                    FROM colleges c
+                    LEFT JOIN courses cr ON FIND_IN_SET(cr.id, c.courseId) > 0
+                    WHERE FIND_IN_SET(?, c.courseId) > 0
+                    GROUP BY c.id 
+                ");
+                $stmt->bind_param("s", $cid);
+            } else {
+                $stmt = $con->prepare("
+                    SELECT c.id, c.college_name, c.city_name, c.admission_type, c.college_logo, c.tag_id, 
+                           c.university_name, c.finance_type, c.highest_package, 
+                           SUBSTRING_INDEX(GROUP_CONCAT(cr.short_form ORDER BY cr.id SEPARATOR ' | '), ' | ', 3) AS courses
+                    FROM colleges c
+                    LEFT JOIN courses cr ON FIND_IN_SET(cr.id, c.courseId) > 0
+                    GROUP BY c.id 
+                ");
+            }
+            
                 
                 $stmt->execute();
                 $result = $stmt->get_result();
@@ -80,6 +81,7 @@ session_start();
                 while ($row = $result->fetch_assoc()) {
                     // Secure variables
                     $collegeLogo = htmlspecialchars($row['college_logo'] ?? 'default.png');
+                    $city_name = htmlspecialchars($row['city_name'] ?? 'n/a');
                     $collegeName = htmlspecialchars($row['college_name'] ?? 'Unknown College');
                     $admissionType = htmlspecialchars($row['admission_type'] ?? 'N/A');
                     $financeType = htmlspecialchars($row['finance_type'] ?? 'Unknown');
@@ -93,11 +95,11 @@ session_start();
                             <img src="assets/img/college/<?= $collegeLogo ?>" class="card-img-top" alt="<?= $collegeName ?> Logo">
                             <div class="card-body">
                                 <a href="college-details.php?u=<?= urlencode($tagId) ?>">
-                                    <h5 class="card-title"><?= $collegeName ?></h5>
+                                    <h5 class="card-title"><?= $collegeName .' ,'. $city_name ?></h5>
                                 </a>
                                 <ul class="icon-list">
                                     <li><i class="fas fa-university"></i> <?= $admissionType ?></li>
-                                    <li><i class="fas fa-graduation-cap"></i> <?= $courses ?></li>
+                                    <li><i class="fas fa-graduation-cap"></i> <?= $courses ?> and +more</li>
                                     <li><i class="fas fa-building"></i> <?= $financeType ?> Institute</li>
                                     <li><i class="fas fa-school"></i> <?= $universityName ?></li>
                                     <li><i class="fas fa-wallet"></i> Heights Package : <?= $package ?></li>

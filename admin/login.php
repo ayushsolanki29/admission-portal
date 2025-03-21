@@ -2,53 +2,64 @@
 include '../php/utils/db.php';
 session_start();
 
+$remember_token_name = "6oxM5UA2E65";
+$max_attempts = 3;
+$lockout_time = 15 * 60;
+$session_duration = 90 * 24 * 60 * 60; // 90 days
+
+// If already logged in, redirect to the admin panel
 if (isset($_SESSION['is_admin'])) {
-    header("Location:index.php");
+    header("Location: index.php");
     exit();
 }
-if (isset($_COOKIE['6oxM5UA2E65'])) {
-    $token = mysqli_real_escape_string($con, $_COOKIE['6oxM5UA2E65']);
-    $query = "SELECT * FROM rememberme_tokens WHERE token = '$token' AND expiration > NOW()";
-    $result = mysqli_query($con, $query);
 
-    if ($result && mysqli_num_rows($result) === 1) {
+// Handle Remember Me token
+if (isset($_COOKIE[$remember_token_name])) {
+    $token = mysqli_real_escape_string($con, $_COOKIE[$remember_token_name]);
+    $query = "SELECT user_id FROM rememberme_tokens WHERE token = ? AND expiration > NOW()";
+    $stmt = $con->prepare($query);
+    $stmt->bind_param("s", $token);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result && $result->num_rows === 1) {
         $_SESSION['attempt'] = 0;
         $_SESSION['is_admin'] = true;
-        header("Location:index.php");
+        header("Location: index.php");
         exit();
     } else {
-        echo "<script>alert('Login Session is ended Please Login Again')</script>";
-        setcookie("6oxM5UA2E65", "", time() - 3600, "/");
-
-        echo "<script>window.location.href = 'login.php';</script>";
+        // Cookie expired or invalid - force logout
+        setcookie($remember_token_name, "", time() - 3600, "/");
+        $_SESSION['err'] = "Login session expired. Please log in again.";
+        header("Location: login.php");
+        exit();
     }
 }
 
+// Initialize login attempt tracking
 if (!isset($_SESSION['attempt'])) {
     $_SESSION['attempt'] = 0;
 }
 if (isset($_COOKIE['login_attempt_faild'])) {
-    $_SESSION['attempt'] = 5;
+    $_SESSION['attempt'] = $max_attempts;
 }
-$max_attempts = 3;
-$lockout_time = 15 * 60;
 
-// Check for lockout
+// Handle lockout
 if (isset($_SESSION['last_attempt_time']) && (time() - $_SESSION['last_attempt_time']) < $lockout_time) {
-    $remaining_lockout_time = $lockout_time - (time() - $_SESSION['last_attempt_time']);
-
-    echo json_encode(['error' => 'Too many login attempts. Please try again in ' . ceil($remaining_lockout_time / 60) . ' minutes.']);
-    exit;
+    $remaining_time = $lockout_time - (time() - $_SESSION['last_attempt_time']);
+    echo json_encode(['error' => 'Too many login attempts. Try again in ' . ceil($remaining_time / 60) . ' minutes.']);
+    exit();
 }
 if ($_SESSION['attempt'] >= $max_attempts) {
-    setcookie("login_attempt_faild", time(), time() + (86400 * 30), '/', '', false, true);
+    setcookie("login_attempt_faild", time(), time() + (86400 * 30), "/", "", false, true);
 }
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login_admin'])) {
+// Handle login request
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login_admin'])) {
     if ($_SESSION['attempt'] >= $max_attempts) {
         $_SESSION['last_attempt_time'] = time();
-        echo json_encode(['error' => 'Too many login attempts. Please try again later.']);
-        exit;
+        echo json_encode(['error' => 'Too many login attempts. Try again later.']);
+        exit();
     }
 
     $username = mysqli_real_escape_string($con, $_POST['username']);
@@ -62,35 +73,45 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login_admin'])) {
 
     if ($result->num_rows == 1) {
         $data = $result->fetch_assoc();
-        if ($data['data1'] == $username && password_verify($password, $data['data2'])) {
+        if ($data['data1'] === $username && password_verify($password, $data['data2'])) {
+            // Generate new token for Remember Me
             $user_id = 2;
-            $token = bin2hex(random_bytes(42));
-            $expiration = date('Y-m-d H:i:s', strtotime('3 days'));
-            $insertQuery = "INSERT INTO rememberme_tokens (user_id, token, expiration) VALUES ($user_id, '$token', '$expiration')";
-            $run = mysqli_query($con, $insertQuery);
-            setcookie("6oxM5UA2E65", $token, strtotime('+30 days'), '/', '', false, true);
+            $token = bin2hex(random_bytes(64)); // More secure random token
+            $expiration = date('Y-m-d H:i:s', strtotime("+$session_duration seconds"));
+
+            // Store the new token in the database
+            $stmt = $con->prepare("INSERT INTO rememberme_tokens (user_id, token, expiration) VALUES (?, ?, ?)
+                                   ON DUPLICATE KEY UPDATE token = VALUES(token), expiration = VALUES(expiration)");
+            $stmt->bind_param("iss", $user_id, $token, $expiration);
+            $stmt->execute();
+
+            // Set long-term cookie (secure, HTTP-only, same-site)
+            setcookie($remember_token_name, $token, time() + $session_duration, "/", "", false, true);
+
             $_SESSION['attempt'] = 0;
             $_SESSION['is_admin'] = true;
-            header("location: index.php");
+            header("Location: index.php");
+            exit();
         } else {
             $_SESSION['attempt']++;
             $_SESSION['err'] = "Invalid Credentials";
-            header("location:login.php");
-            exit;
+            header("Location: login.php");
+            exit();
         }
     } else {
         $_SESSION['attempt']++;
         $_SESSION['err'] = "Invalid Credentials";
-        header("location:login.php");
-        exit;
+        header("Location: login.php");
+        exit();
     }
 }
 
-// CSRF protection token
+// CSRF Protection Token
 if (empty($_SESSION['csrf_token'])) {
     $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -118,7 +139,7 @@ if (empty($_SESSION['csrf_token'])) {
             "beforeend",
             `
     <div class="loader_box">
-        <img src='../assets/img/f.gif' ;/>
+        <img src='../assets/img/logo/header_logo_one.png' ;/>
     </div>
     `
         );

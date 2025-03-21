@@ -145,29 +145,7 @@ if (isset($_SESSION['Auth'])) {
     <nav class="side-mobile-menu">
         <ul id="mobile-menu-active">
             <li><a href="index.php">Home</a></li>
-
-            <li class="has-dropdown">
-                <a href="index.html">Colleges</a>
-                <ul class="sub-menu">
-                    <?php
-                    // Securely fetch all colleges using prepared statements
-                    $college_stmt = $con->prepare("SELECT `college_name`, `tag_id` FROM colleges ORDER BY `college_name` ASC");
-                    $college_stmt->execute();
-                    $college_result = $college_stmt->get_result();
-
-                    if ($college_result->num_rows > 0) {
-                        while ($college_res = $college_result->fetch_assoc()) {
-                            $college_name = htmlspecialchars($college_res['college_name'], ENT_QUOTES, 'UTF-8');
-
-                            $tag_id = urlencode($college_res['tag_id']); // Ensures URL safety
-                    ?>
-                            <li><a href="college-details.php?u=<?php echo $tag_id; ?>"><?php echo $college_name; ?></a></li>
-                    <?php }
-                        $college_stmt->close();
-                    } ?>
-                </ul>
-            </li>
-
+            <li><a href="colleges.php">Colleges</a></li>
             <li><a href="courses.php">Courses</a></li>
             <li><a href="about.php">About us</a></li>
             <li><a href="contact.php">Contacts Us</a></li>

@@ -9,14 +9,11 @@ if (isset($_GET['register'])) {
 
     if ($response['status']) {
         if ($code = createUser($_POST)) {
-            // Generate activation link
-            $activation_link = "$domain/activate.php?verification=TXT&phase=5&code=" . urlencode($code);
-
-            // Send activation email
-            $codesended = send_activation_LINK($_POST['email'], "Account Activation",    $activation_link, $_POST['username'], date("Y-m-d H:i:s"));
+            $_SESSION['code'] = $code;
+            $codesended = send_activation_LINK($_POST['email'], "Account Activation Code - " . $code,    $code, $_POST['username'], date("Y-m-d H:i:s"));
 
             if ($codesended) {
-                header('Location: ../../check-email.php?email=' . $_POST['email']);
+                header('Location: ../../otpverify-email.php?email=' . $_POST['email']);
             } else {
                 header('Location: ../../register.php?error=Faild to send Verification Link to Your email box.');
             }
@@ -47,25 +44,10 @@ if (isset($_GET['login'])) {
         $token = bin2hex(random_bytes(32));
         $expiration = date('Y-m-d H:i:s', strtotime('+30 days'));
 
-        // Use prepared statements to prevent SQL injection
-        $stmt = mysqli_prepare($con, "INSERT INTO rememberme_tokens (user_id, token, expiration) VALUES (?, ?, ?)");
-        mysqli_stmt_bind_param($stmt, "iss", $user_id, $token, $expiration);
-
-        if (mysqli_stmt_execute($stmt)) {
-            setcookie(
-                "rememberme",
-                $token,
-                [
-                    'expires' => time() + (30 * 24 * 60 * 60), // 30 days
-                    'path' => '/',
-                    'secure' => true,  // Ensures HTTPS-only transmission
-                    'httponly' => true // Prevents JavaScript access
-                ]
-            );
-        } else {
+        if (!createCookieToken($user_id, $token, $expiration)) {
             echo "<script>alert('Error while saving login session, please try again.');</script>";
         }
-        mysqli_stmt_close($stmt);
+
 
         if (!empty($cb)) {
             header("Location: ../../$cb");
@@ -82,13 +64,11 @@ if (isset($_GET['login'])) {
     }
 }
 
-
 if (isset($_GET['create_new_lead'], $_GET['lead_source'], $_GET['id'])) {
     if (!isset($_SESSION['Auth'])) {
         header("Location: ../../login.php?error=Please Login First&cb=profile.php");
         exit();
     }
-
     $user_id = $_SESSION['Auth'];
     $leadSource = $_GET['lead_source'];
     $id = $_GET['id'];
@@ -176,4 +156,44 @@ if (isset($_GET['live_chat'])) {
     $whatsappURL = "https://wa.me/$phone?text=" . urlencode($message);
     header("Location: $whatsappURL");
     exit();
+}
+
+
+if (isset($_GET['forget-password'])) {
+    $response = validateForgetpasswordForm($_POST);
+
+    if ($response['status']) {
+        $code = createRandomCode(4);
+        $_SESSION['code'] = $code;
+        $codesended = send_activation_LINK($_POST['email'], "Forget Password Code - " . $code,    $code, $_POST['email'], date("Y-m-d H:i:s"));
+
+        if ($codesended) {
+            header('Location: ../../email-verify.php?email=' . $_POST['email']);
+        } else {
+            header('Location: ../../forget-password.php?error=Faild to send Verification OTP to Your email box.');
+        }
+        exit();
+    } else {
+        $_SESSION['error'] = $response;
+        $_SESSION['formdata'] = $_POST;
+        header("Location: ../../forget-password.php");
+        exit();
+    }
+}
+if (isset($_GET['change-password'])) {
+    $response =  validateChangePasswordForm($_POST);
+
+    if ($response['status']) {
+        if (updatePassowrd($_POST)) {
+            unset($_SESSION['verification_done']);
+            unset($_SESSION['code']);
+            header("Location: ../../login.php?success=password changed successfully!");
+            exit();
+        }
+    } else {
+        $_SESSION['error'] = $response;
+        $_SESSION['formdata'] = $_POST;
+        header("Location: ../../change-passord.php");
+        exit();
+    }
 }

@@ -112,6 +112,9 @@ FROM colleges c;
                                                 <span class="text-muted small">
                                                     <strong><?= $clg_data['city_name'] ?></strong> (<?= $clg_data['district_name'] ?>)
                                                 </span>
+                                                <span>
+                                                    Total Views : <strong><?= $clg_data['views'] ?></strong>
+                                                </span>
                                             </div>
                                         </div>
 

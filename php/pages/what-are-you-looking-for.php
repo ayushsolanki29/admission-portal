@@ -4,15 +4,25 @@
        <div class="what-blur-shape-two"></div>
        <div class="what-look-bg gradient-bg pt-145  pt-md-95 pb-md-80 pt-xs-95 pb-xs-80">
            <div class="container">
-               <div class="row justify-content-center">
+               <!-- <div class="row justify-content-center">
                    <div class="col-lg-8">
                        <div class="section-title text-center mb-55">
                            <h5 class="bottom-line mb-25">Register & Courses</h5>
                            <h2>What you Looking For?</h2>
                        </div>
                    </div>
+               </div> -->
+               <div class="row">
+               <div class="what-box text-center mb-35 wow fadeInUp2 animated" data-wow-delay=".3s">
+                           <div class="what-box__icon mb-30">
+                               <img src="assets/img/icon/graduate.svg" alt="">
+                           </div>
+                           <h3>Start Your MBBS Journey Today!</h3>
+    <p>Enroll in top medical colleges and take the first step toward a successful career in healthcare. Explore our partnered institutions and secure your seat now.</p>
+    <a href="courses.php?d=M.B.B.S" class="theme_btn border_btn">Get Started</a>
+                       </div>
                </div>
-               <div class="row mb-85">
+               <!-- <div class="row mb-85">
                    <div class="col-xl-6 col-lg-6 col-md-6">
                        <div class="what-box text-center mb-35 wow fadeInUp2 animated" data-wow-delay=".3s">
                            <div class="what-box__icon mb-30">
@@ -33,7 +43,7 @@
                            <a href="courses.php" class="theme_btn border_btn active">Browse Courses</a>
                        </div>
                    </div>
-               </div>
+               </div> -->
 
 
 

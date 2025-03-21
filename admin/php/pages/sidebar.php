@@ -43,6 +43,21 @@
             </div>
         </div>
     </li>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseTwo">
+        <i class="fas fa-rupee-sign"></i>
+            <span>Fees Structure </span>
+        </a>
+        <div id="collapseFour" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Manage</h6>
+                <a class="collapse-item" href="fees_list.php">Manage</a>
+                <a class="collapse-item" href="fees_edit.php">Update </a>
+                <a class="collapse-item" href="fees_add.php">Add</a>
+
+            </div>
+        </div>
+    </li>
 
 
     <li class="nav-item">

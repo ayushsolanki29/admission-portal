@@ -46,7 +46,7 @@ if (isset($_GET['delete_department'])) {
                 <div class="container-fluid">
 
                     <h1 class="h3 mb-2 text-gray-800">Manage Leads</h1>
-                   
+
 
                     <br>
                     <?php
@@ -75,7 +75,7 @@ if (isset($_GET['delete_department'])) {
                                             <th>User</th>
                                             <th>College Name</th>
                                             <th>Date</th>
-                                            <th colspan="2">Actions</th>
+                                            <th colspan="3" class="text-center">Actions</th>
                                         </tr>
                                     </thead>
 
@@ -86,17 +86,26 @@ if (isset($_GET['delete_department'])) {
                                         $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
                                         $start = ($page - 1) * $limit;
 
-                                        $query = "SELECT * FROM `inquire` ORDER BY `id` DESC LIMIT $start, $limit";
+                                        $query = "
+        SELECT i.id, i.user_id, i.course_id, i.college_id, i.created_at, 
+               u.username, u.id AS user_id, u.phone_number,
+               c.college_name, c.id AS college_id 
+        FROM `inquire` i
+        LEFT JOIN `users` u ON i.user_id = u.id
+        LEFT JOIN `colleges` c ON i.college_id = c.id
+        ORDER BY i.id DESC
+        LIMIT ?, ?";
 
                                         $stmt = mysqli_prepare($con, $query);
+                                        mysqli_stmt_bind_param($stmt, "ii", $start, $limit);
                                         mysqli_stmt_execute($stmt);
                                         mysqli_stmt_store_result($stmt);
 
                                         if (mysqli_stmt_num_rows($stmt) > 0) {
-                                            mysqli_stmt_bind_result($stmt, $id,$user_id,$course_id, $college_id, $date);
+                                            mysqli_stmt_bind_result($stmt, $id, $user_id, $course_id, $college_id, $date, $username, $user_id,$phone_number, $college_name, $college_id);
 
                                             while (mysqli_stmt_fetch($stmt)) {
-                                                $no_  =  $no_ + 1;
+                                                $no_++;
                                         ?>
 
                                                 <tr>
@@ -104,16 +113,27 @@ if (isset($_GET['delete_department'])) {
 
                                                     <td><?= htmlspecialchars($no_) ?></td>
 
-                                                    <td><?= htmlspecialchars($user_id) ?></td>
-                                                    <td><?= htmlspecialchars($college_id) ?></td>
-                                                    <td title="<?= $date?>"><?= timeAgo($date) ?></td>
+                                                    <td><?= htmlspecialchars($username ) ?></td>
+                                                    <td><?= htmlspecialchars($college_name) ?></td>
+                                                    <td title="<?= $date ?>"><?= timeAgo($date) ?></td>
 
                                                     <td>
                                                         <a href="#" data-toggle="modal" data-target="#deleteModel<?= $id ?>" class="btn btn-danger btn-sm btn-circle">
                                                             <i class="fas fa-trash"></i>
                                                         </a>
                                                     </td>
-                                                    
+
+                                                    <td>
+                                                        <a target="_blank" href="https://wa.me/<?= $phone_number ?>" class="btn btn-sm btn-circle text-white" style="background-color: #25d366;">
+                                                            <i class="fab fa-whatsapp"></i>
+                                                        </a>
+                                                    </td>
+                                                    <td>
+                                                        <a target="_blank" href="tel:<?= $phone_number ?>" class="btn btn-primary btn-sm btn-circle">
+                                                            <i class="fas fa-phone-volume"></i>
+                                                        </a>
+                                                    </td>
+
 
                                                 </tr>
 

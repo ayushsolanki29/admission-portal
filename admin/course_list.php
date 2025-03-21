@@ -72,7 +72,7 @@ if (isset($_GET['delete_course'], $_GET['id'], $_GET['course_thumbnail'])) {
                                             <th>Image</th>
                                             <th>Full Name</th>
                                             <th>Short Name</th>
-                                            <th>Fees</th>
+                                            
                                             <th>Duration</th>
                                             <th>Study mode</th>
                                             <th>Enterance Exam</th>
@@ -108,7 +108,6 @@ if (isset($_GET['delete_course'], $_GET['id'], $_GET['course_thumbnail'])) {
                                                     </td>
                                                     <td><?= htmlspecialchars($course_name) ?></td>
                                                     <td><?= htmlspecialchars($short_form) ?></td>
-                                                    <td>₹<?= htmlspecialchars($fees) ?></td>
                                                     <td> <?= htmlspecialchars($duration_of_Course) ?></td>
                                                     <td><?= htmlspecialchars($study_mode) ?></td>
                                                     <td><?= htmlspecialchars($enterance_exam) ?></td>
