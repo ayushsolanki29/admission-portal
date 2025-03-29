@@ -13,7 +13,7 @@ session_start();
     $meta_title = "Privacy Policy - How We Protect Your Data | CollegeNew.com";
     $meta_dec = "Read the Privacy Policy of CollegeNew.com to understand how we collect, use, and protect your personal data. Learn about your rights and data security measures.";
     $meta_keywords = "Privacy Policy, data protection, CollegeNew privacy, personal information, user rights, data security, online privacy, CollegeNew.com";
-    $meta_img = $domain . "assets/img/og-image.png";
+    $meta_img = $domain . "/assets/img/og-image.png";
     ?>
 
 

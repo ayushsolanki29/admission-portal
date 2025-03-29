@@ -12,7 +12,7 @@ session_start();
     $meta_title = "Contact Us - CollegeNew.com | Get Expert Admission Guidance";
     $meta_dec = "Have questions about college admissions? Contact CollegeNew.com for expert guidance, support, and assistance in finding the best colleges and courses.";
     $meta_keywords = "contact CollegeNew, college admissions help, education guidance, admission support, career counseling, best colleges, study programs";
-    $meta_img = $domain . "assets/img/og-img.png";
+    $meta_img = $domain . "/assets/img/og-image.png";
 ?>
 
     <title><?= $meta_title ?></title>

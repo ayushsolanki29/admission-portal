@@ -13,7 +13,7 @@ session_start();
     $meta_title = "Explore Top Courses in India - Find Best Career Programs | CollegeNew.com";
     $meta_dec = "Discover the best courses in India. Compare course details, eligibility, fees, and career opportunities to find the perfect program for your future.";
     $meta_keywords = "top courses in India, best career programs, higher education, course details, study programs, professional courses, course fees, career guidance";
-    $meta_img = $domain . "assets/img/og-img.png";
+    $meta_img = $domain . "/assets/img/og-image.png";
     ?>
 
     <title><?= $meta_title ?></title>

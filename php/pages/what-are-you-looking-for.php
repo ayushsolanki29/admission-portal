@@ -15,11 +15,12 @@
                <div class="row">
                <div class="what-box text-center mb-35 wow fadeInUp2 animated" data-wow-delay=".3s">
                            <div class="what-box__icon mb-30">
-                               <img src="assets/img/icon/graduate.svg" alt="">
+                               <img src="assets/img/icon/docs.png" style="max-width: 300px;
+" alt="">
                            </div>
                            <h3>Start Your MBBS Journey Today!</h3>
     <p>Enroll in top medical colleges and take the first step toward a successful career in healthcare. Explore our partnered institutions and secure your seat now.</p>
-    <a href="courses.php?d=M.B.B.S" class="theme_btn border_btn">Get Started</a>
+    <a href="colleges.php?cid=5" class="theme_btn border_btn">Find Colleges for MBBS</a>
                        </div>
                </div>
                <!-- <div class="row mb-85">

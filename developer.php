@@ -13,7 +13,7 @@ session_start();
     $meta_title = "Meet the Developer - Ayush Solanki | CollegeNew.com";
     $meta_dec = "Learn about Ayush Solanki, the developer behind CollegeNew.com. Explore his expertise in web development, technologies used, and contributions to the platform.";
     $meta_keywords = "Ayush Solanki, web developer, CollegeNew developer, PHP expert, Next.js, UI/UX, full-stack development, website creator, software engineer";
-    $meta_img = $domain . "assets/img/og-img.png";
+    $meta_img = $domain . "/assets/img/og-image.png";
     ?>
 
     <title><?= $meta_title ?></title>

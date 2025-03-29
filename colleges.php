@@ -12,7 +12,7 @@ session_start();
     $meta_title = "Top Colleges in India - Find Best Colleges & Courses | CollegeNew.com";
     $meta_dec = "Explore the best colleges in India. Compare courses, admission details, and fees to find the perfect college for your career goals with expert guidance.";
     $meta_keywords = "top colleges in India, best universities, college admissions, higher education, career counseling, study programs, courses and fees";
-    $meta_img = $domain . "assets/img/og-img.png";
+    $meta_img = $domain . "/assets/img/og-image.png";
 ?>
 
     <title><?= $meta_title ?></title>

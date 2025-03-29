@@ -12,7 +12,7 @@ session_start();
     $meta_title = "About Us - CollegeNew.com | Expert College Admission Guidance";
     $meta_dec = "Learn about CollegeNew.com, your trusted guide for college admissions. We help students find the best colleges and courses with expert guidance and seamless enrollment support.";
     $meta_keywords = "about CollegeNew, college admissions help, education platform, career counseling, best colleges, study programs, admission assistance";
-    $meta_img = $domain . "assets/img/og-img.png";
+    $meta_img = $domain . "/assets/img/og-image.png";
 ?>
 
     <title><?= $meta_title ?></title>

@@ -17,7 +17,7 @@ if (isset($_SESSION['Auth'])) {
     $meta_title = "Reset Your Password - CollegeNew.com";
     $meta_dec = "Easily reset your CollegeNew.com account password and regain access to your account for a seamless college admission experience.";
     $meta_keywords = "CollegeNew forgot password, reset password, student login help, account recovery, education portal, secure access";
-    $meta_img = $domain . "assets/img/og-img.png";
+    $meta_img = $domain . "/assets/img/og-image.png";
     ?>
 
 

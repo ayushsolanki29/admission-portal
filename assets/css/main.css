@@ -3230,7 +3230,10 @@ input.main-search-input:-ms-input-placeholder {
   border: 0;
   padding: 24px 41px;
 }
-
+.search_btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
 .widget__select .nice-select {
   background: transparent;
   border: 0;

@@ -15,7 +15,7 @@ if (isset($_SESSION['Auth'])) {
     $meta_title = "Register Now - Join CollegeNew.com for Easy Admissions";
     $meta_dec = "Create your free CollegeNew.com account to explore top colleges, compare courses, and get expert admission guidance. Sign up now and start your journey!";
     $meta_keywords = "register CollegeNew, student signup, create account, college admissions, education portal, career guidance, course comparison, admission help";
-    $meta_img = $domain . "assets/img/og-img.png";
+    $meta_img = $domain . "/assets/img/og-image.png";
 ?>
 
     <title><?= $meta_title ?></title>

@@ -13,7 +13,7 @@ session_start();
     $meta_title = "CollegeNew.com - Your Trusted College Admission Guide | Find Top Colleges & Courses";
     $meta_dec = "Discover the best colleges and courses with CollegeNew.com. Get expert admission guidance, compare institutions, and enroll in your dream college with ease.";
     $meta_keywords = "college admissions, best colleges, courses, university admission, education guidance, career counseling, college search, study programs, higher education";
-    $meta_img = $domain . "assets/img/og-img.png";
+    $meta_img = $domain . "/assets/img/og-image.png";
     ?>
 
 
@@ -112,7 +112,7 @@ session_start();
             </div>
         </section>
         <!--slider-area end-->
-   
+
         <!--great-deal-area end-->
         <?php include 'php/pages/what-are-you-looking-for.php'; ?>
 
@@ -121,7 +121,7 @@ session_start();
                 <div class="row justify-content-center">
                     <div class="col-xl-6 col-lg-8">
                         <div class="section-title section-title-3 text-center mb-60">
-                       
+
                             <h2 class="mb-20">Explore <span class="bottom-line">Leading Institutions</span></h2>
                             <p>Find the best colleges offering a variety of courses to kickstart your academic journey. Choose from accredited institutions and get started today!</p>
                         </div>
@@ -179,7 +179,7 @@ session_start();
                     <div class="section-title section-title-3 text-center text-xl-start mb-30">
                         <h5 class="mb-25">Featured Courses</h5>
                         <h2 class="mb-20">Explore our <span class="bottom-line">Popular Courses</span></h2>
-                       
+
                     </div>
 
 
@@ -209,9 +209,9 @@ session_start();
                     ?>
                             <div class="col-lg-4 col-md-6 grid-item">
                                 <div class="z-gallery z-gallery-two gallery-03 mb-30">
-                                 
+
                                     <div class="z-gallery__content pos-rel">
-                                    
+
                                         <h4 class="sub-title  p-3">
                                             <a href="<?= $course_url ?>"><?= $course_name ?></a>
                                         </h4>
@@ -226,7 +226,7 @@ session_start();
                     }
                     ?>
                 </div>
-                
+
                 <div class="row">
                     <div class="col-xxl-12 mt-20 text-center mb-20 wow fadeInUp2 animated" data-wow-delay='.3s'>
                         <a href="courses.php" class="theme_btn">Explore More</a>
@@ -256,7 +256,7 @@ session_start();
                                     <div class="feature tag_01"><span><img src="assets/img/icon/shield-check.svg" alt=""></span> Safe & Secured</div>
                                     <div class="feature tag_02"><span><img src="assets/img/icon/catalog.svg" alt=""></span> 120+ Colleges</div>
                                     <div class="feature tag_03"><span><i class="fal fa-check"></i></span> Gerruntide Admission</div>
-                               
+
                                     <div class="video-wrapper">
                                         <a href="https://www.youtube.com/watch?v=aF-sOuKfSKk" class="popup-video"><i class="fas fa-play"></i></a>
                                     </div>
@@ -305,8 +305,9 @@ session_start();
         // ];
 
         // $latestReviews = array_slice($testimonials, -10); // Get the latest 10 reviews
-        // ?>
-<!-- 
+        // 
+        ?>
+        <!-- 
         <section class="testimonial-area nav-style-chevron pt-150 pb-120 pt-md-95 pb-md-70 pt-xs-95 pb-xs-5">
             <div class="container testimonial-bg">
                 <div class="row justify-content-center">

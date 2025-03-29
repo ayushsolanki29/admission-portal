@@ -29,7 +29,7 @@ if (isset($_GET['cid'])) {
     $meta_title = "{$courses['course_name']} - Course Details, Fees & Admissions | CollegeNew.com";
     $meta_dec = "Get complete details about {$courses['course_name']} including course fees, duration, eligibility, and admission process. Find the best colleges offering this course.";
     $meta_keywords = "{$courses['course_name']}, course details, course fees, best courses, study programs, higher education, career guidance, admissions";
-    $meta_img = $domain . "assets/img/course/{$courses['course_thumbnail']}";
+    $meta_img = $domain . "/assets/img/course/{$courses['course_thumbnail']}";
 ?>
 
     <title><?= $meta_title ?></title>
