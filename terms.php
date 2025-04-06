@@ -33,7 +33,7 @@ session_start();
     <meta property="twitter:title" content="<?= $meta_title ?>">
     <meta property="twitter:description" content=<?= $meta_dec ?>>
     <meta property="twitter:image" content="<?= $meta_img ?>">
-    <link rel="canonical" href="<?= $domain ?>/profile.php">
+    <link rel="canonical" href="<?= $domain ?>/terms.php">
 </head>
 
 <body>

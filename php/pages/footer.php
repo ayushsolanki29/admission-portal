@@ -1,4 +1,8 @@
   <!--footer-area start-->
+  <?php
+     $insta_q = mysqli_query($con, "SELECT `id`,`data1` FROM `settings` WHERE `id` = 5");
+    $insta_data = mysqli_fetch_array($insta_q);
+                        ?>
   <footer class="footer-area pt-70 pb-40">
       <div class="container">
           <div class="row">
@@ -136,7 +140,7 @@
           <a href="https://www.facebook.com/share/194hqXJfod/" target="_blank" class="menu-item "><i class="fab fa-facebook-f facebook"></i>
               <p class="menu-text">Facebook</p>
           </a>
-          <a href="https://www.instagram.com/college_new?igsh=MXc4YWhpZjZ5aWpsYQ==" target="_blank" class="menu-item "><i class="fab fa-instagram instagram"></i>
+          <a href="<?= $insta_data ['data1']?>" target="_blank" class="menu-item "><i class="fab fa-instagram instagram"></i>
               <p class="menu-text">Instagram</p>
           </a>
           <a href="php/utils/actions.php?live_chat=true" target="_blank" class="menu-item "><i class="fab fa-whatsapp whatsapp"></i>

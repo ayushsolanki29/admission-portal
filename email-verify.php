@@ -12,7 +12,6 @@ if (isset($_POST['otp_verify'])) {
         if ($user_otp == $server_otp) {
 
             $_SESSION['verification_done'] =  $email;
-            echo "<script>alert('OTP Verified Successfully!');</script>";
             header("location:change-passord.php?success=verified&email=$email");
         } else {
             header("location:email-verify.php?err=Invalid OTP. Please try again!&email=$email");

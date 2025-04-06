@@ -6,6 +6,16 @@ if (!isset($_SESSION['is_admin'])) {
     exit();
 }
 
+if (isset($_POST['update_insta'])) {
+    $update_insta = $_POST['insta_id'];
+
+    $run = mysqli_query($con, "UPDATE `settings` SET `data1`='$update_insta' WHERE `id`='5'");
+    if ($run) {
+        header("Location: settings.php?success=Instagram ID updated!");
+    } else {
+        header("Location: settings.php?err=failed to update");
+    }
+}
 if (isset($_POST['update_Taxes_data'])) {
     $tax_value = $_POST['tax_value'];
 
@@ -16,6 +26,7 @@ if (isset($_POST['update_Taxes_data'])) {
         header("Location: settings.php?err=failed to update");
     }
 }
+
 if (isset($_POST['update_profile'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
@@ -102,6 +113,24 @@ if (isset($_POST['update_profile'])) {
                         <small>This Number Used in All Actions. </small>
                     </div>
 
+                    <hr>
+                    <div class="form-group">
+                        <label for="couponSelect">Instagram</label>
+                        <?php
+                        $insta_q = mysqli_query($con, "SELECT `id`,`data1` FROM `settings` WHERE `id` = 5");
+                        $insta_data = mysqli_fetch_array($insta_q);
+                        ?>
+                        <div class="d-flex align-items-center">
+                            <form class="form-inline" method="post">
+                                <div class="input-group mb-2 mr-sm-2">
+
+                                    <input type="text" class="form-control  mr-2" placeholder="Enter Instagram" name="insta_id" value="<?= $insta_data['data1'] ?>">
+                                </div>
+                                <button type="submit" name="update_insta" class="btn btn-primary btn-md">Update Instagram</button>
+                            </form>
+                        </div>
+
+                    </div>
                 </div>
             </div>
 

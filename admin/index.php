@@ -41,6 +41,7 @@ function formatViews($number)
     if ($number >= 1000) return round($number / 1000, 1) . 'K';
     return $number;
 }
+
 $data['site_visits'] = formatViews($data['site_visits']);
 
 // Dashboard Items

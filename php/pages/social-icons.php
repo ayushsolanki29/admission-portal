@@ -1,5 +1,5 @@
 <a href="https://www.facebook.com/share/194hqXJfod/" target="_blank" class="social-btn facebook"><i class="fab fa-facebook-f"></i></a>
-<a href="https://www.instagram.com/college_new?igsh=MXc4YWhpZjZ5aWpsYQ==" target="_blank" class="social-btn instagram"><i class="fab fa-instagram"></i></a>
+<a href="<?=$insta_data['data1']?>" target="_blank" class="social-btn instagram"><i class="fab fa-instagram"></i></a>
 <a href="php/utils/actions.php?live_chat=true" target="_blank" class="social-btn whatsapp"><i class="fab fa-whatsapp"></i></a>
 <a href="https://youtube.com/@collegenew01?si=qL7jEP2AG-akMeJT" class="social-btn gmail"><i class="fab fa-youtube"></i></a>
 
